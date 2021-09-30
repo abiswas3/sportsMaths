@@ -1,1 +1,1 @@
-pandoc  --mathjax -s -c ../blog.css -A ../footer.html -H ./header.html -M title:"Tommy Rank"  main.md -o index.html
+pandoc  --mathjax=../code/es5/tex-chtml.js -s -c ../blog.css -A ../footer.html -H ./header.html -M title:"Tommy Rank"  main.md -o index.html
