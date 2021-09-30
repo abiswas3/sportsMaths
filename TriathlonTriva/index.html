@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Primo Rank</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../blog.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  
+  
+  <ul class="navbar">
+    <li class="navbar-list-item"><a class="active" href="/index.html">Home</a></li>
+    <li class="navbar-list-item"><a href="/projects/">Projects</a></li>  
+    <li class="navbar-list-item"><a href="/misc/">News</a></li>
+    <!-- <li class="navbar-list-item"><a href="/blog/">Blog</a></li> -->
+    <!-- <li class="navbar-list-item" style="float:right"><a href="#about">About</a></li> -->
+  </ul>
+</head>
+<body>
+<header>
+<h1 class="title">Primo Rank</h1>
+</header>
+<h1 id="introduction">Introduction</h1>
+<p>This is an auxillary post in support of <a href="http://abiswas3.github.io/blog/EloTriathlon/">this post</a> which discusses new methods to rank triathletes. In the previous post we introduced a generic model for scoring race performances. The score for a given race was based on the finish position. That score was multiplied by a discount factor to accomodate for the strength of the field in the race. We proposed Tommy Rank, a heuristic based ranking system, based on the intuition of a field expert. In this post, we describe a more principled appraoch to calculating the strength of the field for a given race.</p>
+<h2 id="whats-the-issue-with-tommy-rank-or-other-heuristics">What’s the issue with Tommy Rank or other heuristics</h2>
+<p>In Tommy Rank, the strength of field for a race <span class="math inline">\(r\)</span> is calculated as</p>
+<p><span class="math display">\[S(r) = \sum_{a \in X_r} \frac{1}{\text{rank}(a)}\]</span> where <span class="math inline">\(X_r\)</span> represents the set of athletes that participated in <span class="math inline">\(r\)</span>. The immediate consequence of such a scoring system is as follows - we are claiming the value of having the top 3 racers race in race is much greater than having athletes ranked 4-10 race in the same race. It is not clear this is immediately true. Furthermore, we have provided no empirical evidence to back this statement. **NOTE: The real version of Tommy Rank just uses available prize purse. The above formula was used because we did not have access to that data*. However, prize purse is also a heuristic. We need to back out from previous race results the strength of a certain race.</p>
+<h2 id="plackett-luce">Plackett-Luce</h2>
+<p>In 1975, Plackett introduced the <a href="">axioms of choice theory</a>. The axioms were an attempt to understand how humans made choices when presented with a multitude of options. A direct consequence of these axioms, was the proposal of the <a href="">Placket-Luce</a> model by Marden in 1995. He proved it to be a generalisation of the Bradley Terry model, which is underlying model for evaluating pairwise competitions like chess, scrabble, video games, college sports etc. We re-describe the model in terms of measuring the quality of a triathlete.</p>
+<p>Denote the athletes by integers X={1, 2, 3, …, n}. These integer assignments are random. They do not represent the actual rank of the athlete. It is used to make the notation cleaner. WLet <span class="math inline">\(\theta_i\)</span> represent the intrinsic talent of an athlete <span class="math inline">\(i\)</span>. We do not know this value apriori. It needs to be estimated using race results.Then the probability of of athlete <span class="math inline">\(i\)</span> winning a race when competing with other athletes in set <span class="math inline">\(A_r \subseteq X\)</span> is given by</p>
+<p><span class="math display">\[ P(\text{i wins over A_r}) = \frac{\theta_i}{\sum_{a \in A_r}
+\theta_a}\]</span> EQN 1</p>
+<p>Let <span class="math inline">\(\pi(i,r)\)</span> be the race result of athlete <span class="math inline">\(i\)</span> for race <span class="math inline">\(r\)</span>.</p>
+<p>NOTATION CLEAN UP NEEDED:</p>
+<p>The probability of observing race results where 1 beats 2, and 2 beats 3 and 3 beats 4 … and so on is given by</p>
+<p><span class="math display">\[ P\Big( \pi(1) \rightarrow \pi(2) \rightarrow ... \pi(k) \Big) = 
+\prod_{i=1}^k \frac{\theta_{\pi(i)}}{\theta_{\pi(i)}+ ...+ \theta_{\pi(k)}}\]</span></p>
+<p>Marden (1995) points out that the above model arises from (EQN 1) if we envision the ranking process as first choosing a winner, then choosing a second-place finisher as the winner among those that remain and so on.</p>
+<div id="footer">
+   Copyright something something - what people usually right
+</div>
+</body>
+</html>

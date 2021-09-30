@@ -1,0 +1,1 @@
+pandoc  --mathjax -s -c ../blog.css -A ../footer.html -H ./header.html -M title:"How Elo Works"  main.md -o index.html
