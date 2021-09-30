@@ -1,3 +1,4 @@
+<div class="container">
 # Introduction
 
 The wikipedia page describes ELO as 
@@ -195,3 +196,4 @@ other. A 2% difference accounts to 268 points on ELO scale. This is
 also why the equation used in practice is a decent approximation of
 what Elo suggested. However it is **NOT** the probability that one
 normal random variable is bigger than the other.
+</div>

@@ -1,3 +1,4 @@
+<div class="container">
 # Introduction 
 
 In [a previous post](http://abiswas3.github.io/blog/ProblemStatement/)
@@ -531,3 +532,4 @@ used in practice, but will write it for taste.**
   Chains](https://papers.nips.cc/paper/2015/file/2a38a4a9316c49e5a833517c45d31070-Paper.pdf) -
   An entire PHD thesis can be found on this topic.
 
+</div>

@@ -1,3 +1,4 @@
+<div class="container">
 # Introduction
 
 This is an auxillary post in support of [this
@@ -64,3 +65,4 @@ Marden (1995) points out that the above model arises from (EQN 1) if
 we envision the ranking process as first choosing a winner, then
 choosing a second-place finisher as the winner among those that remain
 and so on.
+</div>

@@ -29,6 +29,7 @@
 <header>
 <h1 class="title">How Elo Works</h1>
 </header>
+<div class="container">
 <h1 id="introduction">Introduction</h1>
 <p>The wikipedia page describes ELO as</p>
 <p><code>The Elo[a] rating system is a method for calculating the relative skill levels of players in zero-sum games such as chess. It is named after its creator Arpad Elo, a Hungarian-American physics professor.</code></p>
@@ -92,6 +93,7 @@ erf^{-1}(z) &amp;= \sum_{k=0}^{\infty} \frac{c_k}{2k+1}\Big(\frac{\sqrt{\pi}}{2}
 <p><span class="math display">\[ \Delta_{log} = \frac{1600}{ln(10)}(x - \frac{1}{2})\]</span></p>
 <p><span class="math display">\[\Delta = 400\sqrt{\pi}(x - \frac{1}{2})\]</span></p>
 <p><span class="math inline">\(\Delta_{log} - \Delta = (x - \frac{1}{2})(709.0 - 694.9)\)</span>. There’s only a 2% difference when the players are closely matched. However when players are not nearly equal if we were to plot <span class="math inline">\(\Delta_{log}\)</span> and <span class="math inline">\(\Delta\)</span> the differences are grater than 10%. This is why its important in chess to have evenly matched players play against each other. A 2% difference accounts to 268 points on ELO scale. This is also why the equation used in practice is a decent approximation of what Elo suggested. However it is <strong>NOT</strong> the probability that one normal random variable is bigger than the other.</p>
+</div>
 <div id="footer">
    Surely you must be joking Mr. Feynman
 </div>
