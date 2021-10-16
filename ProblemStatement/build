@@ -1,0 +1,1 @@
+pandoc  --mathjax -s -c ../blog.css -A ../../footer.html -H ../../header.html -M title:"The mathematics of triathlon ratings (part 1)"  main.md -o index.html
