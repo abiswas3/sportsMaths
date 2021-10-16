@@ -12,24 +12,24 @@
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
   <link rel="stylesheet" href="../blog.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <script src="../code/tex-chtml.js" type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
+  <link rel="stylesheet" href="../code/bootstrap.min.css">
+  <script src="../code/jquery.min.js"></script>
+  <script src="../code/bootstrap.min.js"></script>
   
-  
-  <ul class="navbar">
-    <li class="navbar-list-item"><a class="active" href="/index.html">Home</a></li>
-    <li class="navbar-list-item"><a href="/projects/">Projects</a></li>  
-    <li class="navbar-list-item"><a href="/misc/">News</a></li>
-    <!-- <li class="navbar-list-item"><a href="/blog/">Blog</a></li> -->
-    <!-- <li class="navbar-list-item" style="float:right"><a href="#about">About</a></li> -->
+  <ul class="bar">
+    <li class="barli"><a class="active" href="/">Home</a></li>
+    <li class="barli"><a href="/sportsMaths/">Triathlon Mathematics</a></li>
   </ul>
 </head>
 <body>
 <header>
 <h1 class="title">The mathematics of triathlon ratings (part 1)</h1>
 </header>
+<div class="container">
 <h1 id="introduction">Introduction</h1>
 <p>A friend recently introduced me to <a href="https://stats.protriathletes.org/rankings/women">World Triathlon Rankings</a>. It got me thinking about how these rankings are calculated. The Professional Triathlete Organisation (PTO) provides an explanation <a href="https://protriathletes.org/the-pto-world-rankings-explained/">here</a>. The immediate question that I had was, how do you compare athletes who never race each other on the same course. Unlike Formula 1 or the Premier League where each racer/team competes with each other across a season, long course athletes rarely compete with each other. Shown below is <span class="math inline">\(N\)</span> x <span class="math inline">\(N\)</span> normalised co-occurence matrix of how often the best athletes actually race each other. Here <span class="math inline">\(N\)</span> depicts the top <span class="math inline">\(N=35\)</span> women professional triathletes as of May 22, 2021. The men follow a similar co-occurrence distribution.</p>
 <p><img src="pngs/co-occurence.png" alt="drawing" width="800"/></p>
@@ -280,8 +280,9 @@ B needs to get 3 points more than A in a race to win.</code></pre>
 <li><p>Scoring should be memoryless i.e. every year we reset the scores. You don’t get to rest on your laurels for too long.</p></li>
 <li><p>Probably some more??</p></li>
 </ul>
+</div>
 <div id="footer">
-   Copyright something something - what people usually right
+   Surely you must be joking Mr. Feynman
 </div>
 </body>
 </html>
