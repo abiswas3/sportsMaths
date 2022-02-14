@@ -1,5 +1,13 @@
 <div class="container">
-# Introduction
+
+<div class="important"> 
+
+**<u>One very important disclaimer</u>**: I am not an athlete nor can I claim to be a hardcore fan. I am not affected by the outcome of different ranking strategies, financially or spiritually. If I use an athlete as an example, I do not actually know the athlete -- I am going just by the numbers. I have tried to remain as neutral as possible, but in the off chance someone is offended, I apologise. The same goes for the original creators of PTO ranking. I do not think I could write this post without them downloading all race results and putting it one place for me to download. It's harder to build something from scratch than to improve one tiny piece of it. The good news is, I have no followers on any social media platform, thus this post will never go viral. Your reputation is safe. I also make a lot mistakes in spelling, grammar and code and sometimes prove things incorrectly-- so do not trust everything I say. I believe that the people affected in triathlon i.e. those with skin in the game should really decide what behaviour should be rewarded in triathlon. 
+
+</div>
+
+
+# Part I - Where do Triathlon rankings come from ?
 
 A friend recently introduced me to [World Triathlon
 Rankings](https://stats.protriathletes.org/rankings/women). It got me
@@ -17,23 +25,23 @@ follow a similar co-occurrence distribution.
 
 <img src="pngs/co-occurence.png" alt="drawing" width="800"/>
 
-There were 160 half ironman or ironman races from in 2019, 2020
+There were 160 half iron-man or iron-man races from in 2019, 2020
 and 2021. A cell score of 1 would mean those 2 athletes raced all 160
 races together. The figure above indicates a high score of .035 which
-would indicated two athletes shared a race $ceil(0.035*160)$ times out
+would indicated two athletes shared a race about $6$ times out
 of 160 races and this is the most frequently two athletes compete
 against each other on the long course over 3 years. This makes
 intuitive sense and is unlikely to change in the future. Endurance
 events are physically draining. Long course athletes cannot compete at
-an optimal level every month. Furthermore, traveling for triathlon is
+an optimal level every month. Furthermore, travelling for triathlon is
 an expensive ordeal. Athletes in Australia do not usually compete in
 the major European races. Barring a handful of races like Hawaii,
 Challenge Daytona and 70.3 Worlds, it is unlikely athletes will
 assemble for the same race. More about this later.
 
-The primary blocker to figuring out how to rank professional
+**The primary blocker to figuring out how to rank professional
 triathletes - is to come up with a solution to compare two separate
-race performances on the same scale. Athletes live in different parts
+race performances on the same scale.** If this problem did not exist, this problem would not be hard nor controversial. Athletes live in different parts
 of the world and cannot always travel to major races. This implies
 that neither the strength of the field nor the number of professionals
 attending a race is the same every race. Shown below is a the
@@ -49,6 +57,7 @@ slightly contrived. For a given race $r$,
 
 $$ Strength(r) = \sum_{a \in r} \frac{1}{rank(a)}$$
 
+
 For a given race, we just sum the reciprocal of the world ranking of
 the athlete. For an athlete not in the top 100, we give them all a
 rank of 101. This implies, if an athlete is not in the top 100, they
@@ -57,6 +66,7 @@ rank. The general idea is borrowed from [Mean Reciprocal
 Rank](https://en.wikipedia.org/wiki/Mean_reciprocal_rank) used to
 evaluate Search Retrieval Systems.
 
+
 <img src="pngs/strength_of_field.png" alt="drawing" width="800"/>
 
 **NOTE: I need to think this through a bit more. MRR doesn't really
@@ -64,6 +74,13 @@ apply here. Also I use the current world rankings and not the world
 rankings at the time of race. This doesn't really change the shape of
 the distribution and important races do end up having a higher
 score. However, we need to think this through further.**
+
+<div class="important">
+**Update 2022-02-14**: The above formula is just a heuristic. It has no theoretical justification. MRR while looks similar, denotes something completely different. A better way to capture the strength of the field is to use a sum of estimated quality scores as described in [part III](../PrimoRank/).
+
+Though not principled, this heuristic succeeds in sending the right message about an alteady well known representation of strengths of fields. **They are not evenly distributed.**
+</div>
+
 
 Using the above formula, IM Hawaii 2019, the world championship had a
 strength of $2.67$ wheras IM Ireland had a score of $0.059$.
@@ -185,6 +202,8 @@ the race conditions meant that all athetes were way off the AIT. Thus
 the maximum points to be gained from this race is much lower than
 their historical scores. The PTO takes only the top 3 races.
 
+### But does such a thing actually happen?
+
 At this point the reader might be wondering if such a situation really
 happens? Can you win a race and still get really low race points? The
 answer is YES! It happens all the time. Shown below is the
@@ -199,7 +218,7 @@ race. On the X axis are different popular races. Multiple races like
 IM-UK, have had winners vary from the scores 20 to 80 over a span of 5
 years or more. On the contrary, the winner at Hawaii has consistenly
 outdone the expected finish time. It also appears that AIT points
-prefer certain courses like Roth over courses like IM UK. The reader
+prefer certain courses like Roth over courses like IM UK. Or in other words, you are always better off racing Roth over IM UK, regardless (almost) of where you finish. The reader
 might infer that this is because Roth usually has a stronger
 field. However, we show later in this document that, this is not the
 case. Intuitively, the above formula for scoring does not take into
@@ -228,9 +247,9 @@ receives 80 points, thereby missing the expected time for a race most
 of the time. **Important: **Despite showing that the current system
 has very high variance, our results so far do not indicate the current
 system is dysfunctional. All we have shown that under certain
-circumstances, the current system might disadvantage athletes. We are
+circumstances, the current system might disadvantage certain athletes by down weighting certain courses. We are
 yet to show that points system has actually hurt athlete rankings in
-practice or quantify how likely the sytem might screw someone over. We
+practice or quantify how likely the system might screw someone over. We
 do this next.
 
 ### I beat the best athletes and was worse off for it
@@ -278,7 +297,11 @@ So in a year where Holly had beaten all athletes ranked above her
 excepting Daniela, she still got ranked 5th. Why? It is because Lucy,
 Anne and Sarah ran some other race Holly did not race and beat the AIT
 by a bigger margin. Athletes are not aware of the AIT before a race,
-so they have no idea if they can beat it.
+so they have no idea if they can beat it. 
+
+Eventually in [part III](../PrimoRank/) of this series we show Holly would have gotten a better rank under our model assumptions.
+
+Before we go into further disadvantages, we describe to the reader some education pointers we picked up while talking to athletes.
 
 ## A slight detour: Understanding the incentives of the sport
 
@@ -402,14 +425,14 @@ qualification is secured.
 
 ### Do world ranking represent Kona behaviour
 
-Kona is the one race the best athletes race each other on the same
+Kona (or 70.3 Worlds) is the one race the best athletes race each other on the same
 course with the same incentives - TO WIN.
 
 Shown below are the end of they year world rankings for the top 5 men
 athletes at Kona. On inspection it might not look too bad. It would
 seem like the world rankings system is pretty good at picking the top
-3 athletes. However, this is an artifact of having two very dominant
-champions over a long time i.e. Jan Frodeno and Sebastien Kienle. When
+3 athletes. However, this is an artefact of having two very dominant
+champions over a long time i.e. Jan Frodeno and Sebastien Kienle were very dominant. When
 you have a champion like Jan who is so dominant, the ranking system
 does not matter. Whatever the sytem, they usually always win. As an
 exercise we leave the reader to look up how positions 5-10 align with
@@ -437,12 +460,18 @@ The women's table:
 | 2014 | 1   | 3   | 2   | 6   | 4   |
 
 Once again it might not look egregious. Both tables have some outliers
-or surprises. The women's fielf has had dominant champions in Daniela
+or surprises. The women's field has had dominant champions in Daniela
 Ryf, Lucy Charles, Anne Haug and Mirinda Carfrae. In sport whenever
-you have dominant champions, the ranking sytem for those athletes
+you have dominant champions, the ranking system for those athletes
 becomes redundant. They come out on top on with all systems. The more
 interesting distribution are the athletes ranked 5-15 in both
-genders. It remains a philosophical question how much the championship
+genders. 
+
+<div class="important">
+**Update: 2021-02-14**: For those that try the exercise, we show in [Part III](../PrimoRank/) that these rankings do not fairly account for Kona. Refer to the Carrie Lester case study.
+</div>
+
+It remains a philosophical question how much the championship
 should dictate world rankings. Under the current system, it has the
 same weight as all other races. That seems unfair given not all races
 have the same field nor the same incentives. We could also base the
@@ -451,81 +480,115 @@ well. Someone who has been consistent all year could have an off
 day. Should their entire career ranking depend on one race?
 
 
-## Is there a better system? How can we evaluate its fairness?
 
-### What works for the current system
+## What works for the current system
 
 Before discussing alternate rankings we would like to point out some
-strengths of the current system. 
+biases of the current system. Some are positive and some are negative like any ranking system.
 
-* It is quite simple. If we assume the AIT is a fair time, then the
-  scoring is deterministic and interpretable. This is a very important
-  feature of ranking systems. Fans and athletes crave simplicity.
-  
-* Given that the AIT is unknown before race time it is actually quite
-  hard to manipulate. An athlete may try to enter a weaker field and
-  win it, but end up having a lower win score anway. They might
-  succeed at a high score also. There seems to be no easy way to tell
-  from the winner distributions. Some could view this as a con as
-  well. How can an athlete strategise, how they move up in rankings if
-  they do not know at all.
-  
-* One of the biggest strengths the current system is that prevents
-  lower ranked athletes from taking advantage of a bonk. The world of
-  ELO i.e.  chess, scrabble, college football, major league baseball
-  is based on head to head to battles. So if a much weaker team/player
-  were to beat a much stronger player their ranking improves
-  dramatically. If Wigan were to beat Manchester United, it's a big
-  deal. If Manchester United were to beat Wigan, people would consider
-  it as standard. This makes a lot of sense in a sport that is
-  actually pairwise head to head. However, in triathlon athletes race
-  a field of $N$ athletes. If we artificially create ${n \choose x}$
-  pairings out of $N$ plyaers, this system could go horribly
-  wrong. Consider the example where Daniel Ryf had an off day in Kona
-  2019. Lower ranked athletes who had a normal race were able to beat
-  her because she performed really poorly, not because they beat her
-  on a good day. Now should athletes benefit from not having an above
-  average performance just because someone ranked really high had a
-  bad performance? This is where Triathlon differs from all head to
-  head ranking systems. In classic head to head systems, we can say
-  with high confidence the other persons peformance caused the top
-  ranked athlete to fail. However we cannot say that in
-  triathlon. Thus having athletes race against the clock is a
-  reliable around.
+### It's quite simple
 
-* Finally, despite critiquing the scoring for most of the document,
-  this is a reasonable baseline. The problem of ranking athletes that
-  do not race each other frequently is a hard maths problem. In the
-  subsequent series, we will go through the historical relevance of
-  this problem. Scientists have been trying for over a 100 years.
+The controversy is regarding how they came up with AIT. If we assume the AIT is a fair time, then the
+scoring is deterministic and interpretable. This is a very important
+feature of ranking systems. Fans and athletes crave simplicity. We should try and remember this at all points of this series.
 
-### Where are we going
+### It is difficult to game
 
-If you have reached this far, we have hopefully convinced you why
-there is a need for a fairer sysystem of scoring. In the next part of
-this series, we discuss alternate methods of evaluation. Surprisingly,
-the world of chess and video games have already established solutions
-to some of the problems discssued above. We modify the famous
-[Elo](https://en.wikipedia.org/wiki/Elo_rating_system) rating and
-Microsoft XBox's [True Skill](https://en.wikipedia.org/wiki/TrueSkill).
+One of the strongest attributes of the current system is that it is
+impossible for athletes to game. Given that nobody knows before a race
+how many points can be gained from a race, it is impossible for
+athletes to cherry pick races. It just so happens that some races give
+athletes an unfair advantage. However there is no easy way for an
+athlete to know this before hand and game the system.
 
-So far the scoring is based on an expected finish time. We assume
-athletes would like some of the following traits in their scoring
-system.
 
-* A race won in a really strong field should count more than a race
-  won in a weaker field. Athletes race each other. People work
-  together on the bike, sit on feet in the swim and employ different
-  run strategies. Some athletes have a good kick. Others put the
-  hammer down early. These strategies are based on the course and the
-  field, not the predicted time that's decided beforehand.
-  
-* There should be no course bias. Certain courses should not give you
-  more points than other independent of the field strength.
-  
-* Scoring should be memoryless i.e. every year we reset the
-  scores. You don't get to rest on your laurels for too long.
-  
-* Probably some more??
+### Drop Outliers
+
+The scoring system only takes the top 3 races for an athlete. While
+there has been no theoretical justification as to why the number 3 was
+picked; the community seems to have accepted the number as fair. By
+only taking the top 3 races, it allows athletes to take risks in races
+and not fear blowing up. This also implies that we do not reward
+consistency. As an athlete you are always incentivised to put all your
+chips in the pot and go for it. If you blow up, we will just drop this
+race from the ranking. As long as you do not blow up all the time, a
+bad performance does not hurt your score. This is unique to triathlon
+to the best of our knowledge. In this universe a bad performance does
+not hurt you. It is simply like it did not even exist. You are
+measured only by your good performances. Not many ranking systems in
+the wild employ this strategy. Imagine having a day job where we
+ignore your screw ups? As a direct consequence of such a system,
+Daniela's Kona 2019 performance or Jan's 2017 Kona performance do not
+affect their scores at all. It remains a philosophical question for
+the people in the sport to decide whether it should or not.
+
+### Triathlon is not really a head to head sport but it kinda is
+
+In order to score a performance, the current system pits an athlete
+against the clock and not against each other. We have already argued
+that pitting athletes against the clock is not meaningful, but by not
+pitting them against each other; the current system circumnavigates
+the problem of disjoint universes (or sparsity) i.e. athletes do not
+race each other often -- so there is no way to compare them
+directly. Someone with a little background in ranking might argue that
+this problem exists in Chess, American College Football, Scrabble,
+Video Games, Pro Tennis and many other sports. They get around it
+using modifications of the extremely well studied
+[ELO](http://abiswas3.github.io/blog/eloExplained/). All of the above
+sports navigate the problem of sparsity by making the assumption of
+probabilistic transitivity, which states -- if A beats B with high
+probability and B beats C with high probability, then A also beats C
+with high probability. This is not untrue of triathlon, however such a
+model also makes a assumption which does not hold true for
+triathlon. The assumption is as follows: Assume two players A and B
+play a Tennis match against each other. A is the highest ranked player
+in the world, B is a new player with provisional rankings. If B were
+to beat A, A's loss on that day can be attributed to B's skill on that
+day being higher than B's expected skill. If both A and B had
+performed to their expected skill level, A should have won. Given this
+assumption, it is fair to reward B with a lot more points for beating
+someone much higher than their skill level, as they performed much
+better than our expected belief of their skill.
+
+This does not hold in Triathlon. Consider the 2019, women's race in
+Kona. Daniel Ryf went into the race with the following record.
+
+<img src="../TommyRank/pngs/daniel_2019.png" alt="drawing" width="800"/>
+
+She had won every race she had participated in and went on to have an
+off day at the race. On this day she came in at 13th. In a head to
+head model, all 12 athletes that beat her did not necessarily race
+much better than their expected skill. They might have done as was
+expected of them. It just so happens that Daniela Ryf had a tough day
+and performed much lower than her expected skill level. So it would
+seem unfair to reward all of these other athletes as if they had
+performed much better than expected because they beat the best athlete
+in the world. We cannot take the results of a race, convert them to
+pairwise head to head battles and use ELO. [Part III](../PrimoRank/) does just exactly this. Daniela is not rated as the worlds best triathlete for that year. One could argue that this is not all that unfair, and showing up on the biggest day is most important. This is a philosophical debate we are not qualified to answer. In part III, we describe in detail how one can use head to head battles to rank an athlete.
+
+
+What the PTO currently does, **is ignore this problem completely**. They
+decided to base the scoring system based on an expected finish time
+known as AIT. Every athlete races the clock. The clock is there for
+every race. This ignores who you are racing or how someone else does
+with respect to you. This is not a bad idea in principle but winning a
+race with strong competitors is still harder than winning a race with
+an easy field, regardless of the time. Additionally we have shown that the the PTO clock is not stable across courses. Given what we understand to be the incentives of the sport, one cannot ignore this problem and also rank athletes. The results would not be meaningful.
+
+
+### It's really hard to rank this sport
+
+Finally, despite critiquing the scoring for most of the document,
+this is a reasonable baseline. The problem of ranking athletes that
+do not race each other frequently is a hard maths problem. Many clever people have tried. If you're interested, you may read [Lucas Maystre](https://lucas.maystre.ch/)'s PhD thesis.  People really have been studying this for over a 100 years.
+
+
+## Where to from here?
+
+We first recommend a model based purely on intuition. There is no mathematical reasoning behind this. It's trivial to understand and was recommended by someone who actually did the sport and was good at it. You can find it [here](../TommyRank/).
+
+Finally, we take a more principled approach to describing what a ranking could look like. We state are assumptions clearly and justify them using case studies. That analysis can be found [here](../PrimoRank)
+
+
 
 </div>

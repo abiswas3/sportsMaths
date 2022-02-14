@@ -2,11 +2,16 @@
 
 **DISCLAIMER:** All analysis is done using long course races. We do not expect similar trends to hold for short course. In the off chance they do, that is purely luck! Additionally all analysis is conducted using data from Women's pro races. In our experience, the Men's races follow similar trends. It has been pointed out by experts that 70.3 and IM should not be compared but since the PTO does compare the two of them on the same scale -- we are left with no choice but to compare them on the same scale.
 
-**<u>One last but important disclaimer</u>**: I am not an athlete nor can I claim to be a hardcore fan. I am not affected by the outcome of different ranking strategies, financially or spiritually. If I use an athlete as an example, I do not actually know the athlete -- I am going just by the numbers. I have tried to remain as neutral as possible, but in the off chance someone is offended, I apologise. I have no followers on any platform, thus this post will never go viral. Your reputation is safe. 
-The people affected by this i.e. those with skin in the game should really decide what behaviour should be rewarded in triathlon. Thus, this document can be viewed as an example of how one can model a system of values, and get a principled ranking out of it. *For some it maybe read as a tutorial to generalised linear models*. Read it as you please.
+<div class="important"> 
+
+**<u>One very important disclaimer</u>**: I am not an athlete nor can I claim to be a hardcore fan. I am not affected by the outcome of different ranking strategies, financially or spiritually. If I use an athlete as an example, I do not actually know the athlete -- I am going just by the numbers. I have tried to remain as neutral as possible, but in the off chance someone is offended, I apologise. The same goes for the original creators of PTO ranking. I do not think I could write this post without them downloading all race results and putting it one place for me to download. It's harder to build something from scratch than to improve one tiny piece of it. The good news is, I have no followers on any social media platform, thus this post will never go viral. Your reputation is safe. I also make a lot mistakes in spelling, grammar and code and sometimes prove things incorrectly-- so do not trust everything I say. I believe that the people affected in triathlon i.e. those with skin in the game should really decide what behaviour should be rewarded in triathlon. 
+
+</div>
+
+This document can be viewed as an example of how one can model a system of values, and get a principled ranking out of it. *For some it maybe read as a tutorial for generalised linear models*. Read it as you please.
 
 
-# Primo Rank 
+# Part III - Primo Rank 
 
 Finally getting around to doing this (6 months later). A few months back I looked into ranking professional long course triathletes and analysed the existing system. There were general public complaints about the system from professional athletes, which we mostly ignored while doing our analysis. However, the major drawbacks can summarised as follows.
 
@@ -75,7 +80,7 @@ class="btn btn-info"
 data-toggle="collapse" 
 data-target="#likelihoodD">Where did that formulae come from (Optional)</button>
 <div class=collapse id=likelihoodD>
-TODO the derivation
+The derivation can be found on wikipedia for log odds GLMS, but I will derive it from scratch when I have time. It's really not that different from logistic regression.
 </div>
 
 As mentioned earlier, if you gave me a set of quality scores I would tell you how likely they would lead to the observed race results. So ideally, we would want to find a set of quality scores denoted by $\hat{\gamma_1}, \dots, \hat{\gamma_n}$ that maximise the above likelihood function i.e. no other guess of the parameters better explains the race results under model $\ref{model}$. So now the problem just boils down to finding such a set of parameters.
@@ -182,7 +187,9 @@ $w_{ij}$: Number of times $i$ beat $j$
 <div class="row">
 
 <div class="col-md-6">
+### Our ranking
 ```python3
+
 No athlete won every single race they participated in so there's no need for adjustment.
 
 TOP  20 ATHLETES by ranking system for 2019
@@ -211,7 +218,9 @@ TOP  20 ATHLETES by ranking system for 2019
 </div>
 
 <div class="col-md-6">
-Comparing it with the PTO rankings for the same year
+
+
+### PTO rankings for 2019
 
 <img src="./pngs/pto_2018.png" width="75%"></img>
 </div>

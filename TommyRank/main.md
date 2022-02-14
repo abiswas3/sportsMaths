@@ -1,5 +1,12 @@
 <div class="container">
-# Introduction 
+<div class="important"> 
+
+**<u>One very important disclaimer</u>**: I am not an athlete nor can I claim to be a hardcore fan. I am not affected by the outcome of different ranking strategies, financially or spiritually. If I use an athlete as an example, I do not actually know the athlete -- I am going just by the numbers. I have tried to remain as neutral as possible, but in the off chance someone is offended, I apologise. The same goes for the original creators of PTO ranking. I do not think I could write this post without them downloading all race results and putting it one place for me to download. It's harder to build something from scratch than to improve one tiny piece of it. The good news is, I have no followers on any social media platform, thus this post will never go viral. Your reputation is safe. I also make a lot mistakes in spelling, grammar and code and sometimes prove things incorrectly-- so do not trust everything I say. I believe that the people affected in triathlon i.e. those with skin in the game should really decide what behaviour should be rewarded in triathlon. 
+
+</div>
+This document can be viewed as an example of an educated guess at a solution (but not a principled one)
+
+# Part II -Introduction  
 
 In [a previous post](http://abiswas3.github.io/blog/ProblemStatement/)
 we described in detail why we believed the current ranking system to
@@ -9,104 +16,14 @@ Rank** - dedicated to [Tom
 Vickery](https://www.instagram.com/tomvickery/?hl=en) who introduced
 this problem to me. We propose variants of our algorithm and allow the
 reader to compare the outcome against the current system. Although
-Tommy Rank is not theoretically justified in itself, we describe its
-connection with the well studied [Plackett-Luce
+Tommy Rank is not theoretically justified in itself, we can make a connection with the well understood [Plackett-Luce
 model](https://cran.rstudio.com/web/packages/PlackettLuce/vignettes/Overview.html)
-for ranking, that has been studied in detail for over fifty years. We
+for ranking, that has been studied in detail for over fifty years. For now, we
 decided to go with Tommy rank owing to its simplicity and
-transparency.
+transparency. You should not read too much into the rankings proposed by Tommy Ranking. Retrospective rankings are unfair to begin with -- we tell you why in [part III](../PrimoRank/)
 
-## What the current PTO system gets right
 
-Before we go about proposing new methods, it's important to highlight
-what the current system gets right.q
-
-### Triathlon is not really a head to head sport but it kinda is
-
- In order to score a performance, the current system pits an athlete
-against the clock and not against each other. We have already argued
-that pitting athletes against the clock is not meaningful, but by not
-pitting them against each other; the current system circum navigates
-the problem of disjoint universes (or sparsity) i.e. athletes do not
-race each other often -- so there is no way to compare them
-directly. Someone with a little background in ranking might argue that
-this problem exists in Chess, American College Football, Scrabble,
-Video Games, Pro Tennis and many other sports. They get around it
-using modifications of the extremely well studied
-[ELO](http://abiswas3.github.io/blog/eloExplained/). All of the above
-sports navigate the problem of sparsity by making the assumption of
-probabilistic transitivity, which states -- if A beats B with high
-probability and B beats C with high probability, then A also beats C
-with high probability. This is not untrue of triathlon, however such a
-model also makes a assumption which does not hold true for
-triathlon. The assumption is as follows: Assume two players A and B
-play a Tennis match against each other. A is the highest ranked player
-in the world, B is a new player with provisional rankings. If B were
-to beat A, A's loss on that day can be attributed to B's skill on that
-day being higher than B's expected skill. If both A and B had
-performed to their expected skill level, A should have won. Given this
-assumption, it is fair to reward B with a lot more points for beating
-someone much higher than their skill level, as they performed much
-better than our expected belief of their skill.
-
-This does not hold in Triathlon. Consider the 2019, women's race in
-Kona. Daniel Ryf went into the race with the following record.
-
-<img src="pngs/daniel_2019.png" alt="drawing" width="800"/>
-
-She had won every race she had participated in and went on to have an
-off day at the race. On this day she came in at 13th. In a head to
-head model, all 12 athletes that beat her did not necessarily race
-much better than their expected skill. They might have done as was
-expected of them. It just so happens that Daniela Ryf had a tough day
-and peformed much lower than her expected skill level. So it would
-seem unfair to reward all of these other athletes as if they had
-performed much better than expected because they beat the best athlete
-in the world. We cannot take the results of a race, convert them to
-pairwise head to head battles and use ELO. The score update of
-pairwise rankings does not directly transfer to the world of
-triathlon.
-
-What the PTO currently does, is ignore this problem completely. They
-decided to base the scoring system based on an expected finish time
-known as AIT. Every athlete races the clock. The clock is there for
-every race. This ignores who you are racing or how someone else does
-with respect to you. This is not a bad idea in principle but winning a
-race with strong competitors is still harder than winnning a race with
-an easy field. Therein lies the problem to be solved -- athletes might
-race the conditions but winning is harder if other people racing the
-same conditions are very good.
-
-### Drop Outliers
-
-The scoring system only takes the top 3 races for an athlete. While
-there has been no theoretical justification as to why the number 3 was
-picked; the community seems to have accepted the number as fair. By
-only taking the top 3 races, it allows athletes to take risks in races
-and not fear blowing up. This also implies that we do not reward
-consistency. As an athlete you are always incentivised to put all your
-chips in the pot and go for it. If you blow up, we will just drop this
-race from the ranking. As long as you do not blow up all the time, a
-bad performance does not hurt your score. This is unique to triathlon
-to the best of our knowledge. In this universe a bad performance does
-not hurt you. It is simply like it did not even exist. You are
-measured only by your good performances. Not many ranking systems in
-the wild employ this strategy. Imagine having a day job where we
-ignore your screw ups? As a direct consequence of such a system,
-Daniela's Kona 2019 performance or Jan's 2017 Kona performance do not
-affect their scores at all. It remains a philosophical question for
-the people in the sport to decide whether it should or not.
-
-### It is difficult to game
-
-One of the strongest attributes of the current system is that it is
-impossible for athletes to game. Given that nobody knows before a race
-how many points can be gained from a race, it is impossible for
-athletes to cherry pick races. It just so happens that some races give
-athletes an unfair advantage. However there is no easy way for an
-athlete to know this before hand and game the system.
-
-## What does not work
+## A brief summary of what did not work
 
 Now we address the issues of the current system. We have already
 described in detail how the current scoring system does not align with
@@ -118,16 +35,16 @@ work](http://abiswas3.github.io/blog/ProblemStatement/).
 ### AIT is not calibrated with what perceived difficulty
 
 In our opinion this is the biggest disadvantage of the current
-system. Based on the discssions we have had so far, athletes value
+system. Based on the discussions we have had so far, athletes value
 certain races higher than others because of the strength of the
-field. While the performance of an athleqte is not affected by the
+field. While the performance of an athlete is not affected by the
 strength of field, their final position in the race is. In section["I
 beat the best athletes and was worse off for
 it"](http://abiswas3.github.io/blog/ProblemStatement/) we show how
 often this happens. If you did not read the previous post, here is a
 couple of choice examples, Fenella Langridge was awarded 82 points for
-finishing 7th in Challenge Day, while Nikki Bartlet received 83 points
-for placing third in Eton Dorney Triathlon. Similary Lucy Hall won 87
+finishing 7th in Challenge Day, while Nikki Bartlett received 83 points
+for placing third in Eton Dorney Triathlon. Similarly, Lucy Hall won 87
 points at Eton for a second place, whereas Amelia Watkinson earned 88
 for a 5th at Challenge Daytona. Popular consensus from interviewing
 fans and athletes was that a top 6 at Challenge Daytona was a bigger
@@ -135,9 +52,11 @@ accomplishment and should be rewarded accordingly. The system is
 flawed by design - As an athlete one can only beat other athletes they
 are faced with. Without prior knowledge of the maximum available
 points, it is impossible for an athlete to seek out races with
-meaningful points. The system must encourage tqhe best to compete with
+meaningful points. The system must encourage the best to compete with
 the best. Only then can the rankings be taken seriously. The AIT score
 as exists today is more of an opinion than a mathematical model.
+
+In [part III](../PrimoRank/) we carry out multiple case studies that demonstrate that AIT is likely to be uncorrelated with perceived difficulty. (NOTE: We did not run an experiment to verify that claim. It is a conjecture.)
 
 ### It leaves athletes and fans in the dark
 
@@ -166,20 +85,20 @@ allows teams to set up accordingly.
 
 We're aware most readers would not consider this to be a weakness. One
 of the advantages of ELO based rankings is that has a rich history of
-mathmetical justification. The approach is designed with assumptions
-clearly stated. Note: This does not imply the system is perfect. It
-implies there is a reasonable understanding of the current flaws in
+mathematical justification. The approach is designed with assumptions
+clearly stated. Note: This does not imply the system is perfect. 
+
+It implies there is a reasonable understanding of the current flaws in
 the system. The understanding of how and why the scores are updated in
-ELO are transparent. [Glickman](http://www.glicko.net/research.html)
+ELO are transparent. This allows us to fix perceived biases and moments of discrimination. [Glickman](http://www.glicko.net/research.html)
 wrote his phD thesis understanding these rankings and debating its
 implications and flaws. The same cannot be said for AIT. Why did we
 pick top 3 races in a year? Why does 0.15% difference result in 1
 point advantage? How is AIT calculated? What are the justifications
-for that formula. Although, we acknowledge these questions appeal more
-to academics than average fans and athletes, in absence of rigor, a
-scoring system should be simple and fair. The current system seems
-complex and theoretically unjustified, which is the worst of both
-worlds.
+for that formula. Although, we acknowledge these questions might appeal more
+to academics than average fans and athletes, we have shown that over simplification can lead to discrimination of courses.
+
+At the very least, in absence of rigour, a scoring system should be simple and fair. The current system seems complex and theoretically unjustified, which is the worst of both worlds.
 
 ### It treats 70.3 and IM as the same
 
@@ -197,7 +116,7 @@ a good ranking system? We argue that it must be
 
 * Simple and easy to understand. An athlete or a fan should know
   before and after a race the exact amount of reward they receive. The
-  process should be transparrent.
+  process should be transparent.
 * Should not be gamed or unfair. It should align with a human
   perception of fairness. We would like to say For an athlete A ranked
   to be higher than B, we must be able to say that if A raced B often,
@@ -210,7 +129,7 @@ always quantifiable mathematically. But such is the nature of the
 world we live in. Put colloquially, ***we would like athletes to feel
 that they have been screwed over people as infrequently as
 possible.*** We want to do this by clearly stating our assumptions and
-justifying our decisions mathematically.
+justifying our decisions mathematically. For this system we ignore statistical model and run free with intuition. We frown upon this but since we already have another approach that's more principled, we allow for a heuristic based approach guided by Tom Vickery's experience.
 
 ## Notation and Preliminaries [Skip if math notation is scary]
 
@@ -300,20 +219,18 @@ better year? Especially when you only consider the top 3 performances.
 <img src="pngs/B.png" alt="drawing" width="800"/>
 
 Both have won multiple races. Both have come second
-occassionally. They have never raced head to head and both have
-occassionally bonked. One of them was ranked 2nd for the end of the
-year performance; the other 15th. If the sport rankings want to be
-taken seriously, they need to have real professional races. Lionel
+occasionally. They have never raced head to head and both have
+occasionally bonked. One of them was ranked 2nd for the end of the
+year performance; the other 15th. We even describe a theorem that says athletes need to race more to be ranked correctly in [part III](../PrimoRank/)
+
+If the sport rankings want to be taken seriously, they need to have real professional races. Lionel
 Messi does not play in your cities local Sunday league
 tournament. Lucy Charles Barclay should not race in Eton Dorney as a
 pro either. I know it is part of the culture of triathlon to let
 amateurs and pro's mix but it makes it near impossible to actually
-rank and score them. We will later prove this impossibility formally
-in the Plackett-luce model. There has to be fewer races and the top
-dogs should show up to race them. Till then, triathlon rankings will
-always remain controversial and debatable. 
+rank and score them. Athletes can race their local races as much as they like to preserve the culture of triathlon. But they must also race each other a lot. This can either be achieved my having separate pro races or we can have the athletes race more if they are able to.
 
-Rant over.
+Rant over!
 
 # Simulations
 
@@ -325,6 +242,7 @@ decide what they find simple and fair.
 * [COMPARE RANKINGS MEN](http://abiswas3.github.io/blog/mens_ranking/)
 * [COMPARE RANKINGS WOMEN](http://abiswas3.github.io/blog/womens_ranking/)
 
+Do not read too far into this. Retrospective rankings do not work. Such course grain bucketing of races makes it hard to really compare athletes. 
 
 ## Tom's Heuristic (Approximate Tommy Rank)
 
@@ -448,7 +366,7 @@ SOURCES FOR PRIZE money listings
 
 ```
 
-Shown below is the strenth distribution using our formula and prize
+Shown below is the strength distribution using our formula and prize
 money for choice races in 2019. We show this to justify that our
 approximate ranking score is a reasonable. However, in practice for
 Tommy Rank, the prize money should be used to decide the strength of
@@ -483,11 +401,14 @@ and finally winning a Cat C race gets you $0.7*25=17.5$ pts. For
 yearly rankings, similar to the PTO we sum the top 3 performances in a
 year.
 
+### Drawbacks
+
 The biggest drawback of this method is that it is not principled in
-its selection of quantisation thresholds and it uses PTO scores. There
-is no theoretical justification to using the prize purse either. We do
-not justify our use of Formula 1 scoring either. However, the method
-has a few strong properties:
+its selection of quantisation thresholds and it uses PTO scores(though we could also use quality scores derived in [part III](../PrimoRank/)). There is no theoretical justification to using the prize purse either. We do
+not justify our use of Formula 1 scoring either. So when someone does poorly, we cannot really trace it back to our assumptions and we did poorly. **We do not recommend building such systems.** Such systems look nice and simple on the outside but always land you in trouble later.
+
+### Strengths
+However, the method has a few strong properties:
 
 * It is simple and transparent.
 * It is difficult to game.
@@ -498,8 +419,8 @@ has a few strong properties:
   best racers. It prevents the sport from being a monopoly.
 * The method still follows the general mathematical model we
   described. It's just happens that the parameters of the model were
-  picked based on intution. Specifically, the formula for strength of
-  field is not mathematicaly derived but based on prize
+  picked based on intuition. Specifically, the formula for strength of
+  field is not mathematically derived but based on prize
   purse. Replacing the approximate Tommy Rank with available prize
   money (Tommy Rank) is a reasonable heuristic.
 * This ranking system has parameters that can be tuned for change
@@ -510,26 +431,8 @@ has a few strong properties:
   should represent the athlete populations inner value of coming
   second over third.
   
-## Plackett-Luce (Primo Rank) [Ignore if not interested in Maths]
+## One more post
 
-This model has been studied for nearly 50 years since the axioms of
-choice theory were written. Researchers have derived and re-derived
-the base equations based on different assumptions. However, being more
-complex than Tommy Rank, we are not always a guaranteed a solution.
-
-An incomplete in progress writeup of this algorithm can be found
-[here](http://abiswas3.github.io/blog/TriathlonTriva/). For the
-impatient, we directly provide links to the material we summarise in
-the blog post. **I'll put up Primo rank in the next 2 weeks, when I
-have time to implement the MM method. I very much doubt this can be
-used in practice, but will write it for taste.**
-
-* [Luce Plackett in R](https://cran.rstudio.com/web/packages/PlackettLuce/vignettes/Overview.html)
-* [MM methods for MLE for Luce
-  Placket](http://personal.psu.edu/drh20/papers/bt.pdf)
-* [Optimsation Transfer using Surrogates](http://www.personal.psu.edu/drh20/papers/ot.pdf)
-* [Luce Placket as Markov
-  Chains](https://papers.nips.cc/paper/2015/file/2a38a4a9316c49e5a833517c45d31070-Paper.pdf) -
-  An entire PHD thesis can be found on this topic.
+If the reader is not satisfied by such a laissez faire approach to ranking athletes, we are on your side. In [part III](../PrimoRank/) we put a little more thought.
 
 </div>

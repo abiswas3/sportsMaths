@@ -1,1 +1,2 @@
-pandoc  --mathjax=../code/tex-chtml.js -s -c ../blog.css -A ../footer.html -H ./header.html -M title:"The mathematics of triathlon ratings (part 1)"  main.md -o index.html
+pandoc  --mathjax=../code/es5/tex-chtml.js -s -c ../blog.css -A ../footer.html -H ./header.html   main.md -o index.html
+
