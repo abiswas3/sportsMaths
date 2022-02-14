@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../blog.css">
+  <script src="../code/es5/tex-chtml.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="/code/bootstrap.min.css">
+  <script src="/code/jquery.min.js"></script>
+  <script src="/code/bootstrap.min.js"></script>
+  
+  
+  <ul class="bar">
+    <li class="barli"><a class="active" href="/">Home</a></li>
+    <li class="barli"><a href="/sportsMaths/">Triathlon Mathematics</a></li>  
+    <!-- <li class="barli"><a href="https://abiswas3.github.io/differentialprivacy.github.io">Notes on Differential Privacy</a></li> -->
+  </ul>
+</head>
+<body>
+<div class="container">
+<p><strong>DISCLAIMER:</strong> All analysis is done using long course races. We do not expect similar trends to hold for short course. In the off chance they do, that is purely luck! Additionally all analysis is conducted using data from Women’s pro races. In our experience, the Men’s races follow similar trends. It has been pointed out by experts that 70.3 and IM should not be compared but since the PTO does compare the two of them on the same scale – we are left with no choice but to compare them on the same scale.</p>
+<p><strong><u>One last but important disclaimer</u></strong>: I am not an athlete nor can I claim to be a hardcore fan. I am not affected by the outcome of different ranking strategies, financially or spiritually. If I use an athlete as an example, I do not actually know the athlete – I am going just by the numbers. I have tried to remain as neutral as possible, but in the off chance someone is offended, I apologise. I have no followers on any platform, thus this post will never go viral. Your reputation is safe. The people affected by this i.e. those with skin in the game should really decide what behaviour should be rewarded in triathlon. Thus, this document can be viewed as an example of how one can model a system of values, and get a principled ranking out of it. <em>For some it maybe read as a tutorial to generalised linear models</em>. Read it as you please.</p>
+<h1 id="primo-rank">Primo Rank</h1>
+<p>Finally getting around to doing this (6 months later). A few months back I looked into ranking professional long course triathletes and analysed the existing system. There were general public complaints about the system from professional athletes, which we mostly ignored while doing our analysis. However, the major drawbacks can summarised as follows.</p>
+<ul>
+<li><p>There seems to be no clear reasoning behind using AIT (or expected time). There is no mention of the modelling assumptions behind using such a formula. This can have adverse outcomes as described in detail in earlier posts. The official website can be quoted as describing it as <code>Based on proprietary analysis of historical data developed by and exclusively licensed from TriRating.com, the PTO has ranked each Eligible Race and determined the theoretical ideal time (the “Ideal Time”) that the top ranked athlete would achieve on the course.</code> Proprietary and secret algorithms are not very satisfying, as they lacks transparency, which almost always erodes trust in the sport. Not only was the algorithm somewhat mysterious, we also found that it was penalising athletes when they actually win races. For a more detailed analysis refer to the original blog posts.</p></li>
+<li><p>The other issue with proprietary, is that no one knows how strategise a race calendar to get paid. According to the <a href="https://protriathletes.org/points">PTO website</a>.<code>The PTO World Ranking System measures consistent excellence and will be used to determine the year-end bonuses payable to PTO Professionals. The qualifications for the 2021 Collins Cup shall be governed by the special 2021 Collins Cup</code>. Triathlon is a spectator sport; if an athlete themselves cannot figure out the outcome of winning prior to the race, a spectator cannot as well.</p></li>
+<li><p>Finally, the whole process is based on finish time which is course adjusted in some inexplicable way. Athletes race to beat each other. How much someone beats someone by is relatively immaterial. This phenomenon becomes especially irrelevant when we compare races on courses in different parts of the world with non overlapping start lists.</p></li>
+</ul>
+<p>We recommended a heuristic based algorithm earlier that was based purely on intuition. There was no mathematical justification of why we choose it. In this document we will start with a well defined approach and link the two ideas. The general idea was there are many bands of races. Ones with good athletes, and lower ones with not so good ones. Winning races in higher bands should be of greater value.</p>
+<p>The first part of the document might appear mathematically terse but the reader is encouraged to motor through. Detailed understanding of each equation is not required. We have tried to write the document such that, each maths section is followed by section written in plain English that describes roughly what the equation does (usually in purple). For completeness and transparency we include all the theorems and simulation code. The dis-interested reader can ignore this as it does not take away from the general message.</p>
+<h2 id="what-does-it-mean-to-have-a-ranking">What does it mean to have a ranking?</h2>
+<p>Before we start talking about triathlon, lets revisit what it means to rank athletes. The PTO website uses a more grandiose description. <code>The World Ranking System of The Professional Triathletes Organisation (the “PTO”) is designed to identify and rank the world’s greatest triathletes who participate in professional non-drafting triathlons</code>We will stick with language that has been well understood for over 200 years.</p>
+<p>Life is a stochastic process – there are no certainties in life. It should make sense that triathlon would be no different. The statement athlete <span class="math inline">\(i\)</span> is ranked higher than athlete <span class="math inline">\(j\)</span> implies that the probability of <span class="math inline">\(i\)</span> beating <span class="math inline">\(j\)</span> is greater than the the probability of <span class="math inline">\(j\)</span> beating <span class="math inline">\(i\)</span>. Equivalently, one could also interpret a ranking as the following, if <span class="math inline">\(i\)</span> is ranked above <span class="math inline">\(j\)</span>, <span class="math inline">\(i\)</span> beats <span class="math inline">\(j\)</span> on average. Over the course of this document, we will formalise the above notion into mathematical statements via some sort of statistical model.</p>
+<div class="intuition">
+That is just saying, we will write down formulae for how this probability is calculated and average over what specific distribution.
+</div>
+<p>The reader is reminded of one of the fundamental truths of life: <strong>ALL MODELS ARE WRONG (including this and the current ranking system)! SOME ARE USEFUL.</strong> We hope that this way of ranking athletes will appear useful/fair to most.</p>
+<p>The good news is, if it does not, we will know exactly why. For a process that pays for athlete livelihood, we argue that knowing why things are not aligned is important. If our modelling assumptions were incompatible with reality - we can change them so they reflect the values of the athletes in the sport.</p>
+<h2 id="the-model">The model</h2>
+<p>Instead of names like Lucy and Daniela we will use an integer to describe them. Denote athletes as integers <span class="math inline">\(1, 2, \dots, n\)</span>. Let <span class="math inline">\(\gamma_i \in \mathbb{R}\)</span> for all <span class="math inline">\(i \in \{1, 2, \dots, n\}\)</span> denote the quality of an athlete. If <span class="math inline">\(\gamma_i &gt; \gamma_j\)</span>, then athlete <span class="math inline">\(i\)</span> is ranked above athlete <span class="math inline">\(j\)</span>. We do not know the true values of <span class="math inline">\(\gamma_i\)</span>. In fact nobody will ever know. This represents the intangible hidden talent of an athlete that allows them to swim/run/bike very fast. What we can do however, is estimate this value from race results. What we mean by this – if athlete <span class="math inline">\(i\)</span> keeps beating athlete <span class="math inline">\(j\)</span>, and athlete <span class="math inline">\(j\)</span> keeps beating athlete <span class="math inline">\(k\)</span>, our model should not rank <span class="math inline">\(k\)</span> above <span class="math inline">\(i\)</span>. Note, when we say beats, we mean on average or most of the time.</p>
+<div class="intuition">
+The current systems estimate <span class="math inline">\(\gamma_i\)</span> is the final tally of points shown on the PTO website.
+</div>
+<p>We go back to a simple model recommended by Bradley and Terry in 1952 [<a href="https://www.jstor.org/stable/2334029?origin=crossref" title="Rank Analysis of Incomplete Block Designs: I. The Method of Paired Comparisons">1</a>] which simply states</p>
+<span class="math display">\[\begin{align*}
+P\Big[\text{i beats j} | S \subseteq \{1, 2, \dots, n\} \Big] = \frac{\gamma_i}{\gamma_i + \gamma_j} \tag{1}\label{model}
+\end{align*}\]</span>
+<p>All the above equation is saying that, given a start list of <span class="math inline">\(S\)</span>, the probability that say, Lionel Sanders beats Jan Frodeno, just depends on individual race quality number pitted against each other. It is <strong>independent</strong> of all other athletes <span class="math inline">\(S\)</span> in the race. <em>Now this is not strictly true. These days there are some really strong bike riders that do a lot of work at the front. A strong runner could sit in, conserve energy and attack later. The likelihood of the runner beating others is a function of who is also racing. So the above equation makes the simplifying assumption of independence. Such avenues are made in statistics primarily because modelling all possible combinations of athletes between <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> is computationally intractable – the maths is too hard or it is to specific to actually model (risk of over fitting). If someone or I come up with better theory to model this, I will write a part II.</em></p>
+<p>The above model might appear simplistic. To justify that it is a reasonable model to start comparing, we cite all the other places where something very similar is used. In general if a method is robust across many walks of life, it is likely to be stable for your problem.</p>
+<ol type="1">
+<li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0167268120303838">Chess</a></li>
+<li><a href="https://selbydavid.com/2016/12/02/ima-poster/">Connection between Googles page rank algorithm and Bradley Terry Models</a></li>
+<li><a href="https://papers.nips.cc/paper/2015/file/2a38a4a9316c49e5a833517c45d31070-Paper.pdf">Multinomial version of BTM and Page rank</a></li>
+<li><a href="https://www.microsoft.com/en-us/research/publication/semi-supervised-learning-to-rank-with-preference-regularization/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F154323%2Fszummeryilmaz-semisupervised-ranking-cikm11.pdf">Optimising search engine results ranking</a></li>
+<li><a href="https://journals.sagepub.com/doi/full/10.1177/2053168019832089">Managing your financial portfolio</a></li>
+</ol>
+<p>Another way to view the above statement is that the outcome of a race by between <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, is decided by flipping a coin, where the probability of seeing heads is <span class="math inline">\(\frac{\gamma_i}{\gamma_i + \gamma_j}\)</span>. If we see heads, we declare that <span class="math inline">\(i\)</span> won, and declare <span class="math inline">\(j\)</span> won otherwise. As an illustration with real numbers, if the author raced in a race with Lucy Charles Barclay, we would expect the estimated values to be something like <span class="math inline">\(\gamma_{\text{Lucy}} = 0.9999\)</span> and <span class="math inline">\(\gamma_{\text{Author}} = 0.0001\)</span>. If we kept tossing this coin, 9999 times out of 10,000 Lucy would beat me.</p>
+<h2 id="estimating-talent">Estimating Talent</h2>
+<p>We have a model of that describes racing. These model has parameters <span class="math inline">\(\gamma_1, \dots, \gamma_n\)</span> that needs to be estimated. We have already described how no one can actually measure the quality of a triathlete. In this section, we write down how to estimate those parameters from actual race results. To be able to measure how well our estimated parameters reflect actual race results, we need a function that tells us how likely it would be to observer the race results if we were given a guess for the parameters. Such a function is called the <a href="https://en.wikipedia.org/wiki/Likelihood_function">likelihood function</a>. For the rest of document, the reader can assume we have a function that tells us how well our guess for the <span class="math inline">\(\gamma\)</span>’s fit with observed results – <strong>if the races followed our the model described in <span class="math inline">\(\ref{model}\)</span></strong>. This last bit is important. Everything we do from here on will be optimal assuming, the outcome of a race between Lucy and Daniela is a function of their hidden talents in the way we described in <span class="math inline">\(\ref{model}\)</span>. That is our view of the world – if that is not true, then no claim in this document has any substance. Later in the post, we will describe when the above assumptions are problematic.</p>
+<p>For a given guess of athlete quality, <span class="math inline">\(\gamma = (\gamma_1, \dots, \gamma_n)\)</span>, the likelihood (it’s actually the log likelihood but you can ignore that) <span class="math inline">\(l(\gamma)\)</span> is as follows:</p>
+<span class="math display">\[\begin{align*}
+l(\gamma) = \sum_{i=1}^n \sum_{j=1}^n \Big[ w_{ij}\ln \gamma_i - w_{ij}\ln(\gamma_i + \gamma_j) \Big] \tag{2}\label{likelihood}
+\end{align*}\]</span>
+<p><span class="math inline">\(w_{ij}:\)</span> The number of times <span class="math inline">\(i\)</span> beat <span class="math inline">\(j\)</span> in races.</p>
+<p><span class="math inline">\(w_{ii}=0\)</span> Athletes cannot beat themselves.</p>
+<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#likelihoodD">
+Where did that formulae come from (Optional)
+</button>
+<div id="likelihoodD" class="collapse">
+<p>TODO the derivation</p>
+</div>
+<p>As mentioned earlier, if you gave me a set of quality scores I would tell you how likely they would lead to the observed race results. So ideally, we would want to find a set of quality scores denoted by <span class="math inline">\(\hat{\gamma_1}, \dots, \hat{\gamma_n}\)</span> that maximise the above likelihood function i.e. no other guess of the parameters better explains the race results under model <span class="math inline">\(\ref{model}\)</span>. So now the problem just boils down to finding such a set of parameters.</p>
+<p>To be able to search for a such a set of parameters that maximises the log likelihood in , we need some nice properties. One of them we already have in that the above function is convex. That’s just a technical way of saying the above function has a unique maximising value.</p>
+<p>The second one is more complicated, but it is so important to most ranking problems we state it explicitly.</p>
+<div class="important">
+<h4>
+Caveat:
+</h4>
+<p>The above maximisation does not always have a unique. To get the nice quality scores we spoke about we need the set of results to have a nice property. <strong>In every possible partition of the individuals into two non empty subsets, some individual in the second set beats some individual in the first set at least once.</strong> Put another way, if we connected a graph where each athlete was a node, and a directed edge from <span class="math inline">\(i\)</span> to <span class="math inline">\(j\)</span> is formed if <span class="math inline">\(i\)</span> beat <span class="math inline">\(j\)</span> in a race, then we need the graph formed by all races in a season to be strongly connected. <strong>Side story:</strong> <em>A slight variant of the above model is how Google discovered which pages they should add to their search engine first, when they fist started. They too needed to rank things. So the reader is reminded that this simple coin flipping game was Googles famous <a href="https://en.wikipedia.org/wiki/PageRank">page rank algorithm</a>.</em></p>
+<h4>
+Why is this important:
+</h4>
+<p>In the first part of this series we referenced how scarcely athletes race each other. What the above statement is saying is that if most races do not pit athletes against each other often – it is impossible for us to rank athletes meaningfully even with this simple model.</p>
+<p>Thus when the PTO organises events they should keep in mind that, the more frequently athletes race each other, the fairer the ranking system will be. As a minimum requirement, the graph shown below should be <a href="">strongly connected</a>. <strong>Attention PTO:</strong> The smarter the race schedule, the less controversy there is in ranking and comparing triathletes. The extreme version of this statement is that, if everyone raced everyone every race, there would be no controversy about who is better.</p>
+</div>
+<p><br></p>
+<p>For the year of 2018, there were <span class="math inline">\(135\)</span> 70.3 or IM professional races that involved 1 or more pro women triathletes. Below we visualise what a connectedness graph looks like. Each node is an athlete. An directed edge between one node from the other indicates that source node beat the destination node in a race i.e. finished above them in a race.</p>
+<p><img src="./pngs/connectivity_2018.png" width="90%"></img></p>
+<p>The nodes that you see on the fringes are athletes that showed up to one race only and DNF’d. Such athletes typically cannot be ranked in any meaningful way without having another race that pits them against each other. This does not really impact the final goal of this post – which is to come up with a ranking system for the top athletes. We focus on the top athletes because their pay is affected by their ranking (and Collins cup positions etc.)</p>
+<h3 id="check-for-connectednessplausibility">Check for connectedness/plausibility</h3>
+In this section we look at triathlon races in the past and see how many of the race calendars were connected. <strong>Note:</strong> If a race year is not connected we cannot actually rank athletes meaningfully. In the case a race calendar is not connected, we will use the largest connected component of the graph.
+<div class="intuition">
+We will only use athletes that race frequently enough and in meaningful races. Colloquially, only those athletes that race in competitive fields and often will get professional ranks. Even more colloquially, this prevents me from rocking up to my local park and creating my own triathlon, winning it and boosting my world rank.
+</div>
+<p>There is an exception to this rule: In triathlon, we often have punters like Jan Frodeno and Gustav Iden – who never lose (even the meaningful races). Mathematically, no node in the graph can get to them. If this happens we will need an axillary heuristic method to decide between these athletes.</p>
+<p>2020 was a year of the pandemic – so we do not include it in our analysis as it does not represent normal times. Our goal is to rank athletes in normal times not in the middle of pandemic. We argue that during a pandemic there are more important things to do - and rest our case.</p>
+<p>We compiled all races for the following races and found that the graphs were not strongly connected. This implies that there some pro athletes to whom we cannot assign a ranking as they have not raced enough or won in strong enough fields for the algorithm to confidently assign a value. Shown below is the output of our little Python3 script.</p>
+<pre><code>Getting races for year: 2017
+Number of races for year 2017 : 155
+Pre-prcoessing
+Number of races for year 2017 : 139
+
+Getting races for year: 2018
+Number of races for year 2018 : 152
+Pre-prcoessing
+Number of races for year 2018 : 135
+
+Getting races for year: 2019
+Number of races for year 2019 : 148
+Pre-prcoessing
+Number of races for year 2019 : 129
+
+Getting races for year: 2021
+Number of races for year 2021 : 92
+Pre-prcoessing
+Number of races for year 2021 : 79
+
+2017
+IS GRAPH CONNECTED:  False
+2018
+IS GRAPH CONNECTED:  False
+2019
+IS GRAPH CONNECTED:  False
+2021
+IS GRAPH CONNECTED:  False
+</code></pre>
+<p>We choose to consider the largest connected components in this graph. Other variations of the same algorithm such as Page rank, complete the graph by giving those detached nodes an infinitesimally small probability of beating everyone. We argue that does not really apply for the purposes of the top 20-30 athletes. To make a sub graph connected, for the year of 2018, if we drop 51 athletes from the rankings, then we get a strongly connected sub-graph over which we can compute quality scores. Shown below is the sub graph.</p>
+<p><img src="./pngs/sub_graph_connectivity_2018.png" width="90%"></img></p>
+<p>These are the athletes that <a href="./pngs/made_it_2018.json">can</a> get rankings. These are the ones that <a href="./pngs/missed_out_2018.json">cannot</a></p>
+<p>Remember when we said there is an exception to the rule for throwing out athletes. The super winning athletes will also get thrown out in a connected components search. Well that’s what happened. The year is 2018, and Daniela Ryf did not lose any race and she raced a lot! A very impressive athlete and a pain in a statisticians neck. This issue is easily remedied. She gets the indisputable ranking of 1. We just offset everyone else race rank by 1 to accommodate this. In that year she was literally <em>in a graph of her own</em>.</p>
+<p><img src="./pngs/daniela.png" width="90%"></img></p>
+<h2 id="the-solution">The solution</h2>
+<p>We have a strongly connected sub graph, we have race results and we have a convex function. We can reliably find the a solution. The derivation for how to do this is beyond the scope of this document. For the interested reader we did not invent the solution. These smart people [<a href="https://projecteuclid.org/journals/annals-of-statistics/volume-32/issue-1/MM-algorithms-for-generalized-Bradley-Terry-models/10.1214/aos/1079120141.full" title="MM ALGORITHMS FOR GENERALIZED BRADLEY–TERRY MODELS">2</a>] did. We just borrowed it.</p>
+<p>The algorithm to find the solution is simple iterative algorithm (for those familiar to EM, one can interpret it as just EM):</p>
+<div class="algorithm">
+<ol type="1">
+<li>For each <span class="math inline">\(i \in \{ 1, \dots, n\}\)</span>, start with random assignments of <span class="math inline">\(\gamma_i^0\)</span></li>
+</ol>
+<p>For <span class="math inline">\(k=0, 1, ...\)</span> : Till convergence</p>
+<ol start="2" type="1">
+<li><p><span class="math inline">\(\gamma_i^{k+1} = W_i \Bigg[ \sum_{j \neq i}\frac{N_{ij}}{\gamma_i^k + \gamma_j^k}\Bigg]^{-1}\)</span></p></li>
+<li><p><span class="math inline">\(\gamma_i^{k+1} = \sum_{j=1}^n \frac{\gamma_i^{k+1}}{\gamma_j^{k+1}}\)</span></p></li>
+</ol>
+<p><span class="math inline">\(W_i\)</span>: Number of victories for player <span class="math inline">\(i\)</span></p>
+<p><span class="math inline">\(N_{ij} = w_{ij} + w_{ji}\)</span>: Number of times <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> raced together</p>
+<p><span class="math inline">\(w_{ij}\)</span>: Number of times <span class="math inline">\(i\)</span> beat <span class="math inline">\(j\)</span></p>
+</div>
+<h2 id="case-studies">Case studies</h2>
+<div class="row">
+<div class="col-md-6">
+<pre class="python3"><code>No athlete won every single race they participated in so there&#39;s no need for adjustment.
+
+TOP  20 ATHLETES by ranking system for 2019
+[1. &#39;Anne Haug&#39;, PTO rank 3
+ 2. &#39;Holly Lawrence&#39;, PTO rank 6
+ 3. &#39;Lucy Charles-Barclay&#39;, PTO rank 2
+ 4. &#39;Sarah Crowley&#39;, PTO rank 4
+ 5. &#39;Laura Philipp&#39;, PTO rank 8
+ 6. &#39;Jodie Stimpson&#39;, PTO rank 51 &lt;---- What happened here ?
+ 7. &#39;Daniela Ryf&#39;, PTO rank 1     &lt;---- And here ?
+ 8. &#39;Chelsea Sodaro&#39;, PTO rank 15 
+ 9. &#39;Radka Kahlefeldt&#39;, PTO rank 10
+ 10. &#39;Corinne Abraham&#39;, No PTO rank &lt;---- And here ?
+ 11. &#39;Imogen Simmonds&#39;, PTO rank 21
+ 12. &#39;Annabel Luxford&#39;, PTO rank 56 &lt;---- And here ?
+ 13. &#39;Skye Moench&#39;, PTO rank 13
+ 14. &#39;Teresa Adam&#39;, PTO rank 6
+ 15. &#39;Heather Jackson&#39;, PTO rank 9
+ 16. &#39;Amelia Watkinson&#39;, PTO Rank 26
+ 17. &#39;Kaisa Sali&#39;, No PTO rank &lt;---- And here ?
+ 18. &#39;Helle Frederiksen&#39;, No PTO rank  &lt;---- And here ?
+ 19. &#39;Heather Wurtele&#39;, No PTO rank &lt;---- And here ?
+ 20. &#39;Daniela Bleymehl&#39; PTO Rank 12
+ ]</code></pre>
+</div>
+<div class="col-md-6">
+<p>Comparing it with the PTO rankings for the same year</p>
+<p><img src="./pngs/pto_2018.png" width="75%"></img></p>
+</div>
+</div>
+<p>Some immediate observations</p>
+<ol type="1">
+<li>Daniela got ranked much lower and she had a very good 2019. She won all but 1 race. However the one race she did not win was Kona and she came 13th. That was the one race in which a lot of these other athletes were also competing in, and beat her. This is rather unfortunate. By comparing head to head records, our algorithm implicitly weighs Kona races more than others. (<em>Why? Because everyone shows up, and we get lots of head to head data from that one race</em>). A bias of modelling rankings this way, is it really forces athletes to perform in the bigger races – despite doing well all year round. <strong>We cannot speak to the moral value of such a system, that is for the athletes themselves to debate. All we can state is modelling rankings this way leads to this behaviour.</strong> The PTO system takes only the best 3 races per athlete. We take every race they raced. Earlier posts have already discussed the trade-off between selecting the best set and taking all races. We could choose to take the best 3 races also, but note that sparsifies the connectedness graph even further. The fewer races you consider, the less comparable results and rankings become. Additionally the PTO, did not justify why the top 3 made sense. <strong>Aside: </strong> We have previously argued that Holly Lawrence had a really good 2019. This ranking seems to be a fairer representation of how she actually did.</li>
+</ol>
+<h3 id="some-athletes-seem-to-hugely-benefit-from-our-rankings">Some athletes seem to hugely benefit from our rankings</h3>
+<p>For most athletes there is some change but nothing major. All algorithms have their biases. Our biases are listed above, the PTO biases are implicit in how their proprietary algorithm. But we have a few athletes listed in our top 20 that PTO do not even consider top 100. <strong>What the hell happened there? Are these people unfairly getting an advantage in our system?</strong> Remember that the PTO only uses your best 3 races. This requires athletes to race at least 3 times. Shown below are the year reports for Jodi, Amelia and Kaisa for 2019.</p>
+<div class="row">
+<div class="col-md-4">
+<h4>
+Jodi Stimpson:
+</h4>
+<p>She race long course only once and did really well. Our algorithm does not account for athletes that race very infrequently. <strong>This is a negative.</strong> If we do not remedy this feature, then athletes can come second in one race and never compete and do quite well in the yearly rankings. If we adopted the PTO strategy and required every athlete to race 3 times, we could just eliminate her result. However, we would rather investigate a model that rewards an athlete for racing well often.</p>
+<p><img src="./pngs/jodi.png" width="90%"></img></p>
+<p>Helle also only raced twice but actually did quite well.</p>
+</div>
+<div class="col-md-4">
+<h4>
+Amelia Watkinson:
+</h4>
+<p>We conjecture no one felt as hard done by the ranking system as her. Intuitively that record does not warrant a world rank of 26. But why did it happen? Despite finishing at very respectable positions, she raced events that had low AIT scores. We have already argued ad nauseam that AIT score assignment is quite random. So in her case, she was penalised for doing really well, because the AIT score was poorly calibrated. <img src="./pngs/amelia.png" width="90%"></img></p>
+</div>
+<div class="col-md-4">
+<h4>
+Kaisa Sali:
+</h4>
+<p>She raced more than 3 times and did well most of the time. Two thirds and a sixth at Kona. The PTO did not give her a ranking for the year (maybe she retired? I do not know). She did not have a high scoring 3rd race despite coming 3’rd at Finland and finishing just outside the top 10 in a world championship.</p>
+<p><img src="./pngs/kaisa.png" width="90%"></img></p>
+<p>Heather has a similar distribution to Kaisa. She also might have retired it seems.</p>
+</div>
+</div>
+<h3 id="what-about-the-people-that-pto-ranked-higher-but-we-ranked-lower">What about the people that PTO ranked higher but we ranked lower?</h3>
+<p>We have reasoned why the above athletes did well. What about those that our ranking seems to be screwing over? For example our algorithm has Carrie Lester ranked at 33 while the PTO claims she should be ranked at 7. Can we justify such a decision?</p>
+<h4 id="the-curious-case-of-carrie-lester">The curious case of Carrie Lester</h4>
+<p>Shown below is her race record for 2019.</p>
+<p><img src="./pngs/carrie.png" width="90%"></img></p>
+<p>This looks really good. She’s won a lot of races and done well in almost all of them. So why did we rank her poorly? The answer goes back to our definition of what it means to have a ranking. To be ranked above someone, you need to beat that person or people that have beaten that person. In 2019, this did not happen a lot for Carrier Lester. Almost every athlete ranked above her in our system has beaten her. <strong>Does it still feel a little unfair?</strong> We would agree and say yes. However, as we have stated many times earlier – if athletes do not race each other often, rankings are not meaningful – we have even listed a theorem above about connectedness.</p>
+<h4 id="sarah-true">Sarah True</h4>
+<p>The PTO website gave Sarah a world ranking of 16 for 2019 and Amelia a world rank of 26. Our algorithm gives Sarah a world ranking of 151. Shown below are the records for that year.</p>
+<p><img src="./pngs/sarah.png" width="90%"></img></p>
+<p>We conjecture that the PTO used some of her 2018 performances to account for her 2019 rank. If we did so we too would rank her really highly as she did really well in Kona. See below our 2018 world ranking.</p>
+<pre><code>[(0, &#39;Daniela Ryf&#39;),
+(1, &#39;Lucy Charles-Barclay&#39;),
+(2, &#39;Anne Haug&#39;),
+(3, &#39;Holly Lawrence&#39;),
+(4, &#39;Radka Kahlefeldt&#39;),
+(5, &#39;Sarah True&#39;), &lt;------</code></pre>
+<h2 id="disadvantages">Disadvantages</h2>
+<h3 id="retrospective-rankings-do-not-work">Retrospective rankings do not work</h3>
+<p>All rankings done here and the PTO are done retrospectively. The athletes were not informed about how they should plan their season to get the best ranking. Thus all of this is a little unfair on everyone. Our ranking encourages and rewards athletes for racing in strong fields. This was not known to the athletes beforehand. They probably just did the race they could afford or their injuries would allow. It is unfair to rate and compare athletes retrospectively. One should treat this document as an illustration of the advantages of being principled about modelling ranking, as opposed the 100% coorect way of ranking athletes. As we have stated before – our assumptions could be wrong. Maybe athletes do indeed care about their AIT’s or winning their local races more. The process of formulating world rankings should first hear what the athletes have to say. Then it should write down a model that best describes their values. Only then should be calculate and optimse anything.</p>
+<h3 id="its-all-so-complicated">It’s all so complicated</h3>
+<p>A lot of equations and lot of analysis. It’s all so complicated. Spectator sport is supposed to be fun and easy. We previously complained that athletes did not understand AIT. Now we’re forcing them to maximise convex functions, build strongly connected graphs and read about social choice theory. This is bound to end in disaster. They are already running a million miles a week. The last thing they should have to do is know about convex optimisation to figure out which race to go to and which race to win. We have written a simple <a href="https://abiswas3.github.io/sportsMaths/TommyRank/index.html">heuristic based approach that bands races into tiers</a> and now we have described a more principled approach. So where do we go from here ? The answer depends on what the athletes want. Most of their desires can be modelled, but we must first know what they want. After that the optimal solution can sough after.</p>
+<p>Finally, we would like to thank trirating.com for even starting this process. They downloaded the data and made all this possible to begin with. Without their work, we would not have been able to complete our analysis.</p>
+<h1 id="references">References</h1>
+<ol type="1">
+<li><a href="https://www.jstor.org/stable/2334029?origin=crossref">Rank Analysis of Incomplete Block Designs: I. The Method of Paired Comparisons</a></li>
+</ol>
+<ol start="2" type="1">
+<li><a href="https://projecteuclid.org/journals/annals-of-statistics/volume-32/issue-1/MM-algorithms-for-generalized-Bradley-Terry-models/10.1214/aos/1079120141.full">MM ALGORITHMS FOR GENERALIZED BRADLEY–TERRY MODELS</a></li>
+</ol>
+<ol start="3" type="1">
+<li><a href="https://protriathletes.org/points">PTO points website</a></li>
+</ol>
+</div>
+<div id="footer">
+   All models are wrong, but some are useful
+</div>
+</body>
+</html>
