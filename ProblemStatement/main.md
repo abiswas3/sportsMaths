@@ -23,7 +23,7 @@ best athletes actually race each other. Here $N$ depicts the top
 $N=35$ women professional triathletes as of May 22, 2021. The men
 follow a similar co-occurrence distribution.
 
-<img src="pngs/co-occurence.png" alt="drawing" width="800"/>
+<img src="pngs/co-occurence.png" alt="drawing" width="80%"/>
 
 There were 160 half iron-man or iron-man races from in 2019, 2020
 and 2021. A cell score of 1 would mean those 2 athletes raced all 160
@@ -48,7 +48,7 @@ attending a race is the same every race. Shown below is a the
 attendance distribution of 70.3 and Ironman races across the last
 three years for professional womens sport.
 
-<img src="pngs/num_athletes_distribution.png" alt="drawing" width="800"/>
+<img src="pngs/num_athletes_distribution.png" alt="drawing" width="80%"/>
 
 As discussed earlier, we observe that not a lot of professional
 athletes show up to every race. Next we look at the strength of field
@@ -67,7 +67,7 @@ Rank](https://en.wikipedia.org/wiki/Mean_reciprocal_rank) used to
 evaluate Search Retrieval Systems.
 
 
-<img src="pngs/strength_of_field.png" alt="drawing" width="800"/>
+<img src="pngs/strength_of_field.png" alt="drawing" width="80%"/>
 
 **NOTE: I need to think this through a bit more. MRR doesn't really
 apply here. Also I use the current world rankings and not the world
@@ -142,7 +142,7 @@ Lucy Charles: 100 + [902/48.758] = 118.49
 ```
 We verify our estimate  with the reported number on the site.
 
-<img src="pngs/score_calc.png" alt="drawing" width="800"/>
+<img src="pngs/score_calc.png" alt="drawing" width="80%"/>
 
 The final score for an athlete is the sum of an athletes best 3 races
 in a year, as quoted by the
@@ -211,7 +211,7 @@ distribution of the race winners points for long serving races. For
 races that have been organised annually for at least 5 years in a row,
 we examine the distribution of winner points.
 
-<img src="pngs/winner_pts.png" alt="drawing" width="800"/>
+<img src="pngs/winner_pts.png" alt="drawing" width="80%"/>
 
 On the Y axis is the race points won by the women's winner of the
 race. On the X axis are different popular races. Multiple races like
@@ -238,9 +238,9 @@ in 2018 and 2019, it seems that AIT overestimates athlete performance
 consistently. Shown below is the winner pts distribution for the
 women's pro field across all races that had an AIT in 2018 and 2019
 
-<img src="pngs/winner_dist_2019.png" alt="drawing" width="800"/>
+<img src="pngs/winner_dist_2019.png" alt="drawing" width="80%"/>
 
-<img src="pngs/winner_dist_2018.png" alt="drawing" width="800"/>
+<img src="pngs/winner_dist_2018.png" alt="drawing" width="80%"/>
 
 It seems that on average the winner of pro race in the women's field
 receives 80 points, thereby missing the expected time for a race most
@@ -383,7 +383,7 @@ consider the following example:
 
 Shown below are the results for Ironman Tulsa on May 23rd, 2021.
 
-<img src="pngs/tulsa_results.png" alt="drawing" width="800"/>
+<img src="pngs/tulsa_results.png" alt="drawing" width="80%"/>
 
 Before the race started, the following athletes were already Kona
 qualified. There were two spots available for qualification in this
@@ -553,7 +553,7 @@ better than our expected belief of their skill.
 This does not hold in Triathlon. Consider the 2019, women's race in
 Kona. Daniel Ryf went into the race with the following record.
 
-<img src="../TommyRank/pngs/daniel_2019.png" alt="drawing" width="800"/>
+<img src="../TommyRank/pngs/daniel_2019.png" alt="drawing" width="80%"/>
 
 She had won every race she had participated in and went on to have an
 off day at the race. On this day she came in at 13th. In a head to
