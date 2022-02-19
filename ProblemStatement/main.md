@@ -267,7 +267,7 @@ As qualitative reference for understanding these numbers we reference
 to the two races below. We let the readers decide which race was more
 stacked, and which one should regarded more.
 
-<img src="pngs/screwy_ness.png" alt="drawing" width="800"/>
+<img src="pngs/screwy_ness.png" alt="drawing" width="80%"/>
 
 The reader might notice that at the extreme right there are few
 scatter points flying around.  Those represent the world championships
