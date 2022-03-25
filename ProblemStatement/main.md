@@ -149,7 +149,7 @@ in a year, as quoted by the
 [website](https://stats.protriathletes.org/points). The Collins cup
 qualifying has a slightly more complicated protocol but it is still
 based on points calculated of AIT and can be found
-[here](http://abiswas3.github.io/blog/PTO_Scoring/)
+[here](./PTO_scoring/)
 
 ```The PTO World Rankings shall be determined by the aggregate number
 of World Ranking Points an athlete has earned for their three best
