@@ -53,4 +53,8 @@ Oh yes he can :-). His chances of going into the red are significantly lower, wh
 Well if you talk to a financial expert they might throw out words like Kelly's principle or volatility drag or parrando paradox. To be fair, I did not the original paper by Kelly nor do I know what those words actually mean. So I'll explain it using some middle school mathematics.
 
 
+## One last bit
+
+Real markets do not swing like a random walk. They follow unpredictable trends. Sadly I do not know how to get rich quickly but this is a very nice maths problem anyway :-). In summary, there is no hope for our friend Tom.
+
 </div>
