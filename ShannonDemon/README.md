@@ -1,5 +1,5 @@
 ---
-title: Lectur I
+title: Lecture I
 ...
 <div class="container">
 
