@@ -10,10 +10,10 @@ def ben_return_given_trajectory(traj):
     Y = 0
     data = []
     for z_i in traj:
-        # If heads money doubles
+        # If HEADS money doubles
         if z_i == 0:
             Y += 2*X
-        # If tails money halves
+        # If TAILS money halves
         else:
             Y -= 0.5*X
 
@@ -28,10 +28,10 @@ def steve_return_given_trajectory(traj):
     Y = X
     data = []
     for z_i in traj:
-        # If heads money doubles
+        # If HEADS money doubles
         if z_i == 0:
             Y = 2*Y
-        # If tails money halves
+        # If TAILS money halves
         else:
             Y = Y/2
 
@@ -48,10 +48,10 @@ def tom_return_given_trajectory(traj):
     curr_stock = 0 
     data = []
     for z_i in traj:
-        # If heads money doubles
+        # If HEADS money doubles
         if z_i == 0:
             curr_stock = 2*stock
-        # If tails money halves
+        # If TAILS money halves
         else:
             curr_stock = 0.5*stock
 
