@@ -1,6 +1,9 @@
+---
+title: Lectur I
+...
 <div class="container">
 
-```Primo lecture series in mathematics: Shannon's Demon```
+```Primo lecture series in mathematics: Lecture I- Shannon's Demon```
 
 # My friend Tom
 
