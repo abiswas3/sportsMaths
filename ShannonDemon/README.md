@@ -112,7 +112,7 @@ We toss a coin $N$ times with a probability of showing HEADS being $p$. Thus on 
 The geometric mean of k values $x_1, x_2 \dots x_k$ is simply $(x_1\times x_2\dots x_k)^{\frac{1}{k}}$. The expectation the geometric mean of the gain as $N$ becomes very large i.e. it tends to infinity
 
 \begin{align*} 
-\mathbb{E}[G_N] &=  \lim_{N \rightarrow \infty}(1 + fW)^{\frac{h}{N}}(1 - fW)^{\frac{t}{N}}\\
+\mathbb{E}_{\text{geometric}}[G_N] &=  \lim_{N \rightarrow \infty}(1 + fW)^{\frac{h}{N}}(1 - fW)^{\frac{t}{N}}\\
 &= (1 + fW)^{p}(1 - fW)^{1-p}\\
 &= G
 \end{align*}
@@ -162,7 +162,7 @@ Let's write down the equations like that again. Assume the coin tosses are HEADS
 B_1 &= B + WfB_1 \\
 B_2 &= B_1 - LfB_1 \\
 B_3 &= B_2 + WfB_2 \\
-& = B(1 - fW)^{h}(1 - fL)^{t} \\
+\mathbb{E}_{\text{geometric}}[B_N] & = B(1 - fW)^{h}(1 - fL)^{t} \\
 \end{align*}
 
 Once again as the bankrolling is compounding, we use the geometric mean. Do the calculus, and now the Kelly Criterion for maximising the geometric mean is given by $f=\frac{p}{L} - \frac{q}{W}$. Remember, our money doubled i.e. $W=1$. Also our money halved, so $L=0.5$. We have $p=q=0.5$, plugging them in, we get $f=0.5$. Thus Tom's strategy of investing only half his money at every round is optimal if he is looking to maximise the geometric mean of his relative gain.

@@ -226,8 +226,8 @@ x_2\dots x_k)^{\frac{1}{k}}\)</span>. The expectation the geometric mean
 of the gain as <span class="math inline">\(N\)</span> becomes very large
 i.e. it tends to infinity</p>
 <p><span class="math display">\[\begin{align*}
-\mathbb{E}[G_N] &amp;=  \lim_{N \rightarrow \infty}(1 +
-fW)^{\frac{h}{N}}(1 - fW)^{\frac{t}{N}}\\
+\mathbb{E}_{\text{geometric}}[G_N] &amp;=  \lim_{N \rightarrow \infty}(1
++ fW)^{\frac{h}{N}}(1 - fW)^{\frac{t}{N}}\\
 &amp;= (1 + fW)^{p}(1 - fW)^{1-p}\\
 &amp;= G
 \end{align*}\]</span></p>
@@ -302,7 +302,7 @@ tosses are HEADS, TAILS, HEADS.</p>
 B_1 &amp;= B + WfB_1 \\
 B_2 &amp;= B_1 - LfB_1 \\
 B_3 &amp;= B_2 + WfB_2 \\
-&amp; = B(1 - fW)^{h}(1 - fL)^{t} \\
+\mathbb{E}_{\text{geometric}}[B_N] &amp; = B(1 - fW)^{h}(1 - fL)^{t} \\
 \end{align*}\]</span></p>
 <p>Once again as the bankrolling is compounding, we use the geometric
 mean. Do the calculus, and now the Kelly Criterion for maximising the
