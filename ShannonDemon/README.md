@@ -183,6 +183,6 @@ remaining 1% of the time.
 
 ## One last bit
 
-Real markets do not swing like a random walk. They follow unpredictable trends that no one can actually predict. Sadly I do not know how to there is no secret to getting wealthy beyond already being wealthy. In summary, there is no hope for our friend Tom, but at least he won't pay a hedge fund scam that claims they can beat the market
+Real markets do not swing like a random walk. They follow unpredictable trends that no one can actually predict. Sadly I do not know how to solve that problem. As far as I know, there is no secret to getting wealthy beyond already being wealthy. In summary, there is no hope for our friend Tom, but at least he won't pay a hedge fund scam that claims they can beat the market
 
 </div>
