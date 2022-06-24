@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Lecture II</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../blog.css" />
+  <link rel="stylesheet" href="/code/bootstrap.min.css">
+  <script src="/code/jquery.min.js"></script>
+  <script src="/code/bootstrap.min.js"></script>
+
+
+  <ul class="bar">
+    <li class="barli"><a class="active" href="/">Home</a></li>
+    <li class="barli"><a href="/sportsMaths/">Triathlon Mathematics</a></li>  
+    <!-- <li class="barli"><a href="https://abiswas3.github.io/differentialprivacy.github.io">Notes on Differential Privacy</a></li> -->
+  </ul>
+
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Lecture II</h1>
+</header>
+<div class="container">
+<p><code>Primo lecture series in mathematics: Lecture II- Tour De Fantasia</code></p>
+<h1 id="the-tour-de-france-fantasy-game">The Tour De France Fantasy
+Game</h1>
+<p>Remember <a href="../ShannonDemon/">our friend Tom</a>? Yes, the one
+with a gambling problem. Well, he’s back to give you free unsolicited
+advice on how to build your Tour De France fantasy team. If you followed
+along last time, you know Tom knows a thing or two about strategy.
+Without Tom, you’re left to your faculty or worse, advice from <a
+href="https://www.bicycling.com/tour-de-france/a36843568/tour-de-france-fantasy/">these
+guys</a>. Of course, Tom will also bring his reliable counsellors
+<em>Sexy Stephen</em> and <em>Bicyclist Ben</em> along. Now that the
+stage is set, we briefly review the rules for our young Americans, who
+might have erased the Tour from their memories.</p>
+<pre><code>Disclaimer: At the time of writing, neither the cost of riders nor the race start list were released. We are also not responsible if you lose your life savings based on our advice.  If such a thing happens, we will pretend to be sad, however.</code></pre>
+<h2 id="tdf-for-dummies">TDF for dummies</h2>
+<p>The Tour De France is a 21-day bike race. Each day is called a stage.
+The stage rank of a rider is determined by the order in which they
+finish a stage. The GC rank of a rider is determined by the sum of their
+finish time across stages. The lower the aggregate, the better placed
+the rider (otherwise, it wouldn’t be much of a race). Some stages have
+big mountains, and the skinny riders do well. Some are flat, which lends
+itself to the “<em>skinnier than you but still called fat</em>” peloton
+riders, often described as sprinters. Some have short hills between flat
+sections, and only the cycling gods (and our friend Tom) know who’s
+likely to win these. A few other competitions sprinkled throughout the
+race, such as King of the mountains and points. The frequency and
+placement of such segments are at the discretion of the masochistic
+tendencies of the race director, which you can mostly ignore. We will
+not spend too much time analysing them.</p>
+<p><em>PICTURE</em></p>
+<h2 id="how-do-you-score-points">How do you score points?</h2>
+<p>You pick a team of nine riders. At the end of each stage, they
+receive points based on the rules described in this <a
+href="https://www.velogames.com/velogame/2021/scores.php">document</a>.
+We review some of the important rules</p>
+<ul>
+<li><strong>Winning stages</strong>: Below is how many points you can
+score if a rider in your team wins a stage. The winner gets 220 points,
+the second 180 and so on.</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>stage_points <span class="op">=</span> [<span class="dv">220</span>, <span class="dv">180</span>, <span class="dv">160</span>, <span class="dv">140</span>, <span class="dv">120</span>, <span class="dv">110</span>, <span class="dv">95</span>, <span class="dv">80</span>, <span class="dv">70</span>, <span class="dv">60</span>, <span class="dv">50</span>, <span class="dv">40</span>, <span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">12</span>, <span class="dv">8</span>, <span class="dv">4</span>]</span></code></pre></div>
+<ul>
+<li><strong>Being in a good position overall</strong>: The general
+classification position of a rider is obtained by summing the finish
+time of the rider so far and sorting it in ascending order. Below are
+how many points you can score by being high in the GC ranks. Every day a
+rider leads the Tour De France, they are awarded 30 points.</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gc_points <span class="op">=</span> [<span class="dv">30</span>, <span class="dv">26</span>, <span class="dv">22</span>, <span class="dv">18</span>, <span class="dv">16</span>, <span class="dv">15</span>, <span class="dv">14</span>, <span class="dv">13</span>, <span class="dv">12</span>, <span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>]</span></code></pre></div>
+<ul>
+<li>At the end of the tour, the riders are awarded an additional bonus
+for their final GC position. The rider that finished the race with the
+lowest aggregate time gets an additional 600 points and so on.</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>final_gc <span class="op">=</span> [<span class="dv">600</span>, <span class="dv">500</span>, <span class="dv">400</span>, <span class="dv">350</span>, <span class="dv">300</span>, <span class="dv">260</span>, <span class="dv">220</span>, <span class="dv">200</span>, <span class="dv">180</span>, <span class="dv">160</span>, <span class="dv">140</span>, <span class="dv">130</span>, <span class="dv">120</span>, <span class="dv">110</span>, <span class="dv">100</span>, <span class="dv">90</span>, <span class="dv">80</span>, <span class="dv">70</span>, <span class="dv">60</span>, <span class="dv">55</span>, <span class="dv">50</span>, <span class="dv">45</span>, <span class="dv">40</span>, <span class="dv">35</span>, <span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">20</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">5</span>]</span></code></pre></div>
+<ul>
+<li>Points: Sprinkled across stages over 21 days are sections of road
+riders sprint for to get points. This contributes towards the points
+jersey (green jersey). Technically winning a sprint also does, but that
+gets eaten up in winning GC. <strong>NOTE:</strong> Unlike GC and stage
+– you don’t get double points for winning sprints and winning a
+stage.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>intermediate_points <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">16</span>, <span class="dv">12</span>, <span class="dv">8</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>]</span></code></pre></div>
+<ul>
+<li>Summit Points: Finally, reaching the top of the mountain (depending
+on the kind of mountain) first gets you some points. Reaching the top of
+really steep mountains gives you more points than ascending a mountain
+with a shallow gradient. <strong>OBSERVE: Those skinny GC riders usually
+win the race by doing well on steep mountains. The excellent GC riders
+will likely do very well on the steep climbs</strong> The rider that
+reaches the top of the steep climbs first gets thirty points, second
+gets twenty-five and so on.</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>steep_climb_you_and_i_will_not_get_over <span class="op">=</span> [<span class="dv">30</span>, <span class="dv">25</span>, <span class="dv">20</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">2</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>not_so_still_steep_but_steep_for_you_and_me_climb <span class="op">=</span> [<span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">2</span>]</span></code></pre></div>
+<ul>
+<li><p><strong>Breakaway</strong> Not every rider can win stages and
+ascent mountains first. Some riders accelerate early in the hope of some
+camera time and lead the race for a while before being caught by the
+peloton. If you are in a group of 30 riders or less and lead the race at
+the 50% mark, you get 20 points. <strong>NOTE: These riders don’t have
+to win races or get to the top of the mountain first. They try very hard
+every day for some camera time, and they get nearly as many points as
+the rider who gets to the top of the mountains first.</strong> These
+riders are your friends. There are a handful of riders capable of
+winning steep climbs. But almost everyone has somewhat of a chance at
+being in the breakaway. Furthermore, these riders (unless serious GC
+contenders) are available for cheap.</p></li>
+<li><p><strong>Assists</strong>: You get some points if your teammate
+leads GC, wins a stage or your team is high in the team’s
+classification. If you’ve picked the GC favourites, you likely have no
+money left, so choosing the cheapest rider from the same team is an
+affordable way of getting free points. Once again – even in this scoring
+system, you are rewarded for getting GC right.</p></li>
+</ul>
+<h2 id="proxies-of-a-winning-team">Proxies of a winning team</h2>
+<p>Suppose you run a sub-4-minute mile, then Bob’s your uncle. If you
+can also ride up a 30 min climb at 6.2Watts/kg, then Bob is also your
+aunty. In life, we often employ such arbitrary benchmarks to measure
+goodness. So we asked our friend Tom if he could summarise the science
+of picking the best fantasy team into some numbers. Biz-ness people love
+summary statistics. Sure enough, he obliged (indeed, a man of many
+talents) by writing a simulator that roughly approximates the Velogames
+scores for different team selections.</p>
+<p>If you don’t want to read this any further, read this as if you get
+these metrics, you can be confident that you will win. The real
+question, of course, is how to make a team that stands a realistic
+chance at achieving these numbers.</p>
+<p>We look at the 2022 Giro D Italia and 2021 Tour De France and analyse
+some of the best-performing teams. We also look at winners of local
+leagues and losers of local leagues. This small sample set guides our
+intuition. We do not bother with providing evidence of generalisation or
+writing down theorem/proofs. Whenever possible, we will do some
+back-of-the-envelope heuristic calculations to justify our decisions. If
+such analysis does not quench your thirst for scientific rigour, we
+recommend building your own model and sharing it with us (or perhaps
+just the profits).</p>
+<p><strong>GIRO 2022</strong>: we looked at the top 5 teams in the
+overall competition, 1 team that won a local league and 1 team which did
+average. *When reporting means, we’ll report the mean and median (to let
+the reader know if there could be heavy outliers)**</p>
+<table>
+<colgroup>
+<col style="width: 74%" />
+<col style="width: 14%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Median</th>
+<th>Mean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Total score</td>
+<td>9975.0</td>
+<td>10003.4</td>
+</tr>
+<tr class="even">
+<td>num riders in top K=10 scoring riders</td>
+<td>6</td>
+<td>5.6</td>
+</tr>
+<tr class="odd">
+<td>num riders in top K=10 GC positions</td>
+<td>4</td>
+<td>3.4</td>
+</tr>
+<tr class="even">
+<td>num riders in top K=5 scoring riders</td>
+<td>3</td>
+<td>3.4</td>
+</tr>
+<tr class="odd">
+<td>num riders in top K=5 GC positions<a href="#fn1"
+class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a></td>
+<td>3</td>
+<td>2.8</td>
+</tr>
+<tr class="even">
+<td>num riders in top K=1 scoring riders<a href="#fn2"
+class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a></td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>num riders in top K=1 GC positions<a href="#fn3"
+class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a></td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>number of unique stage podiums</td>
+<td>7</td>
+<td>7</td>
+</tr>
+<tr class="odd">
+<td>number of stage podiums (allow repeats)</td>
+<td>15</td>
+<td>15.2</td>
+</tr>
+</tbody>
+</table>
+<p>To win a local league of about 15 participants, we found a score of
+7,331 was competitive. Beyond that, getting the GC winner was the most
+important. The local winners among the ones we sampled averaged fourteen
+total podiums on stages and seven individual podium riders.</p>
+<p>The average local team had an MRR of 5,980, failed to pick the GC
+rider and had 11 podiums with seven unique winners.</p>
+<p>Notice that the unique podium winners are not that different across
+the best teams and average teams. Even the total number of podiums is
+not definitive. We reason later why this is the case. The short answer
+is that this game is about picking the overall GC winners. The more GC
+winners you choose, the better your chances. Of course, there are many
+other features, such as time in the breakaway etc., but we focus on
+these as the heavy hitters. Next, we look at the best-performing teams
+on last year’s tour.</p>
+<p><strong>TDF 2021</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Median</th>
+<th>Mean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Total score</td>
+<td>10471.5</td>
+<td>10436.75</td>
+</tr>
+<tr class="even">
+<td>num riders in top K=10 scoring riders</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>num riders in top K=10 GC positions</td>
+<td>3.5</td>
+<td>3.5</td>
+</tr>
+<tr class="even">
+<td>num riders in top K=5 scoring riders</td>
+<td>3.5</td>
+<td>3.5</td>
+</tr>
+<tr class="odd">
+<td>num riders in top K=5 GC positions</td>
+<td>3.5</td>
+<td>3.5</td>
+</tr>
+<tr class="even">
+<td>num riders in top K=1 scoring riders</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>num riders in top K=1 GC positions</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>number of unique stage podiums</td>
+<td>7</td>
+<td>7.25</td>
+</tr>
+<tr class="odd">
+<td>number of stage podiums (allow repeats)</td>
+<td>16</td>
+<td>16.25</td>
+</tr>
+</tbody>
+</table>
+<p>In last year’s tour edition, to win, it was just essential to get the
+3 GC riders right. If you did that, you would have won your local
+league. Roglic crashed, which meant this eliminated a large portion of
+the betting field as well.</p>
+<h2 id="general-advice">General advice</h2>
+<p>With all of this out of the way, here’s some general advice about
+picking a team.</p>
+<h3 id="always-focus-on-gc">Always focus on GC</h3>
+<p>You win by getting points. How do you earn points? You get points
+through one of the streams: points, stage, GC, Kom etc. Perhaps this was
+intentional, or maybe the game creator did not put thought into this,
+but stages, GC and kom, are strongly related. So doing well in GC almost
+gives you the other two for free. The prime focus of your team is to get
+as many top 10 riders as possible. Forget sprints, ITT, Kom’s and
+intermediate sprints. If this was not abundantly clear from the above
+report, look at the case study in the next section.</p>
+<h3 id="do-not-try-to-find-stage-hunters">Do not try to find stage
+hunters</h3>
+<p>Ok, you have your GC leaders – but chances are many people will get
+this correct. How do you differentiate yourself? It would appear that
+the next trick is to guess the stage winners.</p>
+<p>Not really!</p>
+<p><strong>FACT OF LIFE</strong>: It is impossible to get a good GC
+result without doing well on stages on average. The converse, however,
+is not valid. It is possible to be a stage hunter - win stages and do
+terribly on GC.</p>
+<p>In fact, in the actual world of professional cycling, winning a stage
+is more revered than consistently coming top 10 on stages. However,
+these stage hunters are useless in the nerd fantasy land of Velogames.
+The reasoning comes from the fact of life.</p>
+<p>Matej MOHORIČ won two breakaway stages at the Tour and was the talk
+of the town. I ask you how did <a
+href="https://www.procyclingstats.com/rider/aleksey-lutsenko">LUTSENKO
+Alexey</a> do? At the top of your head, you probably don’t remember – he
+came 7th and didn’t win a stage. Mohoric ended up with 864 points, and
+Alexey ended up with 932. He only cost two points more than Mohoric.
+Additionally, predicting that a rider that is not a unicorn wins two
+stages of the same tour is quite hard. On the other hand, predicting a
+top 10 is relatively more straightforward.</p>
+<p>As good GC implies good performance on most stages, those riders will
+benefit from both the GC scoring stream and the stage scoring stream
+(and often the KOM scoring system). However, stage hunters will languish
+at the back of the race on most stages and sacrifice their GC ambitions
+for the benefit of winning one or maybe even two stages. They don’t get
+the KOM or GC position points for free.</p>
+<h3 id="what-about-sprinters-and-points">What about sprinters and points
+?</h3>
+<p>It’d be great if I could fill my team with top 10 GC riders, but
+they’re expensive. I cannot afford them all. So who should I pick after
+I’m done trying to guess the top two/three GC winners? A sprinter –
+there are not that many of them at any given race. Usually, each team
+has one (and some don’t even bother). Teams with a designated sprinter
+use the other riders to form a sprint train, thereby giving their
+sprinter the best chance at winning a sprint stage. Sprint stages have a
+flat finish and are not usually preceded by steep mountains. Sometimes
+they can be – and it becomes hard to predict if the race would end up
+going to a sprinter or a breakaway rider.</p>
+<p>We look back at the last few grand tours to understand how many
+stages are contested by the GC group, breakaway riders and sprinters.
+Often before the first proper mountain stage, races are won between
+punchy sprinters and big boy sprinters.</p>
+<p><strong>GIRO 2021</strong></p>
+<p>stage 1 winner: GANNA Filippo –&gt; TT stage 2 winner: MERLIER Tim
+–&gt; big boy sprinters stage 3 winner: VAN DER HOORN Taco –&gt;
+breakaway/punchy sprinters stage 4 winner: DOMBROWSKI Joe –&gt;
+breakaway stage 5 winner: EWAN Caleb –&gt; big boy sprinters stage 6
+winner: MÄDER Gino –&gt; GC group stage 7 winner: EWAN Caleb –&gt; big
+boy sprinters stage 8 winner: LAFAY Victor –&gt; breakaway stage 9
+winner: BERNAL Egan –&gt; GC group stage 10 winner: SAGAN Peter –&gt;
+big boy sprinters stage 11 winner: SCHMID Mauro –&gt; breakaway stage 12
+winner: VENDRAME Andrea –&gt; breakaway stage 13 winner: NIZZOLO Giacomo
+–&gt; big boy sprinters stage 14 winner: FORTUNATO Lorenzo –&gt;
+breakaway stage 15 winner: CAMPENAERTS Victor –&gt; breakaway stage 16
+winner: BERNAL Egan –&gt; GC group stage 17 winner: MARTIN Dan –&gt; GC
+group stage 18 winner: BETTIOL Alberto –&gt; breakaway stage 19 winner:
+YATES Simon –&gt; GC group stage 20 winner: CARUSO Damiano –&gt; GC
+group stage 21 winner: GANNA Filippo –&gt; TT</p>
+<p><strong>Vuelta 2021</strong> + stage 1 winner: ROGLIČ Primož –&gt; TT
++ stage 2 winner: PHILIPSEN Jasper –&gt; big boy sprinters + stage 3
+winner: TAARAMÄE Rein –&gt; breakaway + stage 4 winner: JAKOBSEN Fabio
+–&gt; big boy sprinters + stage 5 winner: PHILIPSEN Jasper –&gt; big boy
+sprinters + stage 6 winner: CORT Magnus –&gt; GC group + stage 7 winner:
+STORER Michael –&gt; breakaway + stage 8 winner: JAKOBSEN Fabio –&gt;
+big boy sprinters + stage 9 winner: CARUSO Damiano –&gt; breakaway +
+stage 10 winner: STORER Michael –&gt; breakaway + stage 11 winner:
+ROGLIČ Primož –&gt; GC group + stage 12 winner: CORT Magnus –&gt;
+breakaway + stage 13 winner: SÉNÉCHAL Florian –&gt; breakaway + stage 14
+winner: BARDET Romain –&gt; breakaway + stage 15 winner: MAJKA Rafał
+–&gt; breakaway + stage 16 winner: JAKOBSEN Fabio –&gt; big boy
+sprinters + stage 17 winner: ROGLIČ Primož GC group/ + stage 18 winner:
+LÓPEZ Miguel Ángel –&gt; GC group + stage 19 winner: CORT Magnus –&gt;
+breakaway + stage 20 winner: CHAMPOUSSIN Clément –&gt; GC group + stage
+21 winner: ROGLIČ Primož –&gt; TT</p>
+<p>9 breakaway 4 Gc group 5 Sprinter</p>
+<p>Although there are many breakaway wins, the variance across the
+sprint field podium is much less. It was a lot harder to predict Magnus
+Corts performance as opposed to JAKOBSEN Fabio. Both won 3 stages. But
+Fabio was 2nd on the two sprint stages he didn’t win. Magnus Cort was
+not competitive on days he didn’t decide to attack.</p>
+<p><strong>TDF 2021</strong></p>
+<ul>
+<li>stage 1 winner: ALAPHILIPPE Julian –&gt; punchy sprinters</li>
+<li>stage 2 winner: VAN DER POEL Mathieu –&gt; punchy sprinters</li>
+<li>stage 3 winner: MERLIER Tim –&gt; big boy sprinters</li>
+<li>stage 4 winner: CAVENDISH Mark –&gt; big boy sprinters</li>
+<li>stage 5 winner: POGAČAR Tadej –&gt; TT</li>
+<li>stage 6 winner: CAVENDISH Mark –&gt; big boy sprinters</li>
+<li>stage 7 winner: MOHORIČ Matej –&gt; breakaway</li>
+<li>stage 8 winner: TEUNS Dylan –&gt; breakaway</li>
+<li>stage 9 winner: O’CONNOR Ben –&gt; breakaway</li>
+<li>stage 10 winner: CAVENDISH Mark –&gt; big boy sprinters</li>
+<li>stage 11 winner: VAN AERT Wout –&gt; breakaway</li>
+<li>stage 12 winner: POLITT Nils –&gt; breakaway</li>
+<li>stage 13 winner: CAVENDISH Mark –&gt; big boy sprinters</li>
+<li>stage 14 winner: MOLLEMA Bauke –&gt; breakaway</li>
+<li>stage 15 winner: KUSS Sepp –&gt; breakaway</li>
+<li>stage 16 winner: KONRAD Patrick –&gt; breakaway</li>
+<li>stage 17 winner: POGAČAR Tadej –&gt; GC</li>
+<li>stage 18 winner: POGAČAR Tadej –&gt; GC</li>
+<li>stage 19 winner: MOHORIČ Matej –&gt; breakaway</li>
+<li>stage 20 winner: VAN AERT Wout –&gt;TT</li>
+<li>stage 21 winner: VAN AERT Wout –&gt; big boy sprinter</li>
+</ul>
+<p>Breakaway wins: 8 Sprinter wins: 7</p>
+<p>Nearly the same number – there are a lot fewer sprinters than
+breakaway riders (but sadly you’re not allowed to pick many. Here’s
+where picking riders that are not classified as sprinters but can sprint
+helps. MVDP, Wout, Biniam etc. )</p>
+<p>The nice thing about a sprint stage is that it is an independent
+event. This implies if your favourite sprinter blows their tits out on
+Day 1, it has no repercussions towards their next sprint stage win. This
+means it is hard to go wrong in picking an excellent or above-average
+sprinter. <strong>NOTE: the only real risk is that they crash as sprints
+are chaotic</strong>. Additionally, even if they don’t win, they’ll
+place relatively high (see below).</p>
+<p>Depending on the profile of the course, picking a sprinter that
+climbs a little bit can help. It means they are still competitive
+despite climbing over mid-race lumps. Wout Van Aert, Mathieu Van Der
+Poel and Biniam Girmay seem to be good shouts. Speaking of race profiles
+– here’s what the first seven days look like.</p>
+<table>
+<colgroup>
+<col style="width: 2%" />
+<col style="width: 8%" />
+<col style="width: 88%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>1</th>
+<th>ITT</th>
+<th>13Km flat short time trial, suits the big aero boys</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>Flat</td>
+<td>three small climbs where GC won’t attack that come quite early,
+crosswinds and likely big boy sprint</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Flat</td>
+<td>Big boy sprint stage</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>Hilly</td>
+<td>Rolling hills and wind ends with a flat finish.</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>Hilly</td>
+<td>Cobbles (19.4Km): suits classics riders; crashes, punctures and high
+drama are expected.</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>Hilly</td>
+<td>Rolling hills with an up-hillish finish – could go to breakaway or
+sprint</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>Mountain</td>
+<td>Punchy finish up a pretty steep hill: Roglic, Pogacar, Alaphillipe
+territory</td>
+</tr>
+</tbody>
+</table>
+<p>Unless Wout Van Aert crashes – he is competitive for the first six
+stages of this race. Assuming he comes top 5 in all 6 of them – he could
+accumulate about</p>
+<p><strong>VERDICT</strong>: Wout Van Aert must be in your team. Note he
+also gets assist points from Roglic or Jonas. <em>Alternatives</em>:
+Mathieu Van Der Poel, Biniam Girmay, Climby version of Caleb Ewan (if
+they’re considerably cheaper)</p>
+<h3 id="unicorns-exist-for-a-reason---for-you-to-pick-them">Unicorns
+exist for a reason - for you to pick them</h3>
+<p>If your race start list has the following names and there are no
+abnormal circumstances surrounding them (like injuries, covid, crashes,
+clear indication of bad from leading up to the race) – you have to
+select as many of them as you can without blowing your budget. + Tadej
+POGAČAR + Primož ROGLIČ</p>
+<p><strong>The way they ride, they win by A LOT</strong></p>
+<p>Roglic crashed out on stage 7 of the tour and left with 537 points
+whereas Magnus Cort finished 56th on the tour and ended up with 489
+points. In fact, Roglic finished in the top K of the finishers on the
+tour. That’s just when one of them crashes.</p>
+<p>Tadej has never crashed out (though probability says then it is
+imminent) and when Roglic does finish they usually finish with __ points
+more than the other guys.</p>
+<p><strong>VERDICT</strong>: Pick both of them. If you like the all-in
+strategy, you bet that one, if not both of them, will crash or have a
+terrible day; You’re left with all this money to spend elsewhere. We
+argue that this is not beneficial – but if winning the overall is the
+only satisfactory goal, and you’re willing to risk coming last in your
+local league; your best strategy is to drop both of them.</p>
+<p><strong>The risk:</strong> This is not top-secret information – they
+are usually the most expensive riders. If one of them crashes out, your
+team’s chances of winning are likely toast. However, there’s not much
+wisdom in trying to be clever. Even if one of them did crash out, you
+still have to predict which rider will perform above their abilities to
+replace them in the ranking. Good riders crash less frequently than
+average riders – this is why they are good riders. Expensive riders are
+often good riders. So on average, you’re better off trying not to be too
+clever. Of course, our friend Tom only maximises your chances of doing
+well on expectation. If you want deterministic guarantees, we recommend
+you consult your horoscope instead.</p>
+<h3 id="pick-a-unicorn-supporter">Pick a unicorn supporter</h3>
+<p>You’ve picked a unicorn, and they cost you your mortgage, pension and
+left kidney. Save some costs by choosing the cheapest member from their
+team to win some assist points. You get to pick nine riders – not all of
+them will be equally useful. Trying for them all to be similarly
+valuable is destined to fail. For night there is the day; for Wout,
+there is Nathan Van Hooydonck.</p>
+</div>
+<section class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>First get GC riders, then try to get
+the rest<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>GC winner = Points winner usually<a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>To win, you have to get GC right<a
+href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+<div id="footer">
+   All models are wrong, but some are useful
+</div>
+</body>
+</html>

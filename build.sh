@@ -5,3 +5,4 @@ cd TommyRank/ && ./build && cd ../
 cd eloExplained/ && ./build && cd ../
 cd PTO_scoring && ./build && cd ../
 cd PrimoRank/ && ./build && cd ../
+cd TDF_VELO/ && ./build && cd ../
