@@ -121,39 +121,40 @@ Matej MOHORIČ won two breakaway stages at the Tour and was the talk of the town
 
  As good GC implies good performance on most stages, those riders will benefit from both the GC scoring stream and the stage scoring stream (and often the KOM scoring system). However, stage hunters will languish at the back of the race on most stages and sacrifice their GC ambitions for the benefit of winning one or maybe even two stages. They don't get the KOM or GC position points for free.
 
-### What about sprinters and points ?
+### What about sprinters and points?
 
 It'd be great if I could fill my team with top 10 GC riders, but they're expensive. I cannot afford them all. So who should I pick after I'm done trying to guess the top two/three GC winners? A sprinter -- there are not that many of them at any given race. Usually, each team has one (and some don't even bother). Teams with a designated sprinter use the other riders to form a sprint train, thereby giving their sprinter the best chance at winning a sprint stage. Sprint stages have a flat finish and are not usually preceded by steep mountains. Sometimes they can be -- and it becomes hard to predict if the race would end up going to a sprinter or a breakaway rider. 
 
-We look back at the last few grand tours to understand how many stages are contested by the GC group, breakaway riders and sprinters. Often before the first proper mountain stage, races are won between punchy sprinters and big boy sprinters. 
+We look back at the last few grand tours to understand how many stages are contested by the GC group, breakaway riders and sprinters. Before the first proper mountain stage, races are often won between punchy sprinters and big boy sprinters. 
 
 
 
 **GIRO 2021**
 
-stage 1 winner: GANNA Filippo --> TT
-stage 2 winner: MERLIER Tim --> big boy sprinters
-stage 3 winner: VAN DER HOORN Taco --> breakaway/punchy sprinters
-stage 4 winner: DOMBROWSKI Joe --> breakaway
-stage 5 winner: EWAN Caleb --> big boy sprinters
-stage 6 winner: MÄDER Gino --> GC group 
-stage 7 winner: EWAN Caleb --> big boy sprinters
-stage 8 winner: LAFAY Victor --> breakaway
-stage 9 winner: BERNAL Egan   --> GC group 
-stage 10 winner: SAGAN Peter --> big boy sprinters
-stage 11 winner: SCHMID Mauro --> breakaway
-stage 12 winner: VENDRAME Andrea --> breakaway
-stage 13 winner: NIZZOLO Giacomo --> big boy sprinters
-stage 14 winner: FORTUNATO Lorenzo --> breakaway
-stage 15 winner: CAMPENAERTS Victor --> breakaway
-stage 16 winner: BERNAL Egan  --> GC group 
-stage 17 winner: MARTIN Dan  --> GC group 
-stage 18 winner: BETTIOL Alberto --> breakaway
-stage 19 winner: YATES Simon --> GC group 
-stage 20 winner: CARUSO Damiano --> GC group 
-stage 21 winner: GANNA Filippo --> TT
++ stage 1 winner: GANNA Filippo --> TT
++ stage 2 winner: MERLIER Tim --> big boy sprinters
++ stage 3 winner: VAN DER HOORN Taco --> breakaway/punchy sprinters
++ stage 4 winner: DOMBROWSKI Joe --> breakaway
++ stage 5 winner: EWAN Caleb --> big boy sprinters
++ stage 6 winner: MÄDER Gino --> GC group 
++ stage 7 winner: EWAN Caleb --> big boy sprinters
++ stage 8 winner: LAFAY Victor --> breakaway
++ stage 9 winner: BERNAL Egan   --> GC group 
++ stage 10 winner: SAGAN Peter --> big boy sprinters
++ stage 11 winner: SCHMID Mauro --> breakaway
++ stage 12 winner: VENDRAME Andrea --> breakaway
++ stage 13 winner: NIZZOLO Giacomo --> big boy sprinters
++ stage 14 winner: FORTUNATO Lorenzo --> breakaway
++ stage 15 winner: CAMPENAERTS Victor --> breakaway
++ stage 16 winner: BERNAL Egan  --> GC group 
++ stage 17 winner: MARTIN Dan  --> GC group 
++ stage 18 winner: BETTIOL Alberto --> breakaway
++ stage 19 winner: YATES Simon --> GC group 
++ stage 20 winner: CARUSO Damiano --> GC group 
++ stage 21 winner: GANNA Filippo --> TT
 
 **Vuelta 2021**
+
 + stage 1 winner: ROGLIČ Primož --> TT
 + stage 2 winner: PHILIPSEN Jasper  --> big boy sprinters
 + stage 3 winner: TAARAMÄE Rein  --> breakaway
@@ -180,7 +181,7 @@ stage 21 winner: GANNA Filippo --> TT
 4 Gc group
 5 Sprinter
 
-Although there are many breakaway wins, the variance across the sprint field podium is much less. It was a lot harder to predict Magnus Corts performance as opposed to JAKOBSEN Fabio. Both won 3 stages. But Fabio was 2nd on the two sprint stages he didn't win. Magnus Cort was not competitive on days he didn't decide to attack.
+Although there are many breakaway wins, the variance across the sprint field podium is much less. It was much harder to predict Magnus Corts's performance than JAKOBSEN Fabio. Both won 3 stages. But Fabio was 2nd on the two sprint stages. He didn't win. Magnus Cort was not competitive on days he didn't decide to attack.
 
 **TDF 2021**
 
@@ -209,7 +210,7 @@ Although there are many breakaway wins, the variance across the sprint field pod
 Breakaway wins: 8
 Sprinter wins: 7 
 
-Nearly the same number -- there are a lot fewer sprinters than breakaway riders (but sadly you're not allowed to pick many. Here's where picking riders that are not classified as sprinters but can sprint helps. MVDP, Wout, Biniam etc.  )
+Nearly the same number -- there are fewer sprinters than breakaway riders (but sadly, you're not allowed to pick many. Here's where picking riders that are not classified as sprinters but can sprint helps. MVDP, Wout, Biniam etc.  )
 
 The nice thing about a sprint stage is that it is an independent event. This implies if your favourite sprinter blows their tits out on Day 1, it has no repercussions towards their next sprint stage win. This means it is hard to go wrong in picking an excellent or above-average sprinter. **NOTE: the only real risk is that they crash as sprints are chaotic**. Additionally, even if they don't win, they'll place relatively high (see below). 
 
@@ -238,19 +239,20 @@ If your race start list has the following names and there are no abnormal circum
 
 **The way they ride, they win by A LOT**
 
-Roglic crashed out on stage 7 of the tour and left with 537 points whereas Magnus Cort finished 56th on the tour and ended up with 489 points. In fact, Roglic finished in the top K of the finishers on the tour.  That's just when one of them crashes. 
+Roglic crashed out on stage 7 of the tour and left with 537 points, whereas Magnus Cort finished 56th on the tour and ended up with 489 points. Roglic finished in the top K of the finishers on tour.  That's just when one of them crashes. 
 
-Tadej has never crashed out (though probability says then it is imminent) and when Roglic does finish they usually finish with __ points more than the other guys. 
+Tadej has never crashed out (though probability says it is imminent), and when Roglic does finish, they usually end with __ points more than the other guys. 
 
 **VERDICT**: Pick both of them.
-If you like the all-in strategy, you bet that one, if not both of them, will crash or have a terrible day; You're left with all this money to spend elsewhere. We argue that this is not beneficial -- but if winning the overall is the only satisfactory goal, and you're willing to risk coming last in your local league; your best strategy is to drop both of them. 
+If you like the all-in strategy, you bet that one, if not both, will crash or have a terrible day; You're left with all this money to spend elsewhere. We argue that this is not beneficial -- but if winning the overall is the only satisfactory goal, and you're willing to risk coming last in your local league, your best strategy is to drop both of them. 
 
 **The risk:** This is not top-secret information -- they are usually the most expensive riders. If one of them crashes out, your team's chances of winning are likely toast. However, there's not much wisdom in trying to be clever. Even if one of them did crash out, you still have to predict which rider will perform above their abilities to replace them in the ranking. Good riders crash less frequently than average riders -- this is why they are good riders. Expensive riders are often good riders. So on average, you're better off trying not to be too clever. Of course, our friend Tom only maximises your chances of doing well on expectation. If you want deterministic guarantees, we recommend you consult your horoscope instead.
 
 
 ### Pick a unicorn supporter 
-
 You've picked a unicorn, and they cost you your mortgage, pension and left kidney. Save some costs by choosing the cheapest member from their team to win some assist points. You get to pick nine riders -- not all of them will be equally useful. Trying for them all to be similarly valuable is destined to fail. For night there is the day; for Wout, there is Nathan Van Hooydonck.
+
+**EVIDENCE**
 
 
 </div>
