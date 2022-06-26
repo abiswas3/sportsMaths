@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Lecture I</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../blog.css" />
+  <link rel="stylesheet" href="/code/bootstrap.min.css">
+  <script src="/code/jquery.min.js"></script>
+  <script src="/code/bootstrap.min.js"></script>
+
+
+  <ul class="bar">
+    <li class="barli"><a class="active" href="/">Home</a></li>
+    <li class="barli"><a href="/sportsMaths/">Triathlon Mathematics</a></li>  
+    <!-- <li class="barli"><a href="https://abiswas3.github.io/differentialprivacy.github.io">Notes on Differential Privacy</a></li> -->
+  </ul>
+
+  <script src="../code/es5/tex-chtml.js"
+  type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Lecture I</h1>
+</header>
+<div class="container">
+<p><code>Primo lecture series in mathematics: Lecture I- Shannon's Demon</code></p>
+<h1 id="my-friend-tom">My friend Tom</h1>
+<p>My friend Tom is a real man’s man. He fears no man, surfs with
+sharks, descends on a bike without using his hands and goes even as far
+as opening his worldle without vowels. It was only a matter of time,
+before such a man found himself on the roulette tables of the Cambridge
+Stock Exchange(CSE). With a gun in his holster and cowboy boots from
+Essex, he will certainly not be investing in the diversified public the
+market or be tracking index funds. No, not our Tom. He’s here to bet on
+individual volatile stocks - like those pictures of crypto cats. He sees
+things that no one else sees. The question is, what does he really
+see?</p>
+<h2 id="the-setup">The setup</h2>
+<p>The CSE is a very simple market place – it has a single stock whose
+price either doubles or halves everyday with equal probability. At the
+tables of this exchange we have three characters – <em>Sexy Steve</em>,
+<em>Bicyclist Ben</em> and our friend Tom. Tied at the hip since birth,
+these three punters do everything together. All three of them observe
+that on average they stand to gain <span
+class="math inline">\(1.25\)</span> dollars per 1 dollar invested.</p>
+<p>Let <span class="math inline">\(Y\)</span> be the random variable
+depicting how much money I have after one day and <span
+class="math inline">\(X\)</span> denote how much money I start with. We
+have</p>
+<p><span class="math display">\[\begin{align}
+\mathbb{E}[Y] &amp;= \frac{1}{2}\text{ Money double } +
+\frac{1}{2}\text{ half } \\
+&amp;= X + \frac{1}{4}X \\
+&amp;= 1.25X
+\end{align}\]</span></p>
+<p>Setting <span class="math inline">\(X=1\)</span> we see we get <span
+class="math inline">\(1.25\)</span> dollars per <span
+class="math inline">\(1\)</span> dollar invested on average.</p>
+<h2 id="sexy-steve-and-bicylist-ben-have-a-go">Sexy Steve and Bicylist
+Ben have a go</h2>
+<p><em>Sexy Steve</em>, known in the rougher parts of Cambridgeshire as
+a ladies man decides to invest first. <em>Deceitful Doug</em> tells him
+about the benefits of compound interest, and observing that he makes a
+profit on average he decides to let his <span
+class="math inline">\(1\)</span> dollar sit for a long time.</p>
+<p><em>Bicyclist Ben</em> has spent years in the professional cycling
+peloton splitting his valuable time between recreational drug users and
+miserable sports dopers. He knows how to spot bad advice from miles out.
+He knows to get compound interest to work, the geometric expectation of
+the random variable must be positive. Above we only have the arithmetic
+expectation to be positive. More on what those fancy words mean later,
+but this is what Ben does. Regardless of the outcome of the day, he
+cashes out everyday, and puts a fresh <span
+class="math inline">\(1\)</span> dollar into the pot. “Madness!” shouts
+<em>Sexy Steve</em>, “haven’t you heard of compound interest??”</p>
+<p>Below we show a uniform sub sample of all the possible outcomes for
+Steve and Ben. A green line indicates that a profit has been made. The
+dreaded red indicates those money-grabbing sleazebags at CSE have
+won.</p>
+<p>Despite having a net positive daily expectation; <em>Sexy steve</em>
+either makes it big or goes bust with equal probability. He did get all
+the benefits of compound interest with all drawbacks of losing money
+equally equally. With this strategy, Stephen is playing roulette.</p>
+<p><img src="pngs/steve.png" width=50% height=50%></img></p>
+<p>Benjamin on the other hand, almost never loses any money on the long
+run. The shrewd bike rider avoided all the pot holes and crashes only to
+get linear growth in pay. While Benjamin grew richer almost certainly,
+he only gained enough riches to afford himself 1 day at the go karts
+after days of saving – but taking inflation into account, poor old Ben
+did not even get his day at the races.</p>
+<p><img src="pngs/ben.png" width=50% height=50%></img></p>
+<h2 id="re-balance-and-diversify">Re-balance and diversify</h2>
+<p>Tom opts for the simple strategy which he borrowed from Claude
+Shannon when they met in the gambling tables of Las Vegas in the early
+50s. He takes his 1 dollar and invests half of it. The rest he saves. At
+the end of the day, he adds his earnings and then invests half; and
+saves the other half. He repeats this process every-day. Can Tom be
+exponentially rich without any risks?</p>
+<p><img src="pngs/tom.png" width=50% height=50%></img></p>
+<p>Oh yes he can :-). His chances of going into the red are
+significantly lower, while his potential to make exponential money
+remains the same.</p>
+<h3 id="why-does-the-arithmetic-mean-not-work">Why does the arithmetic
+mean not work</h3>
+<p>We all saw that Steve stood to make 1.25 for every dollar he spent.
+Then on average why does he go bust so often. One way to think about it
+is that averages are not robust to outliers. In event Steve tossed HEADS
+for <span class="math inline">\(N\)</span> rounds, he makes an enormous
+sum of money. This enormous sum would bias the final average of all the
+bankrolls that could be achieved, despite it being extremely unlikely
+that he tosses <span class="math inline">\(N\)</span> coins in a row.
+Due to the nature of compound interest or exponential growth, there is
+always a chance to make mega bucks. However, this mega buck figure
+biases the average away from what is most likely to happen. The most
+likely event is that steve tosses <span
+class="math inline">\(\frac{N}{2}\)</span> HEADS and <span
+class="math inline">\(\frac{N}{2}\)</span> TAILS. The geometric mean is
+the amount of money steve stands to make in that case. Which is a little
+bit over 0.</p>
+<h3 id="what-just-happened">What just happened ?</h3>
+<p>Well if you talk to a financial expert they might throw out words
+like Kelly’s principle or volatility drag or Parrando paradox or
+variance reduction. These are all accurate summarisations of the
+phenomenon described above. To be fair, I never did read the original
+paper by Kelly nor do I know what Parrando paradox or volatility drag
+means. Luckily we do not to know the consequences of such words to
+understand simple probability or compound interest. Before outlining why
+Tom’s strategy is superior in the long run let me describe a simpler
+game instead.</p>
+<ul>
+<li>The game consists of <span class="math inline">\(N\)</span>
+rounds.</li>
+<li>The house tosses a coin with probability of HEADS <span
+class="math inline">\(p\)</span></li>
+<li>If HEADS you win your bet i.e. the house gives you <span
+class="math inline">\(W\)</span> dollars for every dollar you bet.</li>
+<li>If TAILS you lose your bet i.e. the house takes your money.</li>
+</ul>
+<p>You start with a bankroll of <span class="math inline">\(B\)</span>.
+The question is what fraction <span class="math inline">\(f\)</span> of
+your bankroll should you bet? All of it <span
+class="math inline">\(f=1\)</span>? Half of it <span
+class="math inline">\(f=\frac{1}{2}\)</span>? None of it <span
+class="math inline">\(f=0\)</span>? Let’s look at an example:</p>
+<ul>
+<li>In the first round you bet <span class="math inline">\(fB\)</span>,
+the house flips a coin it turns out HEADS. Your new bankroll is</li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+B_1 &amp;= B + WfB \\
+&amp;= B(1 + fW)
+\end{align*}\]</span></p>
+<ul>
+<li>In the second round you bet <span class="math inline">\(fB\)</span>
+again, the house flips a coin it turns out HEADS. Your new bankroll
+is</li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+B_2 &amp;= B_1 + WfB_1 \\
+&amp;= B(1 + fW) + WfB(1 + fW)\\
+&amp;= B(1 + fW)^2
+\end{align*}\]</span></p>
+<ul>
+<li>In the third round you bet <span class="math inline">\(fB\)</span>
+again, the house flips a coin it turns out TAILS. Your new bankroll
+is</li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+B_3 &amp;= B_2 - WfB_2 \\
+&amp; = B_2(1 - fW) \\
+&amp; = B(1 + fW)^2(1 - fW)
+\end{align*}\]</span></p>
+<p>Say the game goes on like this for <span
+class="math inline">\(N\)</span> rounds, your final bank roll is</p>
+<p><span class="math display">\[\begin{align*}
+B_N &amp;=  B(1 + fW)^h(1 - fW)^t\\
+\end{align*}\]</span></p>
+<p>where <span class="math inline">\(h\)</span> denotes the number of
+HEADS and <span class="math inline">\(t\)</span> denotes the number of
+TAILS in <span class="math inline">\(N\)</span> coin tosses. Your
+relative gain in wealth is simply the ratio of what you have to what you
+started with.</p>
+<p><span class="math display">\[\begin{align*}
+\frac{B_N}{B} &amp;=  (1 + fW)^h(1 - fW)^t\\
+&amp;= G_N
+\end{align*}\]</span></p>
+<p>Also note that your bankroll is increasing exponentially as opposed
+to linearly (thus you’re getting the benefits of compound interest). The
+game was to figure out how much of your wealth you should have bet
+i.e. what is the best value for <span class="math inline">\(f\)</span>.
+Well the best value for <span class="math inline">\(f\)</span> is the
+value that maximises your gain <span class="math inline">\(G_N\)</span>
+after <span class="math inline">\(N\)</span> rounds – on average (as
+this is after all a random game). Remember we said something about
+geometric means before? This is where we define the intuition behind
+using the geometric mean. We have already described, why not to use the
+arithmetic mean.</p>
+<p>We toss a coin <span class="math inline">\(N\)</span> times with a
+probability of showing HEADS being <span
+class="math inline">\(p\)</span>. Thus on average we expect <span
+class="math inline">\(Np\)</span> HEADS and <span
+class="math inline">\(N(1-p)\)</span> TAILS. The geometric mean of the
+random variable <span class="math inline">\(G_N\)</span> is the gain we
+would incur if that event occurred i.e. we had <span
+class="math inline">\(Np\)</span> HEADS and <span
+class="math inline">\(N(1-p)\)</span> TAILS. Thus when you have
+exponential growth or compound interest, the geometric mean describes
+the average case outcome. Shown below is the formal derivation of this
+statement. You may ignore it, if calculus is not your cup of tea.</p>
+<p>The geometric mean of k values <span class="math inline">\(x_1, x_2
+\dots x_k\)</span> is simply <span class="math inline">\((x_1\times
+x_2\dots x_k)^{\frac{1}{k}}\)</span>. The expectation the geometric mean
+of the gain as <span class="math inline">\(N\)</span> becomes very large
+i.e. it tends to infinity</p>
+<p><span class="math display">\[\begin{align*}
+\mathbb{E}_{\text{geometric}}[G_N] &amp;=  \lim_{N \rightarrow \infty}(1
++ fW)^{\frac{h}{N}}(1 - fW)^{\frac{t}{N}}\\
+&amp;= (1 + fW)^{p}(1 - fW)^{1-p}\\
+&amp;= G
+\end{align*}\]</span></p>
+<p>You can take my word for the last line of the equation as it comes
+from the <a href="https://www.wikiwand.com/en/Law_of_large_numbers">law
+of large numbers</a>. What the above set of equations is saying, is that
+on average in every round of the game you’ll make a gain of <span
+class="math inline">\(G\)</span> - the process has an expected geometric
+mean of <span class="math inline">\(G\)</span>. In that case your bank
+roll would be</p>
+<p><span class="math display">\[\begin{align*}
+B_N &amp;=  BG^N\\
+\end{align*}\]</span></p>
+<p>which is exactly bank roll you’d be left with if you had lost exactly
+<span class="math inline">\(N(1-p)\)</span> games and won <span
+class="math inline">\(Np\)</span> games – which is the average case
+behavior. Now to maximise this gain, you can use a bit of calculus, take
+the derivative of <span class="math inline">\(G\)</span> with respect to
+<span class="math inline">\(f\)</span> and set both sides to 0 and solve
+for <span class="math inline">\(f\)</span>. If you trust that I did this
+properly, the optimal <span class="math inline">\(f\)</span> turns out
+to be <span class="math inline">\(p - \frac{1-p}{W}\)</span>.</p>
+<p>Now if you google what <a
+href="https://www.wikiwand.com/en/Kelly_criterion">Kelly Criterion</a>
+you get the exact same formula. As a side note, if we had taken the log
+of <span class="math inline">\(G_N\)</span> and done a simple average
+(arithmetic mean), we would have reached the same outcome.</p>
+<div class="important">
+So if the word geometric mean confuses you but you know what a simple
+average is: The log of the geometric mean of a random variable equals
+the arithmetic mean of the log of that variable
+</div>
+<p>In his <a
+href="https://www.princeton.edu/~wbialek/rome/refs/kelly_56.pdf">economics
+paper</a>, Kelly argues these gambling strategies are related to human
+utility and claims human utility preferences are log shaped. Thus he is
+simply maximising the utility by maximising the geometric mean.</p>
+<p>Here we see why arithmetic mean is so deceiving</p>
+<p>Under the Kelly criterion, after 10 rounds (assuming <span
+class="math inline">\(B = 1\)</span>)</p>
+<ul>
+<li>Expected (mean) final wealth = 3.25</li>
+<li>Median final wealth = 1.80</li>
+</ul>
+<p>By comparison, recall that if we bet all the money <span
+class="math inline">\((f = 1)\)</span>. After 10 rounds (assuming B =
+1)</p>
+<ul>
+<li>Expected (mean) final wealth = 57.67</li>
+<li>Median final wealth = 0</li>
+</ul>
+<h3 id="back-to-our-problem-of-investing">Back to our problem of
+investing</h3>
+<p>Now our problem is only slightly more complicated than the one
+described above.</p>
+<ul>
+<li>The game consists of <span class="math inline">\(N\)</span>
+rounds.</li>
+<li>The house tosses a coin with probability of HEADS <span
+class="math inline">\(p\)</span></li>
+<li>If HEADS you win your bet i.e. the house gives you <span
+class="math inline">\(W\)</span> dollars for every dollar you bet.</li>
+<li><del>
+If TAILS you lose your bet i.e. the house takes your money.
+</del>
+<strong>If TAILS you lose <span class="math inline">\(L\)</span> dollars
+for every dollar in the market.</strong></li>
+</ul>
+<p>Let’s write down the equations like that again. Assume the coin
+tosses are HEADS, TAILS, HEADS.</p>
+<p><span class="math display">\[\begin{align*}
+B_1 &amp;= B + WfB_1 \\
+B_2 &amp;= B_1 - LfB_1 \\
+B_3 &amp;= B_2 + WfB_2 \\
+\mathbb{E}_{\text{geometric}}[B_N] &amp; = B(1 - fW)^{h}(1 - fL)^{t} \\
+\end{align*}\]</span></p>
+<p>Once again as the bankrolling is compounding, we use the geometric
+mean. Do the calculus, and now the Kelly Criterion for maximising the
+geometric mean is given by <span class="math inline">\(f=\frac{p}{L} -
+\frac{q}{W}\)</span>. Remember, our money doubled i.e. <span
+class="math inline">\(W=1\)</span>. Also our money halved, so <span
+class="math inline">\(L=0.5\)</span>. We have <span
+class="math inline">\(p=q=0.5\)</span>, plugging them in, we get <span
+class="math inline">\(f=0.5\)</span>. Thus Tom’s strategy of investing
+only half his money at every round is optimal if he is looking to
+maximise the geometric mean of his relative gain.</p>
+<h2 id="sexy-steve-disagrees">Sexy Steve disagrees</h2>
+<p>Sexy Steve stands up and says - BULLSHIT! I’m better off investing
+all my money. I could have become a mega billionaire. Is he wrong? It
+might appear from the analysis above that he is wrong but he actually
+isn’t. Nowhere in the analysis so far, have we considered our players
+tolerance to risk or their relative utilities. It maybe that making a
+little more money on average adds no value to Steve’s life. He’d rather
+go bust; after all he’s only spending a dollar. Finally that brings us
+to our final lesson - that neither Ben, Tom or Steve was wrong: They
+just bet different strategies based on their risk tolerance. The famous
+saying is as follows:</p>
+<p><code>If I maximize the expected square-root of wealth and you maximize expected log of wealth, then after 10 years you will be richer 90% of the time. But so what, because I will be much richer the remaining 10% of the time. After 20 years, you will be richer 99% of the time, but I will be fantastically richer the remaining 1% of the time.</code></p>
+<h2 id="one-last-bit">One last bit</h2>
+<p>Real markets do not swing like a random walk. They follow
+unpredictable trends that no one can actually predict. Sadly I do not
+know how to solve that problem. As far as I know, there is no secret to
+getting wealthy beyond already being wealthy. In summary, there is no
+hope for our friend Tom, but at least he won’t pay a hedge fund scam
+that claims they can beat the market</p>
+</div>
+<div id="footer">
+   All models are wrong, but some are useful
+</div>
+</body>
+</html>

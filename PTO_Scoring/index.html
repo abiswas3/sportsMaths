@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Collins cup score</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="../blog.css" />
+  <link rel="stylesheet" href="/code/bootstrap.min.css">
+  <script src="/code/jquery.min.js"></script>
+  <script src="/code/bootstrap.min.js"></script>
+
+
+  <ul class="bar">
+    <li class="barli"><a class="active" href="/">Home</a></li>
+    <li class="barli"><a href="/sportsMaths/">Triathlon Mathematics</a></li>  
+    <!-- <li class="barli"><a href="https://abiswas3.github.io/differentialprivacy.github.io">Notes on Differential Privacy</a></li> -->
+  </ul>
+
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Collins cup score</h1>
+</header>
+<section id="how-to-collins-cup" class="container">
+<h1>How to Collins Cup</h1>
+<p>The extract below is quoted from the <a
+href="https://stats.protriathletes.org/points">PTO Website</a>. A more
+detailed explanation can be found <a
+href="https://protriathletes.org/the-pto-world-rankings-explained/">here</a></p>
+<p><code>Until the completion of the Collins Cup on August 28, the PTO World Rankings shall be determined by averaging the World Ranking Points earned by an athlete from the highest two of (i) any races completed between December 1, 2020 and before August 9, 2021 and (ii) the average of the Athlete’s best three races for from December 1, 2018 and December 31, 2020.</code></p>
+<p>An example worksheet provided by the <a
+href="https://content.protriathletes.org/content/Special-Collins-Cup-Qualification-Protocal-APRIL-FINAL.pdf">PTO</a>.
+Put simply, there are two time frames <span
+class="math inline">\(R1\)</span> which considers recent races and <span
+class="math inline">\(R2\)</span> which considers old races. Visually
+the time frame looks like this:</p>
+<p><img src="pngs/timeframe.png" width="90%"></img></p>
+<p>Now whover came up with these time frames must have not noticed that
+they have a common intersection. Now if someone races in that
+intersection, does that race go to <span
+class="math inline">\(R2\)</span> bucket or the <span
+class="math inline">\(R1\)</span> bucket. Depending on which bucket it
+goes to, the final score changes. See example below.</p>
+<h2 id="when-you-race-in-the-red-box">When you race in the red box</h2>
+<p>Meet George Goodwin. (Disclaimer: I do not know Mr Goodwin, Mr
+Goodwin certainly does not know me and he did not ask me to this but his
+profile fits the confusion)</p>
+<p>George raced an event called Challenge Daytona on December 6th, 2020.
+That is in the red zone. How should we use this race to calculate his
+score?</p>
+<p><img src="pngs/george_goodwin.png" width="90%"></img></p>
+<h3 id="assuming-r2">Assuming R2</h3>
+<p>If we assume that this race is R2, then the picture above looks a
+little this.</p>
+<p><img src="pngs/wrong_timeframe.png" width="90%"></img></p>
+<p>The average of his best 3 results in R2 is <span
+class="math inline">\((96.34+ 89.88 + 88.19)/3 = 91.47\)</span></p>
+<p>The collins cup score is now <span class="math inline">\((91.47 +
+62.11)/2 = 76.79\)</span></p>
+<h2 id="assuming-r1">Assuming R1</h2>
+<p>If we assume that this race is R1, then the picture above looks a
+little this.</p>
+<p><img src="pngs/right_time_frame.png" width="90%"></img></p>
+<p>The average of his best 3 results in R2 is <span
+class="math inline">\((89.88 + 88.19 + 77.91)/3 = 85.32\)</span></p>
+<p>The collins cup score is now <span class="math inline">\((85.32 +
+96.34)/2 = 90.83\)</span></p>
+<p>The website reports the score as</p>
+<p><img src="pngs/george_score.png" width="90%"></img></p>
+<p>Thus it would seem the last figure is the accurate model for dividing
+time and not the one reported in the instructions.</p>
+<p>Thus it would seem that the actual dates are</p>
+<p><code>Until the completion of the Collins Cup on August 28, the PTO World Rankings shall be determined by averaging the World Ranking Points earned by an athlete from the highest two of (i) any races completed between December 1, 2020 and before August 9, 2021 and (ii) the average of the Athlete’s best three races for from December 1, 2018 and December 1 (not 31), 2020.</code></p>
+</section>
+<div id="footer">
+   All models are wrong, but some are useful
+</div>
+</body>
+</html>

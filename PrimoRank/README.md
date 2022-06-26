@@ -59,7 +59,7 @@ The above model might appear simplistic. To justify that it is a reasonable mode
 4. [Optimising search engine results ranking](https://www.microsoft.com/en-us/research/publication/semi-supervised-learning-to-rank-with-preference-regularization/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F154323%2Fszummeryilmaz-semisupervised-ranking-cikm11.pdf)
 5. [Managing your financial portfolio](https://journals.sagepub.com/doi/full/10.1177/2053168019832089)
 
-Another way to view the above statement is that the outcome of a race by between $i$ and $j$, is decided by flipping a coin, where the probability of seeing heads is $\frac{\gamma_i}{\gamma_i + \gamma_j}$. If we see heads, we declare that $i$ won, and declare $j$ won otherwise. As an illustration with real numbers, if the author raced in a race with Lucy Charles Barclay, we would expect the estimated values to be something like $\gamma_{\text{Lucy}} = 0.9999$ and $\gamma_{\text{Author}} = 0.0001$. If we kept tossing this coin, 9999 times out of 10,000 Lucy would beat me.
+Another way to view the above statement is that the outcome of a race by between $i$ and $j$, is decided by flipping a coin, where the probability of seeing HEADS is $\frac{\gamma_i}{\gamma_i + \gamma_j}$. If we see HEADS, we declare that $i$ won, and declare $j$ won otherwise. As an illustration with real numbers, if the author raced in a race with Lucy Charles Barclay, we would expect the estimated values to be something like $\gamma_{\text{Lucy}} = 0.9999$ and $\gamma_{\text{Author}} = 0.0001$. If we kept tossing this coin, 9999 times out of 10,000 Lucy would beat me.
 
 ## Estimating Talent
 
