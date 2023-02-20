@@ -3,7 +3,7 @@
 <!-- **DISCLAIMER:** All analysis is done using long course races. We do not expect similar trends to hold for short course. In the off chance they do, that is purely luck! Additionally all analysis is conducted using data from Women's pro races. In our experience, the Men's races follow similar trends. It has been pointed out by experts that 70.3 and IM should not be compared but since the PTO does compare the two of them on the same scale -- we are left with no choice but to compare them on the same scale. -->
 
 <div class="important"> 
-	
+
 **<u>Disclaimer</u>**: I am not an athlete nor can I claim to be a
 hardcore triathlon fan. I am not directly affected by the outcome of
 different ranking strategies, financially or spiritually. My interest
@@ -15,7 +15,7 @@ of such behaviour is a personal research interest. Note as these
 systems represent rank actual people with feelings and were developed
 by a different set of humans (also with feelings), I have tried to
 remain as neutral as possible in my discourse. In the off chance
-someone is offended, I apologise.  </div>
+someone is offended, I apologise.  
 
 </div>
 

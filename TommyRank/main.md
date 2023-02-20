@@ -12,7 +12,7 @@ of such behaviour is a personal research interest. Note as these
 systems represent rank actual people with feelings and were developed
 by a different set of humans (also with feelings), I have tried to
 remain as neutral as possible in my discourse. In the off chance
-someone is offended, I apologise.  </div>
+someone is offended, I apologise. 
 
 </div>
 This document can be viewed as an example of an educated guess at a solution (but not a principled one)
