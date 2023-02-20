@@ -2,8 +2,18 @@
 
 <div class="important"> 
 
-**<u>One very important disclaimer</u>**: I am not an athlete nor can I claim to be a hardcore fan. I am not affected by the outcome of different ranking strategies, financially or spiritually. If I use an athlete as an example, I do not actually know the athlete -- I am going just by the numbers. I have tried to remain as neutral as possible, but in the off chance someone is offended, I apologise. The same goes for the original creators of PTO ranking. I do not think I could write this post without them downloading all race results and putting it one place for me to download. It's harder to build something from scratch than to improve one tiny piece of it. The good news is, I have no followers on any social media platform, thus this post will never go viral. Your reputation is safe. I also make a lot mistakes in spelling, grammar and code and sometimes prove things incorrectly-- so do not trust everything I say. I believe that the people affected in triathlon i.e. those with skin in the game should really decide what behaviour should be rewarded in triathlon. 
-
+**<u>Disclaimer</u>**: I am not an athlete nor can I claim to be a
+hardcore triathlon fan. I am not directly affected by the outcome of
+different ranking strategies, financially or spiritually. My interest
+in the problem is purely from an algorithmic game theory
+standpoint. Ranking strategies often lead to pathological behaviours
+([see](https://youtu.be/TM_QFmQU_VA?t=494) for an
+example). Understanding and analysing the mathematical underpinnings
+of such behaviour is a personal research interest. Note as these
+systems represent rank actual people with feelings and were developed
+by a different set of humans (also with feelings), I have tried to
+remain as neutral as possible in my discourse. In the off chance
+someone is offended, I apologise.  </div>
 </div>
 
 
