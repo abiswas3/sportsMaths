@@ -1,3 +1,8 @@
+---
+title: New Rankings
+
+...
+
 <div class="container">
 <div class="important"> 
 
@@ -137,59 +142,54 @@ which goes over the arithmetic.
 
 ## The weights do not matter
 
-As previously stated, although the final score is a mixture of three
-different features, the three features are highly correlated. This
-implies that only one feature really matters -- strength of field.
+Although the final score is claimed to be a mixture of three different features (position, strength of field and time); this is merely an illusion. The three features are highly correlated, and as a result only one feature really matters -- strength of field. Let $T$ represent the points awarded based on the finish position given the race tier. Let $SOF$ represent the pre-determined SOF for a race.
 
-To see why Feature 1 (Tier of a race) and Feature 2 strength of field
-are correlated is easy. The tiering of a race is based on prize money
-and prestige, and thus the best athletes end up racing those races. 
 
-The figure below plots the tier on the Y-axis and the SOF on the
+![The figure above plots the tier on the Y-axis and the SOF on the
 X-axis. It is easy to see that the two are positively correlated. For
 a fixed tier, one might observe that the SOF has enormous variance (we
 will get to this later) but if you do well in a high tiered race, you
-will almost always do well in the SOF category as well.
+will almost always do well in the SOF category as well. This makes sense -- The tiering of a race is based on prize money and prestige, and thus the best athletes end up wanting to participate. ](pngs/plot1.png)
 
-![]()
 
-Feature 3 is supposed to reward an athlete based on the difference
+Let $T$ represent the position based tier score for an athlete and $SOF$ represent the strength of field for the given race. The timing feature is supposed to reward an athlete based on the difference
 between their time and the time of the top finishers. Let $\Delta$
-represent this time difference[^3]. The final score is calculated as
-$0.3(B + \Delta)$, where $B = (Tier + SOF)/2$ where $Tier$ is the tier
-points awarded to the winner of the race. Note $B$ has nothing to do
-with your acutal performance. $B$ is determined even before the race
-starts.
+represent this time difference[^3]. The score for finishing really fast is determined as
+$0.3(B + \Delta)$, where $B = (T_1 + SOF)/2$, where $T_1$ is the tier score of the winner. **Note $B$ has nothing to do with your actual performance. $B$ is determined even before the race starts.**
 
 Thus the final score $S$
 
 \begin{align}
-S &= 0.4\times Tier + 0.3\times SOF + 0.3(B + \Delta) \\
-&= 0.4\times Tier + 0.3\times SOF + 0.3((Tier + SOF)/2 + \Delta) \\
-&= 0.4\times Tier + 0.3\times SOF + 0.15\times Tier + 0.15\times SOF + 0.3\times\Delta \\
-&= 0.55\times Tier + 0.45\times SOF + 0.3\times\Delta
+S &= 0.4\times T + 0.3\times SOF + 0.3(B + \Delta) \\
+&= 0.4\times T + 0.3\times SOF + 0.3((T_1 + SOF)/2 + \Delta) \\
+&= 0.4\times T + 0.3\times SOF + 0.15\times T_1 + 0.15\times SOF + 0.3\times\Delta \\
+&= 0.4\times T + 0.3\times\Delta + (0.45\times SOF + 0.15 T_1)
 \end{align}
 
 [^3]: More specifically, $\Delta$ is the fraction the athlete was off from the averagae performance of the top 5 athletes times 6.
 
-Based on the figure above, we could just replace Tier with SOF and not
-much would change. Now we know that for high tier/sof races the drop
-off rate is much kinder to athletes that finish later. As mentioned
-earlier, finishing 12th and winning can be the same.
+We already know that $T_1$ and $SOF$ are high for the big races. Even $T$ is biased towards the big races. So if you're an upcoming new athlete participating in a local race because you cannot afford to go to Europe all the time, then $\Delta$ is the only lever which gives you any control over your final score. So how much can you squeeze out of $\Delta$? Observe the plot below which shows $\Delta$ (X-axis) as a function
+of race finish position (Y-axis) for different tiered races [^6]
 
-Going back toour imaginary character Bob -- it is a complete waste of
-time for Bob to do any races that are not the big PTO races or
-championship races. The only feature that is not affected[^4] by the
-SOF factor of a race, contributes to about 20\% of your score and that
-. Observe the plot below which shows $\Delta$ (X-axis) as a function
-of race finish position (Y-axis).
+[^6]: PTO canadian open is not included in the results as the website does not report SOF for the women's field. As I have a generic webscraper that pulls this data from the PTO website, I could not be arsed to manually fix this.
 
-[^4] : Directly affected. It is incredibly likely that high SOF races
-will create large negative gaps in delta for slightly weaker
-athletes. But it is not an explici feature of the model.
+![The biggest difference an athlete made by virtue of finishing further ahead of second place is about 10pts. An that 10pts is a rare event. On average the races are tight and the gains are few and far between. So most of the time, an athlete makes about 2-3 pts by winning a race outright. When you weigh this against the other features, it has negligible contribution in ranking.](pngs/plot2.png)
 
-Note that $\Delta$ really accoutns for about
-$22\%$ of your score. That seems reasonable right? Most of the score
+## The Times, They Are A Changin
+
+As mentioned in the disclaimer, the goal of this document was to really understand the incentives of the new ranking system. First thing to note is that the way triathlon dealt with the problem of comparing performances across different courses is to do away with the problem in the first place. The incentives are clear -- "to be the best, athletes must race the best". If everyone showed up for the races, ranking athletes is a trivial from a mathematical perspective. If you're an established pro athlete this seems to be the fairest possible system. None of that $AIT$ malarkey and none of that convex optimisation [ELO](https://abiswas3.github.io/sportsMaths/PrimoRank/) scores either. Simple and Straight -- that's what everyone wanted.
+
+In fact this is not even the first time such a model has been used in pro sport. Tennis[^5] and Golf rankings are very similar in essence. Win Wimbledon and all the glory is yours. There is one issue however. The economics of triathlon and tennis are not the same. Your neighbour, local Bob, does not step out onto the grass courts of Wimbledon with Novak Djokovic. However, they do pay an exorbitant amount of money to ride up and down the high streets of Bolton with Lucy Charles Barclay. By putting all the ranking eggs in the PTO and championship races, your local Bob might not enjoy as much pro time. As more cash flows into the system, it seems like Triathlon is headed towards more mainstream sports, where the pro's live a distinctive different life from the amateurs. I guess this is necessary for any sport to grow economically ?!? I cannot say, I am not an economist. I'm also not sure how this affects an upcoming pro who is low on funds or athletes that are not from the EU/USA. There is definitively less value in racing smaller races now. [Journalists have also noted](https://twitter.com/Timheming/status/1627706043579916288?s=20) that the sports focus is really on the top athletes and making sure they are fairly compensated.
+
+All in all, I do not have an opinion on the social implications of such changes. The mathematical problem is no longer so interesting. All things change, and triathlon seems to be in transition.
+
+[^5]: If I remember correctly, this was an intentional goal for the PTO. To make triathlon more like the ATP or WTA circuit.
+
+## Other Miscellaneous Observations
+
++ There are few other things that stood out. The choice of top 5 for SOF seemed rather arbitrary. It is perhaps why there is such a high variance in the strength of field even across the same tiers of races. Perhaps a smoothing function or something more robust to outliers like median would have made more sense. My guess is 5 seemed like a good fair number and was picked heuristically.
+
++ Similarly, the calculation for $\Delta$ seems ad hoc. There are cases where the Base time is calculated using just the winners time. In that case the winner by definition cannot get any positive $\Delta$ points and everyone else gets negative points. However, as the final rankings are a function of top 3 performances, giving others negative points does not help an athlete. Those athletes might as well drop this performance and do well somewhere else. However the athlete that indeed won the race got nothing from winning the race. In the cases where $\Delta$ is calculated from a base line time of top 3-5 times, this issue is still prevalent as the winning athletes time offsets the baseline. As shown in the plots above, it could be why it makes so little difference to an athletes final score.
 
 
 

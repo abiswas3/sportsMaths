@@ -4,19 +4,14 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>main</title>
+  <title>New Rankings</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: 1;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
   </style>
   <link rel="stylesheet" href="../blog.css" />
   <link rel="stylesheet" href="../code/bootstrap.min.css">
@@ -36,6 +31,9 @@
   <![endif]-->
 </head>
 <body>
+<header id="title-block-header">
+<h1 class="title">New Rankings</h1>
+</header>
 <div class="container">
 <div class="important">
 <strong><u>Disclaimer</u></strong>: I am not an athlete nor can I claim
@@ -163,54 +161,157 @@ calcuated</figcaption>
 <!-- First finisher $= 3:44:40$ -->
 <!-- They are faster than baseline should be  $\frac{| Base - finish|}{Base}$ but instead $\frac{| Base - finish|}{finish}= 6.06\%$. The error is harmless as everything is linear, and it shouldn't matter that much :-)   -->
 <h2 id="the-weights-do-not-matter">The weights do not matter</h2>
-<p>As previously stated, although the final score is a mixture of three
-different features, the three features are highly correlated. This
-implies that only one feature really matters – strength of field.</p>
-<p>To see why Feature 1 (Tier of a race) and Feature 2 strength of field
-are correlated is easy. The tiering of a race is based on prize money
-and prestige, and thus the best athletes end up racing those races.</p>
-<p>The figure below plots the tier on the Y-axis and the SOF on the
-X-axis. It is easy to see that the two are positively correlated. For a
-fixed tier, one might observe that the SOF has enormous variance (we
-will get to this later) but if you do well in a high tiered race, you
-will almost always do well in the SOF category as well.</p>
-<p><img src="" /></p>
-<p>Feature 3 is supposed to reward an athlete based on the difference
-between their time and the time of the top finishers. Let <span
-class="math inline">\(\Delta\)</span> represent this time difference<a
-href="#fn3" class="footnote-ref" id="fnref3"
-role="doc-noteref"><sup>3</sup></a>. The final score is calculated as
-<span class="math inline">\(0.3(B + \Delta)\)</span>, where <span
-class="math inline">\(B = (Tier + SOF)/2\)</span> where <span
-class="math inline">\(Tier\)</span> is the tier points awarded to the
-winner of the race. Note <span class="math inline">\(B\)</span> has
-nothing to do with your acutal performance. <span
+<p>Although the final score is claimed to be a mixture of three
+different features (position, strength of field and time); this is
+merely an illusion. The three features are highly correlated, and as a
+result only one feature really matters – strength of field. Let <span
+class="math inline">\(T\)</span> represent the points awarded based on
+the finish position given the race tier. Let <span
+class="math inline">\(SOF\)</span> represent the pre-determined SOF for
+a race.</p>
+<figure>
+<img src="pngs/plot1.png"
+alt="The figure above plots the tier on the Y-axis and the SOF on the X-axis. It is easy to see that the two are positively correlated. For a fixed tier, one might observe that the SOF has enormous variance (we will get to this later) but if you do well in a high tiered race, you will almost always do well in the SOF category as well. This makes sense – The tiering of a race is based on prize money and prestige, and thus the best athletes end up wanting to participate." />
+<figcaption aria-hidden="true">The figure above plots the tier on the
+Y-axis and the SOF on the X-axis. It is easy to see that the two are
+positively correlated. For a fixed tier, one might observe that the SOF
+has enormous variance (we will get to this later) but if you do well in
+a high tiered race, you will almost always do well in the SOF category
+as well. This makes sense – The tiering of a race is based on prize
+money and prestige, and thus the best athletes end up wanting to
+participate.</figcaption>
+</figure>
+<p>Let <span class="math inline">\(T\)</span> represent the position
+based tier score for an athlete and <span
+class="math inline">\(SOF\)</span> represent the strength of field for
+the given race. The timing feature is supposed to reward an athlete
+based on the difference between their time and the time of the top
+finishers. Let <span class="math inline">\(\Delta\)</span> represent
+this time difference<a href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a>. The score for finishing really fast
+is determined as <span class="math inline">\(0.3(B + \Delta)\)</span>,
+where <span class="math inline">\(B = (T_1 + SOF)/2\)</span>, where
+<span class="math inline">\(T_1\)</span> is the tier score of the
+winner. <strong>Note <span class="math inline">\(B\)</span> has nothing
+to do with your actual performance. <span
 class="math inline">\(B\)</span> is determined even before the race
-starts.</p>
+starts.</strong></p>
 <p>Thus the final score <span class="math inline">\(S\)</span></p>
 <p><span class="math display">\[\begin{align}
-S &amp;= 0.4\times Tier + 0.3\times SOF + 0.3(B + \Delta) \\
-&amp;= 0.4\times Tier + 0.3\times SOF + 0.3((Tier + SOF)/2 + \Delta) \\
-&amp;= 0.4\times Tier + 0.3\times SOF + 0.15\times Tier + 0.15\times SOF
-+ 0.3\times\Delta \\
-&amp;= 0.55\times Tier + 0.45\times SOF + 0.3\times\Delta
+S &amp;= 0.4\times T + 0.3\times SOF + 0.3(B + \Delta) \\
+&amp;= 0.4\times T + 0.3\times SOF + 0.3((T_1 + SOF)/2 + \Delta) \\
+&amp;= 0.4\times T + 0.3\times SOF + 0.15\times T_1 + 0.15\times SOF +
+0.3\times\Delta \\
+&amp;= 0.4\times T + 0.3\times\Delta + (0.45\times SOF + 0.15 T_1)
 \end{align}\]</span></p>
-<p>However, if you check for how it is calculated,</p>
+<p>We already know that <span class="math inline">\(T_1\)</span> and
+<span class="math inline">\(SOF\)</span> are high for the big races.
+Even <span class="math inline">\(T\)</span> is biased towards the big
+races. So if you’re an upcoming new athlete participating in a local
+race because you cannot afford to go to Europe all the time, then <span
+class="math inline">\(\Delta\)</span> is the only lever which gives you
+any control over your final score. So how much can you squeeze out of
+<span class="math inline">\(\Delta\)</span>? Observe the plot below
+which shows <span class="math inline">\(\Delta\)</span> (X-axis) as a
+function of race finish position (Y-axis) for different tiered races <a
+href="#fn4" class="footnote-ref" id="fnref4"
+role="doc-noteref"><sup>4</sup></a></p>
+<figure>
+<img src="pngs/plot2.png"
+alt="The biggest difference an athlete made by virtue of finishing further ahead of second place is about 10pts. An that 10pts is a rare event. On average the races are tight and the gains are few and far between. So most of the time, an athlete makes about 2-3 pts by winning a race outright. When you weigh this against the other features, it has negligible contribution in ranking." />
+<figcaption aria-hidden="true">The biggest difference an athlete made by
+virtue of finishing further ahead of second place is about 10pts. An
+that 10pts is a rare event. On average the races are tight and the gains
+are few and far between. So most of the time, an athlete makes about 2-3
+pts by winning a race outright. When you weigh this against the other
+features, it has negligible contribution in ranking.</figcaption>
+</figure>
+<h2 id="the-times-they-are-a-changin">The Times, They Are A Changin</h2>
+<p>As mentioned in the disclaimer, the goal of this document was to
+really understand the incentives of the new ranking system. First thing
+to note is that the way triathlon dealt with the problem of comparing
+performances across different courses is to do away with the problem in
+the first place. The incentives are clear – “to be the best, athletes
+must race the best”. If everyone showed up for the races, ranking
+athletes is a trivial from a mathematical perspective. If you’re an
+established pro athlete this seems to be the fairest possible system.
+None of that <span class="math inline">\(AIT\)</span> malarkey and none
+of that convex optimisation <a
+href="https://abiswas3.github.io/sportsMaths/PrimoRank/">ELO</a> scores
+either. Simple and Straight – that’s what everyone wanted.</p>
+<p>In fact this is not even the first time such a model has been used in
+pro sport. Tennis<a href="#fn5" class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a> and Golf rankings are very similar
+in essence. Win Wimbledon and all the glory is yours. There is one issue
+however. The economics of triathlon and tennis are not the same. Your
+neighbour, local Bob, does not step out onto the grass courts of
+Wimbledon with Novak Djokovic. However, they do pay an exorbitant amount
+of money to ride up and down the high streets of Bolton with Lucy
+Charles Barclay. By putting all the ranking eggs in the PTO and
+championship races, your local Bob might not enjoy as much pro time. As
+more cash flows into the system, it seems like Triathlon is headed
+towards more mainstream sports, where the pro’s live a distinctive
+different life from the amateurs. I guess this is necessary for any
+sport to grow economically ?!? I cannot say, I am not an economist. I’m
+also not sure how this affects an upcoming pro who is low on funds or
+athletes that are not from the EU/USA. There is definitively less value
+in racing smaller races now. <a
+href="https://twitter.com/Timheming/status/1627706043579916288?s=20">Journalists
+have also noted</a> that the sports focus is really on the top athletes
+and making sure they are fairly compensated.</p>
+<p>All in all, I do not have an opinion on the social implications of
+such changes. The mathematical problem is no longer so interesting. All
+things change, and triathlon seems to be in transition.</p>
+<h2 id="other-miscellaneous-observations">Other Miscellaneous
+Observations</h2>
+<ul>
+<li><p>There are few other things that stood out. The choice of top 5
+for SOF seemed rather arbitrary. It is perhaps why there is such a high
+variance in the strength of field even across the same tiers of races.
+Perhaps a smoothing function or something more robust to outliers like
+median would have made more sense. My guess is 5 seemed like a good fair
+number and was picked heuristically.</p></li>
+<li><p>Similarly, the calculation for <span
+class="math inline">\(\Delta\)</span> seems ad hoc. There are cases
+where the Base time is calculated using just the winners time. In that
+case the winner by definition cannot get any positive <span
+class="math inline">\(\Delta\)</span> points and everyone else gets
+negative points. However, as the final rankings are a function of top 3
+performances, giving others negative points does not help an athlete.
+Those athletes might as well drop this performance and do well somewhere
+else. However the athlete that indeed won the race got nothing from
+winning the race. In the cases where <span
+class="math inline">\(\Delta\)</span> is calculated from a base line
+time of top 3-5 times, this issue is still prevalent as the winning
+athletes time offsets the baseline. As shown in the plots above, it
+could be why it makes so little difference to an athletes final
+score.</p></li>
+</ul>
 </div>
-<section id="footnotes" class="footnotes footnotes-end-of-document"
+<section class="footnotes footnotes-end-of-document"
 role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1"><p>Searching for PTO rankings on Twitter should<a
-href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p><a
+<li id="fn1" role="doc-endnote"><p>Searching for PTO rankings on Twitter
+should<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a
 href="https://www.thedailybeast.com/bob-dylan-why-we-can-never-know-him">Lies,
 God-damned lies and Bob Dylan</a><a href="#fnref2" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>More specifically, <span
+<li id="fn3" role="doc-endnote"><p>More specifically, <span
 class="math inline">\(\Delta\)</span> is the fraction the athlete was
 off from the averagae performance of the top 5 athletes times 6.<a
 href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>PTO canadian open is not included in
+the results as the website does not report SOF for the women’s field. As
+I have a generic webscraper that pulls this data from the PTO website, I
+could not be arsed to manually fix this.<a href="#fnref4"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>If I remember correctly, this was an
+intentional goal for the PTO. To make triathlon more like the ATP or WTA
+circuit.<a href="#fnref5" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <div id="footer">
