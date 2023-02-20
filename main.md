@@ -5,3 +5,4 @@
 * [How current Triathlon rankings work](./ProblemStatement/index.html)
 * [A Heuristic approach to triathlon rankings](./TommyRank/)
 * [A different statistical model for triathlon ranking](./PrimoRank/)
+* [A brief note on the new rankings](./NewRankings/)
