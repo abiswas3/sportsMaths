@@ -54,9 +54,13 @@ governed no better than we deserve."
 
 ## The New System
 
-![Shown above is a screen grab from [this
+<figure>
+  <img src="pngs/Screenshot 2023-02-17 at 12.04.48.png" alt="Trulli" style="width:80%">
+  <figcaption>Shown above is a screen grab from [this
 triathlon news article](https://www.triathlete.com/culture/news/new-2023-pto-rankings-revealed-dissected/)
-which describes how the new points are calculated](pngs/Screenshot 2023-02-17 at 12.04.48.png)
+which describes how the new points are calculated.</figcaption>
+</figure>
+
 
 Roughly the idea is as follows, there are three features, namely,
 
