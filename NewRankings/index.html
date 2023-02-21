@@ -8,15 +8,10 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: 1;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
   </style>
   <link rel="stylesheet" href="../blog.css" />
   <link rel="stylesheet" href="/code/bootstrap.min.css">
@@ -306,21 +301,50 @@ field even across the same tiers of races. Perhaps <a
 href="https://en.wikipedia.org/wiki/Winsorizing">a smoothing
 function</a> or something more robust to outliers like <a
 href="https://en.wikipedia.org/wiki/Robust_statistics">median</a> would
-have made more sense. My guess is 5 seemed like a good fair number and
-was picked heuristically. Then on running simulations not much changed,
-so 5 was kept. <strong>There is likely an exploit here:</strong> Given
-races in the same tier, find a race with the highest SOF where is
-easiest to finish 6th. As the SOF only concerns the top 5 athletes, the
-remaining athletes in the race have no effect on the “free” points
-available. Alternatively, find races in the same tier that have one or
-two of the top 5 athletes in the world. As the SOF is the average of Top
-5 scores, the sof of the race will be susceptible to outliers i.e the
-really good athletes will bump up the SOF for the race. Then look to
-finish 4th or 5th if possible. Is this attack likely? Almost certainly
-yes! Look at the first plot and consider the variance across SOF for
-races with the same Tier. With a little bit of optimisation, it should
-not be hard to find a sweet spot that gives you a lot of
-points.</p></li>
+have made more sense. In my experience using explicit clipping like
+top-<span class="math inline">\(K\)</span> always causes issues in the
+long run, unless <span class="math inline">\(K\)</span> has been cross
+validated with test sets. My guess is 5 seemed like a good fair number
+and was picked heuristically. Then on running simulations not much
+changed, so 5 was kept. <strong>There is likely an exploit/attack on the
+system here:</strong> Given races in the same tier, find a race with the
+highest SOF where is easiest to finish 6th. As the SOF only concerns the
+top 5 athletes, the remaining athletes in the race have no effect on the
+“free” points available. Alternatively, find races in the same tier that
+have one or two of the top 5 athletes in the world. As the SOF is the
+average of Top 5 scores, the sof of the race will be susceptible to
+outliers i.e the really good athletes will bump up the SOF for the race.
+Then look to finish 4th or 5th if possible. Is this attack likely?
+Almost certainly yes! Look at the first plot and consider the variance
+across SOF for races with the same Tier. With a little bit of
+optimisation, it should not be hard to find a sweet spot that gives you
+a lot of points. I do not have access to athlete scores at the start of
+race so it isn’t possible for me to run a full simulation. However, I
+can leave with you an idea of what the attack looks like. Consider two
+Gold full IM races, lets call them Race A and Race B. They are both the
+same tier of races so your score is just given by finishing higher. So
+let’s say your goal is to finish 4th. Which race is it easier to finish
+fourth in? <em>Hint: Presence of outliers really mean
+estimates.</em></p></li>
+<li><p><strong>Race A (Sof: 85.772)</strong>: PATRICK LANGE, DANIEL
+BAEKKEGARD, LEON CHEVALIER, JOE SKIPPER, BEN KANUTE, BRADEN CURRIE, MIKI
+MOERCK TAAGHOLT, CLEMENT MIGNON, JASON WEST, RUDY VON BERG, STEVEN
+MCKENNA</p></li>
+<li><p><strong>Race B (SofL 86.77)</strong>: KRISTIAN BLUMMENFELT,
+GUSTAV IDEN, CHRIS LEIFERMAN, BEN HOFFMAN, PIETER HEEMERYCK, KEVIN
+MAUREL, MARTIN ULLOA, FERNANDO TOLDI, HENRIK GOESCH</p></li>
+</ul>
+<p>It might be that a race like this not naturally occurring but if
+athletes were malicious and formed a coalition, then it’s trivial to
+find scenarios where one can boost their score by schedule hacking. All
+the maths they need is be able to solve a system of linear equations.
+Anytime a start list is deep there will be athletes say ranked 6, 7, 8
+and 9 who will not affect the SOF at all. On the contrary anytime a
+start list is shallow but includes the top 2 athletes, it will boost the
+sof artificially. In fact it is in Gustav and Kristian’s interest to go
+to as many gold races together, to boost the sof and pick up ranks one
+and two.</p>
+<ul>
 <li><p>Similarly, the calculation for <span
 class="math inline">\(\Delta\)</span> seems ad hoc. There are cases<a
 href="#fn10" class="footnote-ref" id="fnref10"
@@ -349,53 +373,58 @@ mathematics to prove that Gustav Iden or Ashleigh Gentle is very very
 good.</p></li>
 </ul>
 </div>
-<section id="footnotes" class="footnotes footnotes-end-of-document"
+<section class="footnotes footnotes-end-of-document"
 role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1"><p>Searching for PTO rankings on Twitter should reveal
-Twitter rants about how unfair the old system was perceived to be.<a
-href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>and as Bernard Shaw famously stated – “Democracy is a
-device that ensures we shall be governed no better than we deserve.”<a
-href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>More specifically, <span
+<li id="fn1" role="doc-endnote"><p>Searching for PTO rankings on Twitter
+should reveal Twitter rants about how unfair the old system was
+perceived to be.<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>and as Bernard Shaw famously stated –
+“Democracy is a device that ensures we shall be governed no better than
+we deserve.”<a href="#fnref2" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>More specifically, <span
 class="math inline">\(\Delta\)</span> is the fraction the athlete was
 off from the average performance of the top 5 athletes times 6.<a
 href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>The big races have <a
+<li id="fn4" role="doc-endnote"><p>The big races have <a
 href="https://twitter.com/Timheming/status/1627961692876316673?s=20">restricted
 spots</a> so in order to get in, you must have a high ranking. To have a
 high ranking you must do these races.<a href="#fnref4"
 class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>PTO canadian open is not included in the results as the
-website does not report SOF for the women’s field. As I have a generic
-webscraper that pulls this data from the PTO website, I could not be
-arsed to manually fix this.<a href="#fnref5" class="footnote-back"
+<li id="fn5" role="doc-endnote"><p>PTO canadian open is not included in
+the results as the website does not report SOF for the women’s field. As
+I have a generic webscraper that pulls this data from the PTO website, I
+could not be arsed to manually fix this.<a href="#fnref5"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>If I remember correctly, this was an
+intentional goal for the PTO. To make triathlon more like the ATP or WTA
+circuit.<a href="#fnref6" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>If I remember correctly, this was an intentional goal
-for the PTO. To make triathlon more like the ATP or WTA circuit.<a
-href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>Better they make money than those pesky chat GPT
-billionaire freaks.<a href="#fnref7" class="footnote-back"
-role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>It is always hard to actually measure how an “OK”
-performance in a big race compares to winning a small race. This was why
-the problem was hard in the first place. The points system describes the
-current committees value system. It is neither right or wrong – just
-what we would call <a
+<li id="fn7" role="doc-endnote"><p>Better they make money than those
+pesky chat GPT billionaire freaks.<a href="#fnref7"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><p>It is always hard to actually measure
+how an “OK” performance in a big race compares to winning a small race.
+This was why the problem was hard in the first place. The points system
+describes the current committees value system. It is neither right or
+wrong – just what we would call <a
 href="https://en.wikipedia.org/wiki/Inductive_bias">inductive
 bias</a>.<a href="#fnref8" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>Just take a look at how many hard is to even get <a
+<li id="fn9" role="doc-endnote"><p>Just take a look at how many hard is
+to even get <a
 href="https://en.wikipedia.org/wiki/Byzantine_fault">consensus</a>
 without a central party<a href="#fnref9" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>When not pro enough athletes finish.<a href="#fnref10"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p>You cannot be head of the average if you are the
-average. Everyone is now behind the average.<a href="#fnref11"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10" role="doc-endnote"><p>When not pro enough athletes
+finish.<a href="#fnref10" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p>You cannot be head of the average if
+you are the average. Everyone is now behind the average.<a
+href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <div id="footer">
