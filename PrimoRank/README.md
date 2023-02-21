@@ -289,7 +289,7 @@ This looks really good. She's won a lot of races and done well in almost all of 
 
 #### Sarah True
 
-The PTO website gave Sarah a world ranking of 16 for 2019 and Amelia a world rank of 26. Our algorithm gives Sarah a world ranking of 151. Shown below are the records for that year.
+The PTO website gave Sarah a world ranking of 16 for 2019 and Amelia a world rank of 26. Our algorithm gives Sarah a world ranking of 5. Shown below are the records for that year.
 
 <img src="./pngs/sarah.png" width="90%"></img>
 
@@ -312,7 +312,7 @@ All rankings done here and the PTO are done retrospectively. The athletes were n
 
 ### It's all so complicated
 
-A lot of equations and lot of analysis. It's all so complicated. Spectator sport is supposed to be fun and easy. We previously complained that athletes did not understand AIT. Now we're forcing them to maximise convex functions, build strongly connected graphs and read about social choice theory. This is bound to end in disaster. They are already running a million miles a week. The last thing they should have to do is know about convex optimisation to figure out which race to go to and which race to win. We have written a simple [heuristic based approach that bands races into tiers](https://abiswas3.github.io/sportsMaths/TommyRank/index.html) and now we have described a more principled approach. So where do we go from here ? The answer depends on what the athletes want. Most of their desires can be modelled, but we must first know what they want. After that the optimal solution can sough after. 
+A lot of equations and lot of analysis. It's all so complicated. Spectator sport is supposed to be fun and easy. We previously complained that athletes did not understand AIT. Now we're forcing them to maximise convex functions, build strongly connected graphs and read about social choice theory. This is bound to end in disaster. They are already running a million miles a week. The last thing they should have to do is know about convex optimisation to figure out which race to go to and which race to win. We have written a simple [heuristic based approach that bands races into tiers](https://abiswas3.github.io/sportsMaths/TommyRank/index.html) and now we have described a more principled approach. So where do we go from here ? The answer depends on what the athletes want. Most of their desires can be modelled, but we must first know what they want. After that the optimal solution can sought after. 
 
 Finally, we would like to thank trirating.com for even starting this process. They downloaded the data and made all this possible to begin with. Without their work, we would not have been able to complete our analysis.
 
