@@ -419,7 +419,7 @@ year.
 
 The biggest drawback of this method is that it is not principled in
 its selection of quantisation thresholds and it uses PTO scores(though we could also use quality scores derived in [part III](../PrimoRank/)). There is no theoretical justification to using the prize purse either. We do
-not justify our use of Formula 1 scoring either. So when someone does poorly, we cannot really trace it back to our assumptions and we did poorly. **We do not recommend building such systems.** Such systems look nice and simple on the outside but always land you in trouble later.
+not justify our use of Formula 1 scoring either. So when someone does poorly, we cannot really trace it back to our assumptions and reason about why we did poorly. **We do not recommend building such systems.** Such systems look nice and simple on the outside but always land you in trouble later.
 
 ### Strengths
 However, the method has a few strong properties:
