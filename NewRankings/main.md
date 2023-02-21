@@ -68,7 +68,7 @@ Roughly the idea is as follows, there are three features, namely,
 + the strength of the race you are participating in (sof in the figure above).
 + how much faster you were from the top few athletes (race time score in the figure above). 
 
-You get points along each of these features and finally your score is a weighted average of these features. From the outset it would appear that the new system does not over prioritise a single aspect of a race performance (such as AIT score in the old system). However, closer examination of the point system reveals that the new system is really based around one central concept -- what tier is the race?
+You get points along each of these features and finally your score is a weighted average of these features. From the outset it would appear that the new system does not over prioritise a single aspect of a race performance (such as AIT score in the old system). However, closer examination of the point system reveals that the new system is really based around one feature only -- is the race one of the PTO designated big tier races?
 
 
 ## The weights do not matter

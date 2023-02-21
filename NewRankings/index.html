@@ -8,10 +8,15 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: 1;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
   </style>
   <link rel="stylesheet" href="../blog.css" />
   <link rel="stylesheet" href="/code/bootstrap.min.css">
@@ -102,7 +107,8 @@ a weighted average of these features. From the outset it would appear
 that the new system does not over prioritise a single aspect of a race
 performance (such as AIT score in the old system). However, closer
 examination of the point system reveals that the new system is really
-based around one central concept – what tier is the race?</p>
+based around one feature only – is the race one of the PTO designated
+big tier races?</p>
 <h2 id="the-weights-do-not-matter">The weights do not matter</h2>
 <p>As advertised, the first feature accounts for <span
 class="math inline">\(40\%\)</span> of your score, the second feature
@@ -376,58 +382,53 @@ mathematics to prove that Gustav Iden or Ashleigh Gentle is very very
 good.</p></li>
 </ul>
 </div>
-<section class="footnotes footnotes-end-of-document"
+<section id="footnotes" class="footnotes footnotes-end-of-document"
 role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>Searching for PTO rankings on Twitter
-should reveal Twitter rants about how unfair the old system was
-perceived to be.<a href="#fnref1" class="footnote-back"
-role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>and as Bernard Shaw famously stated –
-“Democracy is a device that ensures we shall be governed no better than
-we deserve.”<a href="#fnref2" class="footnote-back"
-role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>More specifically, <span
+<li id="fn1"><p>Searching for PTO rankings on Twitter should reveal
+Twitter rants about how unfair the old system was perceived to be.<a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>and as Bernard Shaw famously stated – “Democracy is a
+device that ensures we shall be governed no better than we deserve.”<a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>More specifically, <span
 class="math inline">\(\Delta\)</span> is the fraction the athlete was
 off from the average performance of the top 5 athletes times 6.<a
 href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p>The big races have <a
+<li id="fn4"><p>The big races have <a
 href="https://twitter.com/Timheming/status/1627961692876316673?s=20">restricted
 spots</a> so in order to get in, you must have a high ranking. To have a
 high ranking you must do these races.<a href="#fnref4"
 class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5" role="doc-endnote"><p>PTO canadian open is not included in
-the results as the website does not report SOF for the women’s field. As
-I have a generic webscraper that pulls this data from the PTO website, I
-could not be arsed to manually fix this.<a href="#fnref5"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6" role="doc-endnote"><p>If I remember correctly, this was an
-intentional goal for the PTO. To make triathlon more like the ATP or WTA
-circuit.<a href="#fnref6" class="footnote-back"
+<li id="fn5"><p>PTO canadian open is not included in the results as the
+website does not report SOF for the women’s field. As I have a generic
+webscraper that pulls this data from the PTO website, I could not be
+arsed to manually fix this.<a href="#fnref5" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
-<li id="fn7" role="doc-endnote"><p>Better they make money than those
-pesky chat GPT billionaire freaks.<a href="#fnref7"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8" role="doc-endnote"><p>It is always hard to actually measure
-how an “OK” performance in a big race compares to winning a small race.
-This was why the problem was hard in the first place. The points system
-describes the current committees value system. It is neither right or
-wrong – just what we would call <a
+<li id="fn6"><p>If I remember correctly, this was an intentional goal
+for the PTO. To make triathlon more like the ATP or WTA circuit.<a
+href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Better they make money than those pesky chat GPT
+billionaire freaks.<a href="#fnref7" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>It is always hard to actually measure how an “OK”
+performance in a big race compares to winning a small race. This was why
+the problem was hard in the first place. The points system describes the
+current committees value system. It is neither right or wrong – just
+what we would call <a
 href="https://en.wikipedia.org/wiki/Inductive_bias">inductive
 bias</a>.<a href="#fnref8" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
-<li id="fn9" role="doc-endnote"><p>Just take a look at how many hard is
-to even get <a
+<li id="fn9"><p>Just take a look at how many hard is to even get <a
 href="https://en.wikipedia.org/wiki/Byzantine_fault">consensus</a>
 without a central party<a href="#fnref9" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
-<li id="fn10" role="doc-endnote"><p>When not pro enough athletes
-finish.<a href="#fnref10" class="footnote-back"
-role="doc-backlink">↩︎</a></p></li>
-<li id="fn11" role="doc-endnote"><p>You cannot be head of the average if
-you are the average. Everyone is now behind the average.<a
-href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>When not pro enough athletes finish.<a href="#fnref10"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>You cannot be head of the average if you are the
+average. Everyone is now behind the average.<a href="#fnref11"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <div id="footer">
