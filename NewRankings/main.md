@@ -30,10 +30,10 @@ performances by finish time as they vary across courses. The problem
 is not unique to triathlon either. Similar measurement issues arise
 in marathon running, tennis, chess, golf and many other sports. This question has plagued social
 choice theory since the 1950's, so it's unlikely any proposed solution
-will resolve all outstanding issues. Thus, the PTO employed a committee of athletes, who after a year of discussion and deliberation, came up with a new system that resolves
-this question in fair manner. A key motif behind doing over the old
-system was to simplify how ranking points were calculated and to
-re-align them to better represent the athlete values. [A
+will resolve all outstanding issues. 
+
+
+Thus in 2023, the PTO employed a committee of athletes, who after a year of discussion and deliberation, came up with a new system that aims to  simplify how ranking points were calculated and to re-align them to better represent the athlete values. [A
 clear description of the new system can be found
 here](https://protriathletes.org/pto-world-ranking-system/) and thus
 there is no need to go over the details again.
@@ -43,21 +43,28 @@ there is no need to go over the details again.
 
 
 At this point, as far as the PTO is concerned, this ranking problem
-appears solved. The athletes were affected by the rankings, and they
-decided to devise a system that prioritised their interests. The
-people decided for the people; democracy won and as Bernard Shaw
-famously stated -- "Democracy is a device that ensures we shall be
-governed no better than we deserve." Thus this manuscript, unlike its
+appears solved. The old rankings negatively affected athletes, and, thus they
+were the ones who devised a new system that prioritised their interests. The
+people decided for the people; democracy won [^12]. **This manuscript, unlike its
 predecessors does not try to propose an alternate system. It simply
-tries to understand the consequences of such a system.
+tries to understand the consequences of the new system.**
  
+[^12]: and as Bernard Shaw famously stated -- "Democracy is a device that ensures we shall be
+governed no better than we deserve."
+
 ## The New System
 
 ![Shown above is a screen grab from [this
 triathlon news article](https://www.triathlete.com/culture/news/new-2023-pto-rankings-revealed-dissected/)
 which describes how the new points are calculated](pngs/Screenshot 2023-02-17 at 12.04.48.png)
 
-Informally there are three features -- a tier based finish score, the strength of the race you are participating in and how much faster you were from the top few athletes. You get points along each of these dimensions and finally your score is a weighted average of these features. From the outset it would appear that the new system considers multiple facets of a race and then averages across all of them to compute the final score. However, closer examination of the point system reveals that the new system is really based around one central concept -- the
+Roughly the idea is as follows, there are three features, namely,
+
++ a tier based finish score (race position score in the figure above).
++ the strength of the race you are participating in (sof in the figure above).
++ how much faster you were from the top few athletes (race time score in the figure above). 
+
+You get points along each of these features and finally your score is a weighted average of these features. From the outset it would appear that the new system does not over prioritise a single aspect of a race performance (such as AIT score in the old system). However, closer examination of the point system reveals that the new system is really based around one central concept -- the
 committees' definition of strength of field. 
 
 
@@ -74,7 +81,14 @@ will almost always do well in the SOF category as well. This makes sense -- The 
 
 Let $T$ represent the position based tier score for an athlete and $SOF$ represent the strength of field for the given race. The timing feature is supposed to reward an athlete based on the difference
 between their time and the time of the top finishers -- called the "baseline time". Let $\Delta$
-represent the points obtained (or lost) compared to the baseline time[^3]. In the first figure $\Delta$ for the second placed athlete is $12.16$ points. The score for finishing really fast (or slow) is determined as a function of $\Delta$ and $B$ where $B = (T_1 + SOF)/2$, where $T_1$ is the tier score of the winner (so 100 if are in a diamond race, 95 if you are in platinum race and so on). Specifically, you get $0.3(B + \Delta)$ points for your finish time. **Note $B$ has nothing to do with your actual performance. $B$ is determined even before the race starts. Moreover the magnitude of $B$ far exceeds the magnitude of $\Delta$ with very high probability.**
+represent the points obtained (or lost) compared to the baseline time[^3]. Thus relating to the features above:
+
++ $T$ : Race position time / Tier score (Feature 1)
++ $SOF$ : Strength of Field  (Feature 2)
++ $\Delta$ : Points gained by racing quicker than the baseline time. In the figure above $\Delta$ for the second placed athlete is $12.16$ points.
+
+
+ The score for finishing really fast (or slow) is determined as a function of $\Delta$ and $B$ where $B = (T_1 + SOF)/2$, where $T_1$ is the tier score of the winner (so 100 if are in a diamond race, 95 if you are in platinum race and so on). Specifically, you get $0.3(B + \Delta)$ points for your finish time. **Note $B$ has nothing to do with your actual performance. $B$ is determined even before the race starts. Moreover the magnitude of $B$ far exceeds the magnitude of $\Delta$ with very high probability.**
 
 Thus the final score $S$
 

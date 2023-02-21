@@ -67,23 +67,22 @@ by finish time as they vary across courses. The problem is not unique to
 triathlon either. Similar measurement issues arise in marathon running,
 tennis, chess, golf and many other sports. This question has plagued
 social choice theory since the 1950’s, so it’s unlikely any proposed
-solution will resolve all outstanding issues. Thus, the PTO employed a
-committee of athletes, who after a year of discussion and deliberation,
-came up with a new system that resolves this question in fair manner. A
-key motif behind doing over the old system was to simplify how ranking
-points were calculated and to re-align them to better represent the
-athlete values. <a
+solution will resolve all outstanding issues.</p>
+<p>Thus in 2023, the PTO employed a committee of athletes, who after a
+year of discussion and deliberation, came up with a new system that aims
+to simplify how ranking points were calculated and to re-align them to
+better represent the athlete values. <a
 href="https://protriathletes.org/pto-world-ranking-system/">A clear
 description of the new system can be found here</a> and thus there is no
 need to go over the details again.</p>
 <p>At this point, as far as the PTO is concerned, this ranking problem
-appears solved. The athletes were affected by the rankings, and they
-decided to devise a system that prioritised their interests. The people
-decided for the people; democracy won and as Bernard Shaw famously
-stated – “Democracy is a device that ensures we shall be governed no
-better than we deserve.” Thus this manuscript, unlike its predecessors
-does not try to propose an alternate system. It simply tries to
-understand the consequences of such a system.</p>
+appears solved. The old rankings negatively affected athletes, and, thus
+they were the ones who devised a new system that prioritised their
+interests. The people decided for the people; democracy won <a
+href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a>. <strong>This manuscript, unlike its
+predecessors does not try to propose an alternate system. It simply
+tries to understand the consequences of the new system.</strong></p>
 <h2 id="the-new-system">The New System</h2>
 <figure>
 <img src="pngs/Screenshot%202023-02-17%20at%2012.04.48.png"
@@ -93,15 +92,22 @@ href="https://www.triathlete.com/culture/news/new-2023-pto-rankings-revealed-dis
 triathlon news article</a> which describes how the new points are
 calculated</figcaption>
 </figure>
-<p>Informally there are three features – a tier based finish score, the
-strength of the race you are participating in and how much faster you
-were from the top few athletes. You get points along each of these
-dimensions and finally your score is a weighted average of these
-features. From the outset it would appear that the new system considers
-multiple facets of a race and then averages across all of them to
-compute the final score. However, closer examination of the point system
-reveals that the new system is really based around one central concept –
-the committees’ definition of strength of field.</p>
+<p>Roughly the idea is as follows, there are three features, namely,</p>
+<ul>
+<li>a tier based finish score (race position score in the figure
+above).</li>
+<li>the strength of the race you are participating in (sof in the figure
+above).</li>
+<li>how much faster you were from the top few athletes (race time score
+in the figure above).</li>
+</ul>
+<p>You get points along each of these features and finally your score is
+a weighted average of these features. From the outset it would appear
+that the new system does not over prioritise a single aspect of a race
+performance (such as AIT score in the old system). However, closer
+examination of the point system reveals that the new system is really
+based around one central concept – the committees’ definition of
+strength of field.</p>
 <h2 id="the-weights-do-not-matter">The weights do not matter</h2>
 <p>As advertised, the first feature accounts for <span
 class="math inline">\(40\%\)</span> of your score, the second feature
@@ -131,12 +137,21 @@ the given race. The timing feature is supposed to reward an athlete
 based on the difference between their time and the time of the top
 finishers – called the “baseline time”. Let <span
 class="math inline">\(\Delta\)</span> represent the points obtained (or
-lost) compared to the baseline time<a href="#fn2" class="footnote-ref"
-id="fnref2" role="doc-noteref"><sup>2</sup></a>. In the first figure
-<span class="math inline">\(\Delta\)</span> for the second placed
-athlete is <span class="math inline">\(12.16\)</span> points. The score
-for finishing really fast (or slow) is determined as a function of <span
-class="math inline">\(\Delta\)</span> and <span
+lost) compared to the baseline time<a href="#fn3" class="footnote-ref"
+id="fnref3" role="doc-noteref"><sup>3</sup></a>. Thus relating to the
+features above:</p>
+<ul>
+<li><span class="math inline">\(T\)</span> : Race position time / Tier
+score (Feature 1)</li>
+<li><span class="math inline">\(SOF\)</span> : Strength of Field
+(Feature 2)</li>
+<li><span class="math inline">\(\Delta\)</span> : Points gained by
+racing quicker than the baseline time. In the figure above <span
+class="math inline">\(\Delta\)</span> for the second placed athlete is
+<span class="math inline">\(12.16\)</span> points.</li>
+</ul>
+<p>The score for finishing really fast (or slow) is determined as a
+function of <span class="math inline">\(\Delta\)</span> and <span
 class="math inline">\(B\)</span> where <span class="math inline">\(B =
 (T_1 + SOF)/2\)</span>, where <span class="math inline">\(T_1\)</span>
 is the tier score of the winner (so 100 if are in a diamond race, 95 if
@@ -160,8 +175,8 @@ S &amp;= 0.4\times T + 0.3\times SOF + 0.3(B + \Delta) \\
 <span class="math inline">\(SOF\)</span> are high for the big races.
 Moreover these have nothing do with your race performance either. You
 get them for free for entering the race (you must be able to get in the
-race first, which requires a high ranking<a href="#fn3"
-class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>).
+race first, which requires a high ranking<a href="#fn4"
+class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>).
 Thus in a way this system enforces that the rich have more chances to
 get richer. This is not surprising. Most sports that make a lot of money
 are like this.</p>
@@ -176,8 +191,8 @@ any control over increasing your final rank. So how much can you squeeze
 out of <span class="math inline">\(\Delta\)</span>? The answer is not
 much! Observe the plot below which shows <span
 class="math inline">\(\Delta\)</span> (X-axis) as a function of race
-finish position (Y-axis) for different tiered races <a href="#fn4"
-class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+finish position (Y-axis) for different tiered races <a href="#fn5"
+class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 <figure>
 <img src="pngs/plot2.png" alt="Trulli" style="width:80%">
 <figcaption>
@@ -207,8 +222,8 @@ either. Simple and Straight – that’s what everyone wanted. <strong>Note:
 This system is almost identical to <a
 href="https://abiswas3.github.io/sportsMaths/TommyRank/">Tommy Rank</a>
 which I had recommended a year ago.</strong></p>
-<p>Tennis<a href="#fn5" class="footnote-ref" id="fnref5"
-role="doc-noteref"><sup>5</sup></a> and Golf rankings are very similar
+<p>Tennis<a href="#fn6" class="footnote-ref" id="fnref6"
+role="doc-noteref"><sup>6</sup></a> and Golf rankings are very similar
 in essence. Win Wimbledon and all the glory is yours. There is one issue
 however. The economics of triathlon and tennis are not the same. Your
 neighbour, local Bob, does not step out onto the grass courts of
@@ -224,8 +239,8 @@ are willing to pay a higher premium to keep up their old lifestyle). It
 is likely that this is necessary for any sport to scale economically. I
 cannot say, I am not an economist. I certainly do not begrudge anyone
 asking for more in return for exercising 30 hours a week and/or winning
-Olympic gold medals<a href="#fn6" class="footnote-ref" id="fnref6"
-role="doc-noteref"><sup>6</sup></a>. This is a debate for experts who
+Olympic gold medals<a href="#fn7" class="footnote-ref" id="fnref7"
+role="doc-noteref"><sup>7</sup></a>. This is a debate for experts who
 understand the trade-offs between <a
 href="https://www.amazon.co.uk/Capitalism-Ghost-Story-Arundhati-Roy/dp/1784780944">capitalism</a>
 and <a
@@ -249,8 +264,8 @@ second jobs.</p>
 <p>All in all, as far as the rankings are concerned, the maths is cut
 and dry. The system heavily biases towards athletes that show up and
 race the races deemed “big” by the establishment. Showing up to big
-races and doing “ok”<a href="#fn7" class="footnote-ref" id="fnref7"
-role="doc-noteref"><sup>7</sup></a> is more important than doing “very
+races and doing “ok”<a href="#fn8" class="footnote-ref" id="fnref8"
+role="doc-noteref"><sup>8</sup></a> is more important than doing “very
 well” in smaller races. If everyone is present, sorting by finish
 position gives you a fair ranking. The SOF is a constant offset for
 everyone and the <span class="math inline">\(\Delta\)</span> gains from
@@ -284,12 +299,12 @@ was picked heuristically. Then on running simulations not much changed,
 so 5 was kept.</p></li>
 <li><p>Similarly, the calculation for <span
 class="math inline">\(\Delta\)</span> seems ad hoc. There are cases<a
-href="#fn8" class="footnote-ref" id="fnref8"
-role="doc-noteref"><sup>8</sup></a> where the base time is calculated
+href="#fn9" class="footnote-ref" id="fnref9"
+role="doc-noteref"><sup>9</sup></a> where the base time is calculated
 using just the winners time. In that case the winner by definition
 cannot get any positive <span class="math inline">\(\Delta\)</span>
-points<a href="#fn9" class="footnote-ref" id="fnref9"
-role="doc-noteref"><sup>9</sup></a> and everyone else gets negative
+points<a href="#fn10" class="footnote-ref" id="fnref10"
+role="doc-noteref"><sup>10</sup></a> and everyone else gets negative
 points. However, as the final rankings are a function of top 3
 performances over the year, giving others negative points does not help
 an athlete. Those athletes might as well drop this performance and do
@@ -311,38 +326,41 @@ role="doc-endnotes">
 <li id="fn1"><p>Searching for PTO rankings on Twitter should reveal
 Twitter rants about how unfair the old system was perceived to be.<a
 href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>More specifically, <span
+<li id="fn2"><p>and as Bernard Shaw famously stated – “Democracy is a
+device that ensures we shall be governed no better than we deserve.”<a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>More specifically, <span
 class="math inline">\(\Delta\)</span> is the fraction the athlete was
 off from the average performance of the top 5 athletes times 6.<a
-href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>The big races have <a
+href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>The big races have <a
 href="https://twitter.com/Timheming/status/1627961692876316673?s=20">restricted
 spots</a> so in order to get in, you must have a high ranking. To have a
-high ranking you must do these races.<a href="#fnref3"
+high ranking you must do these races.<a href="#fnref4"
 class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>PTO canadian open is not included in the results as the
+<li id="fn5"><p>PTO canadian open is not included in the results as the
 website does not report SOF for the women’s field. As I have a generic
 webscraper that pulls this data from the PTO website, I could not be
-arsed to manually fix this.<a href="#fnref4" class="footnote-back"
+arsed to manually fix this.<a href="#fnref5" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>If I remember correctly, this was an intentional goal
+<li id="fn6"><p>If I remember correctly, this was an intentional goal
 for the PTO. To make triathlon more like the ATP or WTA circuit.<a
-href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>Better they make money than those pesky chat GPT
-billionaire freaks.<a href="#fnref6" class="footnote-back"
+href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Better they make money than those pesky chat GPT
+billionaire freaks.<a href="#fnref7" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>It is always hard to actually measure how an “OK”
+<li id="fn8"><p>It is always hard to actually measure how an “OK”
 performance in a big race compares to winning a small race. This was why
 the problem was hard in the first place. The points system describes the
 current committees value system. It is neither right or wrong – just
 what we would call <a
 href="https://en.wikipedia.org/wiki/Inductive_bias">inductive
-bias</a>.<a href="#fnref7" class="footnote-back"
+bias</a>.<a href="#fnref8" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>When not pro enough athletes finish.<a href="#fnref8"
+<li id="fn9"><p>When not pro enough athletes finish.<a href="#fnref9"
 class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>You cannot be head of the average if you are the
-average. Everyone is now behind the average.<a href="#fnref9"
+<li id="fn10"><p>You cannot be head of the average if you are the
+average. Everyone is now behind the average.<a href="#fnref10"
 class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
