@@ -70,10 +70,9 @@ Roughly the idea is as follows, there are three features, namely,
 
 You get points along each of these features and finally your score is a weighted average of these features. From the outset it would appear that the new system does not over prioritise a single aspect of a race performance (such as AIT score in the old system). However, closer examination of the point system reveals that the new system is really based around one feature only -- is the race one of the PTO designated big tier races?
 
-
 ## The weights do not matter
 
-As advertised, the first feature accounts for $40\%$ of your score, the second feature accounts for $30\%$ of your score and the third feature contributes to $30\%$ of your score. Thus the claim is that the final score is a mixture of three different features (position, strength of field and time); this is merely an illusion. The three features are highly correlated, and as a result only one feature really matters -- the race tiering i.e. how important does the PTO think this race is (akin to how grandslams work in tennis).
+As advertised on the PTO website, the first feature accounts for $40\%$ of your score, the second feature accounts for $30\%$ of your score and the third feature contributes to $30\%$ of your score. Thus the claim is that the final score is a mixture of three different features (position, strength of field and time); this is merely an illusion. The three features are highly correlated, and as a result only one feature really matters -- the race tiering i.e. how important does the PTO think this race is (akin to how grand slams work in tennis). 
 
 
 <figure>
