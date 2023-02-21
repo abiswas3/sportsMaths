@@ -41,7 +41,7 @@ here](https://protriathletes.org/pto-world-ranking-system/) and thus
 there is no need to go over the details again.
 
 
-[^1]: Searching for PTO rankings on Twitter should 
+[^1]: Searching for PTO rankings on Twitter should reveal Twitter rants about how unfair the old system was perceived to be.
 
 
 At this point, as far as the PTO is concerned, this ranking problem
@@ -59,15 +59,13 @@ tries to understand the consequences of such a system.
 triathlon news article](https://www.triathlete.com/culture/news/new-2023-pto-rankings-revealed-dissected/)
 which describes how the new points are calculated](pngs/Screenshot 2023-02-17 at 12.04.48.png)
 
-Informally there are three features -- your tier based finish position score, the strength of the race you are participating in and how much faster you were from the top few athletes. You get points along each of these dimensions and finally your score is a weighted average of these features. From the outset it would appear that the new system considers a multiple facets of a race and then weights them to compute a
-final score. However, closer examination of the point system reveals
-that the new system is really based around one central concept -- the
+Informally there are three features -- a tier based finish score, the strength of the race you are participating in and how much faster you were from the top few athletes. You get points along each of these dimensions and finally your score is a weighted average of these features. From the outset it would appear that the new system considers a multiple facets of a race and then averages across all of them to compute the final score. However, closer examination of the point system reveals that the new system is really based around one central concept -- the
 committees' definition of strength of field. 
 
 
 ## The weights do not matter
 
-The first feature accounts for $40\%$ of your score, the second feature accounts for $30\%$ of your score and the third feature contributes to $30\%$ of your score. Although the final score is claimed to be a mixture of three different features (position, strength of field and time); this is merely an illusion. The three features are highly correlated, and as a result only one feature really matters -- strength of field.
+As advertised, the first feature accounts for $40\%$ of your score, the second feature accounts for $30\%$ of your score and the third feature contributes to $30\%$ of your score. Thus the claim is that the final score is a mixture of three different features (position, strength of field and time); this is merely an illusion. The three features are highly correlated, and as a result only one feature really matters -- strength of field.
 
 ![The figure above plots the tier on the Y-axis and the SOF on the
 X-axis. It is easy to see that the two are positively correlated. For
@@ -91,7 +89,9 @@ S &= 0.4\times T + 0.3\times SOF + 0.3(B + \Delta) \\
 
 [^3]: More specifically, $\Delta$ is the fraction the athlete was off from the average performance of the top 5 athletes times 6.
 
-We already know that $T_1$ and $SOF$ are high for the big races. Moreover these have nothing do with your race performance either. You get them for free for entering the race.
+We already know that $T_1$ and $SOF$ are high for the big races. Moreover these have nothing do with your race performance either. You get them for free for entering the race (you must be able to get in the race first, which requires a high ranking[^11]). Thus in a way this system enforces that the rich have more chances to get richer. This is not surprising. Most sports that make a lot of money are like this.
+
+[^11]: The big races have [restricted spots](https://twitter.com/Timheming/status/1627961692876316673?s=20) so in order to get in, you must have a high ranking. To have a high ranking you must do these races.
 
 Even $T$ is biased towards the big races (finishing 14th in a platinum race is the same as second in a silver race). This might seem bizarre as there are silver races with comparable SOF's to Platinum races. So if you're an upcoming new athlete participating in a local race because you cannot afford to go to Europe/USA all the time, then $\Delta$ is the only lever which gives you any control over increasing your final rank. So how much can you squeeze out of $\Delta$? The answer is not much! Observe the plot below which shows $\Delta$ (X-axis) as a function
 of race finish position (Y-axis) for different tiered races [^6]
@@ -115,7 +115,7 @@ Tennis[^5] and Golf rankings are very similar in essence. Win Wimbledon and all 
 
 I'm also not sure how this could affect an upcoming pro who is low on funds or athletes that are not from the Eu/USA. There is measurably less value in racing smaller races now. Empirically if you looked at races in 2023, there is not that many high valued races in Oceania, Asia or Africa (though there is likely not a high supply of athletes from these places yet). The potential unfairness of older systems acted like a regularising feature for the athletes with less access. They could only beat the athletes in races they had access to and could still somehow earn a small living by appearing to be ranked high. [Journalists have also noted](https://twitter.com/Timheming/status/1627706043579916288?s=20) that the sports focus is really on the top athletes and making sure they are fairly compensated. This seems in line with the trend in other sports like football where the star players are bought and sold for incredibly high wages and the lower league athletes have second jobs.
 
-All in all, as far as the rankings are concerned, the maths is cut and dry. The system heavily biases towards athletes that show up and race the races deemed "big" by the establishment. Showing up to big races and doing "ok"[^10] is more important than doing "very well" in smaller races. If everyone is present, sorting by finish position gives you a fair ranking. The SOF is a constant offset for everyone and the $\Delta$ gains from time are monotone with finish position. So the ranking is basically just your finish position. For the athletes that could not make at least 3 of the big races -- you can make pennies on the dollar by going to other races. But likely say goodbye to your hopes of a top 20 finish.
+All in all, as far as the rankings are concerned, the maths is cut and dry. The system heavily biases towards athletes that show up and race the races deemed "big" by the establishment. Showing up to big races and doing "ok"[^10] is more important than doing "very well" in smaller races. If everyone is present, sorting by finish position gives you a fair ranking. The SOF is a constant offset for everyone and the $\Delta$ gains from time are monotone with finish position. **So the final ranking is essentially just your finish position in the the biggest races of the year**. The points allotments makes it impossible to have a meaningful score unless you get into the races the PTO have declared to be important. Just like your and my average day job, Triathlon now has upper management. They want you to do what they think is good for you and you shall be penalised for not following. Hospitals and schools have such structure. Big money sports like NBA and EPL have such structure. There is nothing morally questionable about such a system. It's just that triathlon is now closer to EPL than it was to ultra running. For the athletes that could not make at least 3 of the big races -- you can still make pennies on the dollar by going to other races. But likely say goodbye to your hopes of a top 20 finish.
 
 [^5]: If I remember correctly, this was an intentional goal for the PTO. To make triathlon more like the ATP or WTA circuit.
 

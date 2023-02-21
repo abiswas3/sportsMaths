@@ -245,7 +245,7 @@ Some immediate observations
 
 ### Some athletes seem to hugely benefit from our rankings
 
-For most athletes there is some change but nothing major. All algorithms have their biases. Our biases are listed above, the PTO biases are implicit in how their proprietary algorithm. But we have a few athletes listed in our top 20 that PTO do not even consider top 100. **What the hell happened there? Are these people unfairly getting an advantage in our system?** Remember that the PTO only uses your best 3 races. This requires athletes to race at least 3 times. Shown below are the year reports for Jodi, Amelia and Kaisa for 2019.
+For most athletes there is some change but nothing major. All algorithms have their biases. Our biases are listed above, the PTO biases are implicit in how their proprietary algorithm computes AIT. But we have a few athletes listed in our top 20 that PTO do not even consider top 100. **What the hell happened there? Are these people unfairly getting an advantage in our system?** Remember that the PTO only uses your best 3 races. This requires athletes to race at least 3 times. Shown below are the year reports for Jodi, Amelia and Kaisa for 2019.
 
 
 
@@ -289,7 +289,7 @@ This looks really good. She's won a lot of races and done well in almost all of 
 
 #### Sarah True
 
-The PTO website gave Sarah a world ranking of 16 for 2019 and Amelia a world rank of 26. Our algorithm gives Sarah a world ranking of 5. Shown below are the records for that year.
+The PTO website gave Sarah a world ranking of 16 for 2019 and Amelia a world rank of 26. Our algorithm gives Sarah a world ranking of 151. Shown below are the records for that year.
 
 <img src="./pngs/sarah.png" width="90%"></img>
 
