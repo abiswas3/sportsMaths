@@ -57,7 +57,7 @@ tries to understand the consequences of such a system.
 
 ![Shown above is a screen grab from [this
 triathlon news article](https://www.triathlete.com/culture/news/new-2023-pto-rankings-revealed-dissected/)
-which goes how the new points are calculated](pngs/Screenshot 2023-02-17 at 12.04.48.png)
+which describes how the new points are calculated](pngs/Screenshot 2023-02-17 at 12.04.48.png)
 
 Informally there are three features -- your tier based finish position score, the strength of the race you are participating in and how much faster you were from the top few athletes. You get points along each of these dimensions and finally your score is a weighted average of these features. From the outset it would appear that the new system considers a multiple facets of a race and then weights them to compute a
 final score. However, closer examination of the point system reveals
