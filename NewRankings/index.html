@@ -119,16 +119,16 @@ features are highly correlated, and as a result only one feature really
 matters – the race tiering i.e. how important does the PTO think this
 race is (akin to how grandslams work in tennis).</p>
 <figure>
-<img src="pngs/plot1.png"
-alt="The figure above plots the tier on the Y-axis and the SOF on the X-axis. It is easy to see that the two are positively correlated. For a fixed tier, one might observe that the SOF has enormous variance (we will get to this later) but if you do well in a high tiered race, you will almost always do well in the SOF category as well. This makes sense – The tiering of a race is based on prize money and prestige, and thus the best athletes end up wanting to participate." />
-<figcaption aria-hidden="true">The figure above plots the tier on the
-Y-axis and the SOF on the X-axis. It is easy to see that the two are
-positively correlated. For a fixed tier, one might observe that the SOF
-has enormous variance (we will get to this later) but if you do well in
-a high tiered race, you will almost always do well in the SOF category
-as well. This makes sense – The tiering of a race is based on prize
-money and prestige, and thus the best athletes end up wanting to
-participate.</figcaption>
+<img src="pngs/plot1.png" alt="Trulli" style="width:80%">
+<figcaption>
+The figure above plots the tier on the Y-axis and the SOF on the X-axis.
+It is easy to see that the two are positively correlated. For a fixed
+tier, one might observe that the SOF has enormous variance (we will get
+to this later) but if you do well in a high tiered race, you will almost
+always do well in the SOF category as well. This makes sense – The
+tiering of a race is based on prize money and prestige, and thus the
+best athletes end up wanting to participate.
+</figcaption>
 </figure>
 <p>Let <span class="math inline">\(T\)</span> represent the position
 based tier score for an athlete and <span
@@ -178,8 +178,13 @@ get them for free for entering the race (you must be able to get in the
 race first, which requires a high ranking<a href="#fn4"
 class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>).
 Thus in a way this system enforces that the rich have more chances to
-get richer. This is not surprising. Most sports that make a lot of money
-are like this.</p>
+get richer. Also note that as the final ranking is the best 3 races out
+of however many you do, the system does not have a natural tendency of
+relegation. Good performances are rewarded and bad performances are
+forgotten (as long as a good performance happens sometime again). A
+direct consequence of such a system is that good athletes are never
+really hurt by a one off bad performance – which is a really nice
+property of the system.</p>
 <p>Even <span class="math inline">\(T\)</span> is biased towards the big
 races (finishing 14th in a platinum race is the same as second in a
 silver race). This might seem bizarre as there are silver races with
@@ -266,22 +271,28 @@ and dry. The system heavily biases towards athletes that show up and
 race the races deemed “big” by the establishment. Showing up to big
 races and doing “ok”<a href="#fn8" class="footnote-ref" id="fnref8"
 role="doc-noteref"><sup>8</sup></a> is more important than doing “very
-well” in smaller races. If everyone is present, sorting by finish
-position gives you a fair ranking. The SOF is a constant offset for
-everyone and the <span class="math inline">\(\Delta\)</span> gains from
-time are monotone with finish position. <strong>So the final ranking is
-essentially just your finish position in the the biggest races of the
-year</strong>. The points allotments makes it impossible to have a
-meaningful score unless you get into the races the PTO have declared to
-be important. Just like your and my average day job, Triathlon now has
-upper management. They want you to do what they think is good for you
-and you shall be penalised for not following. Hospitals and schools have
-such structure. Big money sports like NBA and EPL have such structure.
-There is nothing morally questionable about such a system. It’s just
-that triathlon is now closer to EPL than it os to ultra running. For the
-athletes that could not make at least 3 of the big races – you can still
-make pennies on the dollar by going to other races. But likely say
-goodbye to your hopes of a top 20 finish.</p>
+well” in smaller races. If everyone is present at a given race, then
+sorting by finish position gives you a fair ranking. The SOF is a
+constant offset for everyone and the <span
+class="math inline">\(\Delta\)</span> gains from time are monotone with
+finish position. <strong>So the final ranking is essentially just your
+average finish position in the biggest 3 races of the year</strong>. The
+points allotments makes it impossible to have a meaningful score unless
+you get into the races the PTO have declared to be important. Just like
+your and my average day job, triathlon now has upper management. There
+is nothing morally questionable about such a system. Hospitals and
+schools have centralised structure. Big money sports like NBA and EPL
+have central bodies with far more questionable morals. Often finding a
+fair solution is impossible without a centralised source of control<a
+href="#fn9" class="footnote-ref" id="fnref9"
+role="doc-noteref"><sup>9</sup></a>. It’s just that triathlon is now
+closer to EPL than it is to ultra running. It’s no longer the hipster
+sport where an odd bunch of people raced in random locations and no one
+actually knew who was best till they met in Kona. Although they’re still
+an odd bunch, all things must change, and perhaps it is triathlons time
+for change. For the athletes that could not make at least 3 of the big
+races – you can still make pennies on the dollar by going to other
+races. But likely say goodbye to your hopes of a top 20 finish.</p>
 <h2 id="other-miscellaneous-observations">Other Miscellaneous
 Observations</h2>
 <p>There are few other things that stood out to me but I doubt they make
@@ -311,12 +322,12 @@ not be hard to find a sweet spot that gives you a lot of
 points.</p></li>
 <li><p>Similarly, the calculation for <span
 class="math inline">\(\Delta\)</span> seems ad hoc. There are cases<a
-href="#fn9" class="footnote-ref" id="fnref9"
-role="doc-noteref"><sup>9</sup></a> where the base time is calculated
+href="#fn10" class="footnote-ref" id="fnref10"
+role="doc-noteref"><sup>10</sup></a> where the base time is calculated
 using just the winners time. In that case the winner by definition
 cannot get any positive <span class="math inline">\(\Delta\)</span>
-points<a href="#fn10" class="footnote-ref" id="fnref10"
-role="doc-noteref"><sup>10</sup></a> and everyone else gets negative
+points<a href="#fn11" class="footnote-ref" id="fnref11"
+role="doc-noteref"><sup>11</sup></a> and everyone else gets negative
 points. However, as the final rankings are a function of top 3
 performances over the year, giving others negative points does not help
 an athlete. Those athletes might as well drop this performance and do
@@ -375,10 +386,14 @@ what we would call <a
 href="https://en.wikipedia.org/wiki/Inductive_bias">inductive
 bias</a>.<a href="#fnref8" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>When not pro enough athletes finish.<a href="#fnref9"
+<li id="fn9"><p>Just take a look at how many hard is to even get <a
+href="https://en.wikipedia.org/wiki/Byzantine_fault">consensus</a>
+without a central party<a href="#fnref9" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>When not pro enough athletes finish.<a href="#fnref10"
 class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>You cannot be head of the average if you are the
-average. Everyone is now behind the average.<a href="#fnref10"
+<li id="fn11"><p>You cannot be head of the average if you are the
+average. Everyone is now behind the average.<a href="#fnref11"
 class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
