@@ -1,6 +1,5 @@
 ---
-title: New Rankings
-
+title: A Brief Reflection On The New Ranking System
 ...
 
 <div class="container">
@@ -92,7 +91,9 @@ S &= 0.4\times T + 0.3\times SOF + 0.3(B + \Delta) \\
 
 [^3]: More specifically, $\Delta$ is the fraction the athlete was off from the average performance of the top 5 athletes times 6.
 
-We already know that $T_1$ and $SOF$ are high for the big races. Even $T$ is biased towards the big races (finishing 14th in a platinum race is the same as second in a silver race). This might seem bizarre as there are silver races with comparable SOF's to Platinum races. So if you're an upcoming new athlete participating in a local race because you cannot afford to go to Europe/USA all the time, then $\Delta$ is the only lever which gives you any control over increasing your final rank. So how much can you squeeze out of $\Delta$? The answer is not much! Observe the plot below which shows $\Delta$ (X-axis) as a function
+We already know that $T_1$ and $SOF$ are high for the big races. Moreover these have nothing do with your race performance either. You get them for free for entering the race.
+
+Even $T$ is biased towards the big races (finishing 14th in a platinum race is the same as second in a silver race). This might seem bizarre as there are silver races with comparable SOF's to Platinum races. So if you're an upcoming new athlete participating in a local race because you cannot afford to go to Europe/USA all the time, then $\Delta$ is the only lever which gives you any control over increasing your final rank. So how much can you squeeze out of $\Delta$? The answer is not much! Observe the plot below which shows $\Delta$ (X-axis) as a function
 of race finish position (Y-axis) for different tiered races [^6]
 
 [^6]: PTO canadian open is not included in the results as the website does not report SOF for the women's field. As I have a generic webscraper that pulls this data from the PTO website, I could not be arsed to manually fix this.
@@ -126,7 +127,7 @@ There are few other things that stood out to me but I doubt they make a signific
 
 +  The choice of top 5 for SOF seemed rather arbitrary. Due to travel/cost/training circumstances, not all athletes show up to all silver and gold races. Hence there is a high variance in the strength of field even across the same tiers of races. Perhaps [a smoothing function](https://en.wikipedia.org/wiki/Winsorizing) or something more robust to outliers like [median](https://en.wikipedia.org/wiki/Robust_statistics) would have made more sense. My guess is 5 seemed like a good fair number and was picked heuristically. Then on running simulations not much changed, so 5 was kept. 
 
-+ Similarly, the calculation for $\Delta$ seems ad hoc. There are cases[^8] where the sase time is calculated using just the winners time. In that case the winner by definition cannot get any positive $\Delta$ points[^9] and everyone else gets negative points. However, as the final rankings are a function of top 3 performances, giving others negative points does not help an athlete. Those athletes might as well drop this performance and do well somewhere else. However the athlete that indeed won the race got nothing positive from winning the race. This seems like a systemic issue. In the cases where $\Delta$ is calculated from a base line time of top 3-5 times, this issue is still prevalent as the winning athletes time is included to compute the baseline, and therefore biases his score closer to 0. As shown in the plots above, computing $\Delta$ this way hardly makes a difference. There is a valid argument to be made to drop this feature completely as it adds more noise than signal.
++ Similarly, the calculation for $\Delta$ seems ad hoc. There are cases[^8] where the base time is calculated using just the winners time. In that case the winner by definition cannot get any positive $\Delta$ points[^9] and everyone else gets negative points. However, as the final rankings are a function of top 3 performances, giving others negative points does not help an athlete. Those athletes might as well drop this performance and do well somewhere else. However the athlete that indeed won the race got nothing positive from winning the race. This seems like a systemic issue. In the cases where $\Delta$ is calculated from a base line time of top 3-5 times, this issue is still prevalent as the winning athletes time is included to compute the baseline, and therefore biases his score closer to 0. As shown in the plots above, computing $\Delta$ this way hardly makes a difference. There is a valid argument to be made to drop this feature completely as it adds more noise than signal.
 
 
 

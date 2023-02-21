@@ -1,3 +1,6 @@
+---
+title: Part I - Where do Triathlon rankings come from ?
+...
 <div class="container">
 
 <div class="important"> 
@@ -17,7 +20,7 @@ someone is offended, I apologise.
 </div>
 
 
-# Part I - Where do Triathlon rankings come from ?
+# Introduction
 
 A friend recently introduced me to [World Triathlon
 Rankings](https://stats.protriathletes.org/rankings/women). It got me
